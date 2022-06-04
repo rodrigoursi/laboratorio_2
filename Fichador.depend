@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1654290857 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\fecha.cpp
+	"fecha.h"
+	<ctime>
+
+1654290857 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\fecha.h
+	<string>
+
+1654291003 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\administrador.cpp
+	<iostream>
+	<cstring>
+	"administrador.h"
+
+1654291003 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\administrador.h
+

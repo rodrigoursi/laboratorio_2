@@ -11,7 +11,7 @@ private:
     char Cargo[20];
     int DNI, Horas_trabajo, Horas_extras, Ausencias, llegadas_tarde, _PIN;
 public:
-    Empleados
+    Empleados();
     ///SETS
 //    void setNombre(const char *n){strcpy (Nombre,n);}
 //    void setApellido(const char *a){strcpy (Apellido,a);}

@@ -4,7 +4,6 @@
 class Administrador{
     private:
         char _Usuario [30], _Contrasenia[];
-
     public:
         Administrador();
         void setUsuarioAdmin(char *Usuario);
@@ -13,6 +12,7 @@ class Administrador{
         char *getContraseniaAdmin();
         bool grabarEnDisco();
         bool leerDeDisco(int pos);
+        void menuAdministrador();
 };
 
 ///FUNCIONES GLOBALES

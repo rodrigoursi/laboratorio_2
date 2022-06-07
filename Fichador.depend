@@ -1,61 +1,15 @@
 # depslib dependency file v1.0
-1654290857 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\fecha.cpp
+1654634433 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\fecha.cpp
 	"fecha.h"
 	<ctime>
 
-1654290857 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\fecha.h
+1654634433 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\fecha.h
 	<string>
 
-1654291003 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\administrador.cpp
+1654366397 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\administrador.cpp
 	<iostream>
 	<cstring>
 	"administrador.h"
 
 1654291003 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\administrador.h
-
-1654371796 source:c:\users\escal\documents\labo 2\proyecto\laboratorio_2\administrador.cpp
-	<iostream>
-	<cstring>
-	"administrador.h"
-
-1654371728 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\administrador.h
-
-1654365686 source:c:\users\escal\documents\labo 2\proyecto\laboratorio_2\fecha.cpp
-	"fecha.h"
-	<ctime>
-
-1654365686 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\fecha.h
-	<string>
-
-1654371306 source:c:\users\escal\documents\labo 2\proyecto\laboratorio_2\main.cpp
-	<iostream>
-	<string>
-	<cstdlib>
-	"rlutil.h"
-	"fecha.h"
-	"Empleados.h"
-	"administrador.h"
-
-1654365686 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\rlutil.h
-	<iostream>
-	<string>
-	<cstdio>
-	<stdio.h>
-	<string.h>
-	<windows.h>
-	<conio.h>
-	<termios.h>
-	<unistd.h>
-	<sys/ioctl.h>
-	<sys/types.h>
-	<sys/time.h>
-
-1654368066 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\empleados.h
-	<string>
-	"fecha.h"
-
-1654368694 source:c:\users\escal\documents\labo 2\proyecto\laboratorio_2\empleados.cpp
-	<iostream>
-	<cstring>
-	"Empleados.h"
 

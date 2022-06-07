@@ -11,6 +11,12 @@ int  Fecha::getMes(){
 int  Fecha::getAnio(){
     return _anio;
 }
+int  Fecha::getHora(){
+    return _hora;
+}
+int  Fecha::getMinutos(){
+    return _minutos;
+}
 void Fecha::setDia(int dia){
     _dia = dia;
 }
@@ -19,6 +25,12 @@ void Fecha::setMes(int mes){
 }
 void Fecha::setAnio(int anio){
     _anio = anio;
+}
+void Fecha::setHora(int Hora){
+    _hora = Hora;
+}
+void Fecha::setMinutos(int Minutos){
+    _minutos = Minutos;
 }
 Fecha::Fecha(int dia, int mes, int anio){
     _dia = dia;

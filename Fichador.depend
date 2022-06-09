@@ -1,46 +1,22 @@
 # depslib dependency file v1.0
-1654634433 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\fecha.cpp
+1654802429 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\fecha.cpp
 	"fecha.h"
 	<ctime>
 
-1654634433 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\fecha.h
-	<string>
-
-1654366397 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\administrador.cpp
-	<iostream>
-	<cstring>
-	"administrador.h"
-
-1654291003 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\administrador.h
-
-1654724169 source:c:\users\mapu\desktop\utn\laboratorio\controlhorario\administrador.cpp
-	<iostream>
-	<cstring>
-	"administrador.h"
-
-1654787583 c:\users\mapu\desktop\utn\laboratorio\controlhorario\administrador.h
-
-1654788455 source:c:\users\mapu\desktop\utn\laboratorio\controlhorario\empleados.cpp
-	<cstring>
-	<iostream>
-	"Empleados.h"
-
-1654793210 c:\users\mapu\desktop\utn\laboratorio\controlhorario\empleados.h
-	<string>
-	<cstring>
-	"fecha.h"
-
-1654787632 source:c:\users\mapu\desktop\utn\laboratorio\controlhorario\fecha.cpp
-	"fecha.h"
-	<ctime>
-
-1654792314 c:\users\mapu\desktop\utn\laboratorio\controlhorario\fecha.h
+1654802429 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\fecha.h
 	<ctime>
 	<time.h>
 	<string>
 	<cstring>
 
-1654787343 source:c:\users\mapu\desktop\utn\laboratorio\controlhorario\main.cpp
+1654640026 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\administrador.cpp
+	<iostream>
+	<cstring>
+	"administrador.h"
+
+1654802429 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\administrador.h
+
+1654802428 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\main.cpp
 	<iostream>
 	<string>
 	<cstdlib>
@@ -48,8 +24,9 @@
 	"fecha.h"
 	"Empleados.h"
 	"administrador.h"
+	"FUNCIONES.h"
 
-1654724169 c:\users\mapu\desktop\utn\laboratorio\controlhorario\rlutil.h
+1654104409 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\rlutil.h
 	<iostream>
 	<string>
 	<cstdio>
@@ -62,4 +39,17 @@
 	<sys/ioctl.h>
 	<sys/types.h>
 	<sys/time.h>
+
+1654805611 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\empleados.h
+	<string>
+	<cstring>
+	"fecha.h"
+
+1654802429 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\funciones.h
+
+1654805946 source:d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\empleados.cpp
+	<cstring>
+	<iostream>
+	"Empleados.h"
+	"fecha.h"
 

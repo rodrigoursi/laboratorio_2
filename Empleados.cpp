@@ -2,97 +2,29 @@
 #include <iostream>
 using namespace std;
 #include "Empleados.h"
+#include "fecha.h"
 
-///GETS-------------------
-string Empleados::getNombre(){
-    std::string N(Nombre);
-    return N;
-}
-std::string Empleados::getApellido(){
-    std::string A(Apellido);
-    return A;
-}
-std::string Empleados::getCargo(){
-    std::string C(Cargo);
-    return C;
-}
-int  Empleados::getDNI(){
-    return DNI;
-}
-int  Empleados::getHoras_trabajo(){
-    return Horas_trabajo;
-}
-int  Empleados::getHoras_extras(){
-    return Horas_extras;
-}
-int  Empleados::getAusencias(){
-    return Ausencias;
-}
-int  Empleados::getllegadas_tarde(){
-    return llegadas_tarde;
-}
-int  Empleados::getPIN(){
-    return PIN;
-}
-bool Empleados::getEliminado() const{
-    return Eliminado;
-}
-///SETS-------------------
-void Empleados::setNombre(std::string N){
-    strcpy(Nombre, N.c_str());
-}
-void Empleados::setApellido(std::string A){
-    strcpy(Apellido, A.c_str());
-}
-void Empleados::setCargo(std::string C){
-    strcpy(Cargo, C.c_str());
-}
-void Empleados::setDNI(int D){
-    DNI = D;
-}
-void Empleados::setHoras_trabajo(int H){
-    Horas_trabajo = H;
-}
-void Empleados::setHoras_extras(int H){
-    Horas_extras = H;
-}
-void Empleados::setAusencias(int A){
-    Ausencias = A;
-}
-void Empleados::setllegadas_tarde(int L){
-    llegadas_tarde = L;
-}
-void Empleados::setPIN(int P){
-    PIN = P;
-}
-void Empleados::setEliminado(bool E){
-    Eliminado = E;
-}
 ///FUNCIONES DE CLASES
 void Empleados::cargar(){
 Empleados obj;
-std::string apellido;
-std::string nombre;
-std::string cargo;
+char apellido[50];
+char nombre[50];
 int DNI, Horas_trabajo, PIN;
 cout<<"Cual es su nombre? --> ";
 cin>>nombre;
-obj.setNombre(nombre);
+obj.setnombre(nombre);
 cout<<"Cual es su apellido? --> ";
 cin>>apellido;
-obj.setApellido(apellido);
+obj.setapellido(apellido);
 cout<<"Cual es su DNI? --> ";
 cin>>DNI;
-obj.setDNI(DNI);
-cout<<"Cual es su cargo? --> ";
-cin>>cargo;
-obj.setCargo(cargo);
-cout<<"Cuantas son tus horas de trabajo? --> ";
-cin>>Horas_trabajo;
-obj.setHoras_trabajo(Horas_trabajo);
+obj.setdni(DNI);
+//cout<<"Cuantas son tus horas de trabajo? --> ";
+//cin>>Horas_trabajo;
+//obj.setHorarioTrabajo(Horas_trabajo);
 cout<<"Cual es su PIN? --> ";
 cin>>PIN;
-obj.setPIN(PIN);
+obj.setpin(PIN);
 }
 
 void Empleados::mostrar(){
@@ -100,23 +32,19 @@ Empleados obj;
 cout<<endl;
 cout<<"-----------------------------"<<endl;
 cout<<"Su nombre --> ";
-cout<<obj.getNombre()<<endl;
+cout<<obj.getnombre()<<endl;
 cout<<"Su apellido --> ";
-cout<<obj.getApellido()<<endl;
+cout<<obj.getapellido()<<endl;
 cout<<"Su DNI --> ";
-cout<<obj.getDNI()<<endl;
-cout<<"Su cargo --> ";
-cout<<obj.getCargo()<<endl;
-cout<<"Horas de trabajo --> ";
-cout<<obj.getHoras_trabajo()<<endl;
-cout<<"Horas extras trabajadas --> ";
-cout<<obj.getHoras_extras()<<endl;
-cout<<"Cantidad de dias ausentes --> ";
-cout<<obj.getAusencias()<<endl;
-cout<<"Cantidad de minutos tarde --> ";
-cout<<obj.getllegadas_tarde()<<endl;
+cout<<obj.getdni()<<endl;
+//cout<<"Horas de trabajo --> ";
+//cout<<obj.getHoras_trabajo()<<endl;
+//cout<<"Cantidad de dias ausentes --> ";
+//cout<<obj.getAusencias()<<endl;
+//cout<<"Cantidad de minutos tarde --> ";
+//cout<<obj.getllegadas_tarde()<<endl;
 cout<<"Su PIN --> ";
-cout<<obj.getPIN();
+cout<<obj.getpin();
 cout<<endl;
 cout<<"-----------------------------"<<endl;
 }
@@ -220,7 +148,7 @@ int buscar_empleados(int pin){
     int cantEmpleados = cantidad_registros_empleados();
     for(i=0; i<cantEmpleados; i++){
         aux.LeerDeDisco(i);
-        if(aux.getPIN() == pin){
+        if(aux.getpin() == pin){
             return i;
         }
     }
@@ -254,17 +182,15 @@ bool editar_empleados(){
     nroRegistro = buscar_empleados(pin);
     if (nroRegistro >= 0){
         Empleados reg;
+        FechaHora obj;
         reg.LeerDeDisco(nroRegistro);
         int Nuevo_horario;
         char Nuevo_cargo[20];
         cout << endl;
         cout << endl << endl;
-        cout << "Nuevo cargo: ";
-        cin >> Nuevo_cargo;
         cout << "Nuevo horario: ";
         cin >> Nuevo_horario;
-        reg.setCargo(Nuevo_cargo);
-        reg.setHoras_trabajo(Nuevo_horario);
+        //obj.sethorarioTrabajo(Nuevo_horario);
         ok = reg.GuardarEnDisco(nroRegistro);
 }
     return ok;

@@ -7,7 +7,6 @@
 using namespace std;
 
 class Empleados{
-
 private:
     int leg;
     int pin;
@@ -19,44 +18,51 @@ private:
     char provincia[50];
     char pais[50];
     FechaHora fNacimiento;
-    char genero;
+    char genero[10];
     FechaHora fechaIngreso;
     FechaHora horarioTrabajo;
+    int cargaHoraria;
     bool activo;
-
 public:
     ///CONSTRUCTOR
-    //Empleados{PIN=0000;}
+    //Empleados::Empleados(){pin=0000;}
     ///GETS
-    string getNombre();
-    string getApellido();
-    int getLegajo();
-    int getPIN();
-    int getDNI();
-    string getDomicilio();
-    string getLocalidad();
-    string getProvincia();
-    string getPais();
-    FechaHora getFnacimiento();
-    char getGenero();
-    FechaHora getFechaIngreso();
-    FechaHora getHorarioTrabajo();
-    bool getEliminado();
+    const char *getnombre(){return nombre;}
+    const char *getapellido(){return apellido;}
+    int getleg(){return leg;}
+    int getpin(){return pin;}
+    int getdni(){return dni;}
+    const char *getdomicilio(){return domicilio;}
+    const char *getlocalidad(){return localidad;}
+    const char *getprovincia(){return provincia;}
+    const char *getpais(){return pais;}
+    //FechaHora getFnacimiento(){return .Fnacimiento;}
+    const char *getgenero(){return genero;}
+    //FechaHora getFechaIngreso(){return .FechaIngreso;}
+    //FechaHora getHorarioTrabajo(){return .HorarioTrabajo;}
+    int getcargaHoraria(){return cargaHoraria;}
+    bool getEliminado(){return activo;}
 
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
 
     ///SETS
-    void setNombre(std::string N);
-    void setApellido(std::string A);
-    void setCargo(std::string C);
-    void setDNI(int D);
-    void setHoras_trabajo(int H);
-    void setHoras_extras(int H);
-    void setAusencias(int A);
-    void setllegadas_tarde(int L);
-    void setPIN(int P);
-    void setEliminado(bool E);
+    void setnombre(const char *n){strcpy(nombre,n);}
+    void setapellido(const char *a){strcpy(apellido,a);}
+    void setleg(int l){leg=l;}
+    void setpin(int p){pin=p;}
+    void setdni(int d){dni=d;}
+    void setdomicilio(const char *d){strcpy(domicilio,d);}
+    void setlocalidad(const char *l){strcpy(localidad,l);}
+    void setprovincia(const char *p){strcpy(provincia,p);}
+    void setpais(const char *p){strcpy(pais,p);}
+
+    //sets de (Fnacimiento-FechaIngreso-HorarioTrabajo)
+
+    void setgenero(const char *g){strcpy(genero,g);}
+    void setcargaHoraria(int c){cargaHoraria=c;}
+    void setEliminado(bool e){activo=e;}
+
     ///DECLARACION DE FUNCIONES DE LA CLASE
     void cargar();
     void mostrar();

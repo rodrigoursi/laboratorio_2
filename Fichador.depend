@@ -13,3 +13,53 @@
 
 1654291003 d:\estudios\utn\i) cuatrimestre 5\laboratorio 2\entrega de proyecto parcial\fichador\administrador.h
 
+1654724169 source:c:\users\mapu\desktop\utn\laboratorio\controlhorario\administrador.cpp
+	<iostream>
+	<cstring>
+	"administrador.h"
+
+1654787583 c:\users\mapu\desktop\utn\laboratorio\controlhorario\administrador.h
+
+1654788455 source:c:\users\mapu\desktop\utn\laboratorio\controlhorario\empleados.cpp
+	<cstring>
+	<iostream>
+	"Empleados.h"
+
+1654793210 c:\users\mapu\desktop\utn\laboratorio\controlhorario\empleados.h
+	<string>
+	<cstring>
+	"fecha.h"
+
+1654787632 source:c:\users\mapu\desktop\utn\laboratorio\controlhorario\fecha.cpp
+	"fecha.h"
+	<ctime>
+
+1654792314 c:\users\mapu\desktop\utn\laboratorio\controlhorario\fecha.h
+	<ctime>
+	<time.h>
+	<string>
+	<cstring>
+
+1654787343 source:c:\users\mapu\desktop\utn\laboratorio\controlhorario\main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	"rlutil.h"
+	"fecha.h"
+	"Empleados.h"
+	"administrador.h"
+
+1654724169 c:\users\mapu\desktop\utn\laboratorio\controlhorario\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+

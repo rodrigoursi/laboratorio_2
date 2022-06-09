@@ -1,31 +1,51 @@
 #ifndef EMPLEADOS_H_INCLUDED
 #define EMPLEADOS_H_INCLUDED
 #include <string>
-#include <iostream>
+#include <cstring>
+#include "fecha.h"
+
+using namespace std;
 
 class Empleados{
+
 private:
-    char Nombre[20];
-    char Apellido[20];
-    char Cargo[20];
-    char FechaIngreso[10];
-    char FechaSalida[10];
-    int DNI, Horas_trabajo, Horas_extras, Ausencias, llegadas_tarde, PIN, Hora_ingreso, Hora_salida;
-    bool Eliminado;
+    int leg;
+    int pin;
+    char nombre[50];
+    char apellido[50];
+    int dni;
+    char domicilio[50];
+    char localidad[50];
+    char provincia[50];
+    char pais[50];
+    FechaHora fNacimiento;
+    char genero;
+    FechaHora fechaIngreso;
+    FechaHora horarioTrabajo;
+    bool activo;
+
 public:
     ///CONSTRUCTOR
     //Empleados{PIN=0000;}
     ///GETS
-    std::string getNombre();
-    std::string getApellido();
-    std::string getCargo();
-    int getDNI();
-    int getHoras_trabajo();
-    int getHoras_extras();
-    int getAusencias();
-    int getllegadas_tarde();
+    string getNombre();
+    string getApellido();
+    int getLegajo();
     int getPIN();
-    bool getEliminado() const;
+    int getDNI();
+    string getDomicilio();
+    string getLocalidad();
+    string getProvincia();
+    string getPais();
+    FechaHora getFnacimiento();
+    char getGenero();
+    FechaHora getFechaIngreso();
+    FechaHora getHorarioTrabajo();
+    bool getEliminado();
+
+    ///////////////////////////////////////////////
+    ///////////////////////////////////////////////
+
     ///SETS
     void setNombre(std::string N);
     void setApellido(std::string A);

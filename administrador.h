@@ -1,6 +1,6 @@
 #ifndef ADMINISTRADOR_H_INCLUDED
 #define ADMINISTRADOR_H_INCLUDED
-
+/*
 class Administrador{
     private:
         char _Usuario [30], _Contrasenia[];
@@ -27,5 +27,5 @@ void ListarLlegadasTardePorFecha(int dia, int mes, int anio);
 void ListarAusentimos();
 int  CantidadEmpleados();
 //BuscarEmpleado(int Pin); DETERMINAR PARA QUE LA USARIAMOS
-
+*/
 #endif // ADMINISTRADOR_H_INCLUDED

@@ -1,28 +1,30 @@
-#ifndef FECHA_H_INCLUDED
-#define FECHA_H_INCLUDED
-
+#ifndef FECHAHORA_H_INCLUDED
+#define FECHAHORA_H_INCLUDED
+#include <ctime>
+#include <time.h>
 #include <string>
+#include <cstring>
 
-class Fecha{
+class FechaHora{
     public:
         int  getDia();
         int  getMes();
         int  getAnio();
         int  getHora();
-        int  getMinutos();
+        int  getMinuto();
         void setDia(int dia);
         void setMes(int mes);
         void setAnio(int anio);
         void setHora(int hora);
-        void setMinutos(int minutos);
-        Fecha(int dia, int mes, int anio);
-        Fecha();
+        void setMinuto(int minuto);
+             FechaHora(int dia, int mes, int anio, int hora, int minuto);
+             FechaHora();
         std::string toString();
 
     private:
         int _dia, _mes, _anio;
-        int _hora, _minutos;
+        int _hora, _minuto;
 
 };
 
-#endif // FECHA_H_INCLUDED
+#endif // FECHAHORA_H_INCLUDED

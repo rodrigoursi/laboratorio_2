@@ -4,7 +4,7 @@ using namespace std;
 #include "Empleados.h"
 
 ///GETS-------------------
-std::string Empleados::getNombre(){
+string Empleados::getNombre(){
     std::string N(Nombre);
     return N;
 }
@@ -320,13 +320,13 @@ cout<<"INGRESE SU NUMERO DE PIN -> ";
 cin>>PIN;
 int i = 0;
 int cantEmpleados = cantidad_registros_empleados();
-int buscar_empleados(PIN);
+/*int buscar_empleados(PIN);
         for(i=0; i<cantEmpleados; i++){
         obj.LeerDeDisco(i);
-            if(obj.getPIN() == pin){
+            if(obj.getPIN() == PIN){
             return i;
             }
         }
-    return -1;
+    return -1;*/
 }
 

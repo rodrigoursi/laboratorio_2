@@ -2,42 +2,44 @@
 #include <ctime>
 using namespace std;
 
-int  Fecha::getDia(){
+int  FechaHora::getDia(){
     return _dia;
 }
-int  Fecha::getMes(){
+int  FechaHora::getMes(){
     return _mes;
 }
-int  Fecha::getAnio(){
+int  FechaHora::getAnio(){
     return _anio;
 }
-int  Fecha::getHora(){
+int  FechaHora::getHora(){
     return _hora;
 }
-int  Fecha::getMinutos(){
-    return _minutos;
+int  FechaHora::getMinuto(){
+    return _minuto;
 }
-void Fecha::setDia(int dia){
+void FechaHora::setDia(int dia){
     _dia = dia;
 }
-void Fecha::setMes(int mes){
+void FechaHora::setMes(int mes){
     _mes = mes;
 }
-void Fecha::setAnio(int anio){
+void FechaHora::setAnio(int anio){
     _anio = anio;
 }
-void Fecha::setHora(int Hora){
-    _hora = Hora;
+void FechaHora::setHora(int hora){
+    _hora = hora;
 }
-void Fecha::setMinutos(int Minutos){
-    _minutos = Minutos;
+void FechaHora::setMinuto(int minuto){
+    _minuto = minuto;
 }
-Fecha::Fecha(int dia, int mes, int anio){
+FechaHora::FechaHora(int dia, int mes, int anio, int hora, int minuto){
     _dia = dia;
     _mes = mes;
     _anio = anio;
+    _hora = hora;
+    _minuto = minuto;
 }
-Fecha::Fecha(){
+FechaHora::FechaHora(){
     time_t rawtime;
     struct tm timeinfo;
 
@@ -47,10 +49,11 @@ Fecha::Fecha(){
     _dia = timeinfo.tm_mday;
     _mes = timeinfo.tm_mon + 1;
     _anio = timeinfo.tm_year + 1900;
+    _hora = timeinfo.tm_hour;
+    _minuto = timeinfo.tm_min;
 }
-string Fecha::toString(){
-    string fecha;
-    fecha = to_string(_dia) + "/" + to_string(_mes) + "/" + to_string(_anio);
-    return fecha;
+string FechaHora::toString(){
+    string fechaHora;
+    fechaHora = to_string(_dia) + "/" + to_string(_mes) + "/" + to_string(_anio) + " " + to_string(_hora) + ":" + to_string(_minuto);
+    return fechaHora;
 }
-

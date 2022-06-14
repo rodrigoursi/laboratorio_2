@@ -64,7 +64,6 @@ public:
     void setEliminado(bool e){activo=e;}
 
     ///DECLARACION DE FUNCIONES DE LA CLASE
-    void cargar();
     void mostrar();
     void cargararchivo();
     void mostrararchivo();
@@ -75,11 +74,10 @@ public:
 };
 
 ///DECLARACION DE FUNCIONES GLOBALES
-int cantidad_registros_empleados();
+int  cantidad_registros_empleados();
 void listar_empleados();
-int buscar_empleados(int pin);
+int  buscar_empleados(int pin);
 void listar_empleados_x_PIN();
 bool editar_empleados();
-bool eliminar_empleados();
 
 #endif // EMPLEADOS_H_INCLUDED

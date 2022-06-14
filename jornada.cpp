@@ -1,5 +1,6 @@
 #include "jornada.h"
 #include "Empleados.h"
+/*
 Jornada::Jornada(FechaHora fecha, Empleados legajo, Empleados apellido,
                 Empleados nombre, FechaHora hsEntradaTeorica,
                 FechaHora horaEnt, FechaHora horaSalida, FechaHora horaTotal,
@@ -77,4 +78,4 @@ bool Jornada::leerDeDisco(int pos){
     fclose(p);
     return ok;
 }
-
+*/

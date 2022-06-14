@@ -10,6 +10,6 @@ using namespace rlutil;
 #include "FUNCIONES.h"
 
 int main(){
-    menu_principal();
+    MenuPrincipal();
     return 0;
 }

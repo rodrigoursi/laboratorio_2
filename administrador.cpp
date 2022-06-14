@@ -1,33 +1,12 @@
- #include <iostream>
+#include <iostream>
 #include <cstring>
+#include "FUNCIONES.h"
+#include "rlutil.h"
 #include "administrador.h"
+#include "Empleados.h"
 using namespace std;
 
-/*
-void Administrador::menuAdministrador(){
-int opc;
-cout<<"----MENU ADMINISTRADOR----"<<endl;
-cout<<"1) BUSCAR EMPLEADO POR PIN"<<endl;
-cout<<"2) LISTAR TODOS LOS EMPLEADOS"<<endl;
-cout<<"3) LISTAR EMPLEADOS CON AUSENCIAS"<<endl;
-cout<<"4) LISTAR EMPLEADOS CON LLEGADAS TARDE"<<endl;
-cout<<"5) CARGAR UN NUEVO ADMINISTRADOR"<<endl;
-cin>>opc;
-system("cls");
-    switch(opc)
-    {
-        case 1: cout<<"falta hacer";
-        break;
-        case 2: cout<<"falta hacer";
-        break;
-        case 3: cout<<"falta hacer";
-        break;
-        case 4: cout<<"falta hacer";
-        break;
-        case 5: cout<<"falta hacer";
-        break;
-        default: cout<<"OPCION INCORRECTA. VUELVA A INGRESAR"<<endl;
-        break;
+
 Administrador::Administrador(){}
 
 void Administrador::setUsuarioAdmin(char *Usuario){
@@ -82,31 +61,99 @@ bool Administrador::leerDeDisco(int pos){
     }
 }
 
-void MenuAdministrador(){
+void CargarEmpleado(){
 
-    int opc;
+    Empleados obj;
+    char apellido[50], nombre[50];
+    int DNI, Horas_trabajo, PIN;
 
-    while(true){
-        cout << "\t\t\t\t\t\t***ADMINISTRADOR***" << endl << endl;
-        cout << "\t\t\t\t*******************************************" << endl << endl;
-        cout << "\t\t\t\t\t1 - LISTADO DE EMPLEADOS. " << endl << endl;
-        cout << "\t\t\t\t\t2 - LISTADO DE EMPLEADOS POR TURNO. " << endl << endl;
-        cout << "\t\t\t\t\t3 - LISTADO DE EMPLEADOS POR GENERO. " << endl << endl;
-        cout << "\t\t\t\t\t4 - LISTADO DE LLEGADAS TARDE. " << endl << endl;
-        cout << "\t\t\t\t\t5 - LISTADO DE LLEGADAS TARDE POR EMPLEADO. " << endl << endl;
-        cout << "\t\t\t\t\t6 - DIAS TRABAJADOS. " << endl << endl;
-        cout << "\t\t\t\t\t7 - LISTAR AUSENTISMOS. " << endl << endl;
-        cout << "\t\t\t\t\t8 - CANTIDAD DE EMPLEADOS. " << endl << endl;
-        cout << "\t\t\t\t\t9 - BUSCAR EMPLEADO. " << endl << endl;
-        cout << "\t\t\t\t\t0 - VOLVER." << endl << endl;
-        cout << "\t\t\t\t*******************************************" << endl << endl;
-        cout << "\t\t\t\t\tSELECCIONE OPCION: ";
-        cin  >> opc;
+    cout << "\t\t\t\t\t  *** INGRESE LOS DATOS ***" << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\t** NOMBRE  : ";
+    cin.ignore();
+    cin.getline(nombre, 50);
+    obj.setnombre(nombre);
+    cout << "\t\t\t\t\t** APELLIDO: ";
+    cin.getline(apellido, 50);
+    obj.setapellido(apellido);
+    cout << "\t\t\t\t\t** DNI     : ";
+    cin  >> DNI;
+    obj.setdni(DNI);
+    //cout<<"Cuantas son tus horas de trabajo? --> ";
+    //cin>>Horas_trabajo;
+    //obj.setHorarioTrabajo(Horas_trabajo);
+    cout << "\t\t\t\t\t** PIN     : ";
+    cin  >> PIN;
+    obj.setpin(PIN);
+}
 
-        system("cls");
-        //ACA VA EL SWITCH CON LAS OPCIONES
-    }
-    cout << "\t\t\t\t\t" << system("pause");
-    system("cls");
+/* 2 - CORREGIR EDITAR EMPLEADO
+bool EditarEmpleado(){
+    int  pin, nroRegistro;
+    bool ok = false;
+    string Nuevo_cargo;
+    string Nuevo_horario;
+    cout << "Legajo: ";
+    cin >> pin;
+
+    nroRegistro = buscar_empleados(pin);
+    if (nroRegistro >= 0){
+        Empleados reg;
+        FechaHora obj;
+        reg.LeerDeDisco(nroRegistro);
+        int Nuevo_horario;
+        char Nuevo_cargo[20];
+        cout << endl;
+        cout << endl << endl;
+        cout << "Nuevo horario: ";
+        cin >> Nuevo_horario;
+        //obj.sethorarioTrabajo(Nuevo_horario);
+        ok = reg.GuardarEnDisco(nroRegistro);
+}
+    return ok;
 }
 */
+
+bool EliminarEmpleado(){
+
+    Empleados reg;
+    int  pin, nroRegistro;
+    bool ok = false;
+    char confirmacion;
+
+    cout << "\t\t\t\t\t  *** SELECCIONE EMPLEADO A ELIMINAR ***" << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\t** PIN  : ";
+    cin  >> pin;
+
+    nroRegistro = buscar_empleados(pin);
+    if (nroRegistro >= 0) {
+        reg.LeerDeDisco(nroRegistro);
+        cout << endl;
+        cout << endl << endl;
+        if (reg.getEliminado()) {
+            cout << "EL EMPLEADO HA SIDO ELIMINADO" << endl;
+        }
+        else {
+            cout << "Esta seguro de que lo quiere eliminarlo? S/N" << endl;
+        }
+
+        cin >> confirmacion;
+
+        if (confirmacion == 'S' || confirmacion == 's') {
+            reg.setEliminado(!reg.getEliminado());
+            //ok = reg.GuardarEnDisco(nroRegistro);
+        }
+        else {
+            ok = true;
+        }
+    }
+    else {
+        cout << endl << "\t\t\t\t\tNO EXISTE EMPLEADO CON ESE PIN..." << endl;
+    }
+
+    return ok;
+}
+
+//...
+

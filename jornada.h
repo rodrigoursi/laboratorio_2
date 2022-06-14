@@ -7,8 +7,8 @@
 #include "Empleados.h"
 
 using namespace std;
-
-Class jornada{
+/*
+class jornada{
 
 private:
     FechaHora _fecha;
@@ -55,5 +55,5 @@ public:
     bool leerDeDisco(int pos);
 
 };
-
+*/
 #endif // JORNADA_H_INCLUDED

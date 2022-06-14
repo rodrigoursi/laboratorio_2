@@ -53,3 +53,82 @@
 	"Empleados.h"
 	"fecha.h"
 
+1655172274 source:c:\users\escal\documents\labo 2\proyecto\laboratorio_2\administrador.cpp
+	<iostream>
+	<cstring>
+	"FUNCIONES.h"
+	"rlutil.h"
+	"administrador.h"
+	"Empleados.h"
+
+1655170442 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\administrador.h
+
+1655170912 source:c:\users\escal\documents\labo 2\proyecto\laboratorio_2\empleados.cpp
+	<cstring>
+	<iostream>
+	"Empleados.h"
+	"fecha.h"
+
+1655171511 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\empleados.h
+	<string>
+	<cstring>
+	"fecha.h"
+
+1654813432 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\fecha.h
+	<ctime>
+	<time.h>
+	<string>
+	<cstring>
+
+1654813432 source:c:\users\escal\documents\labo 2\proyecto\laboratorio_2\fecha.cpp
+	"fecha.h"
+	<ctime>
+
+1655172417 source:c:\users\escal\documents\labo 2\proyecto\laboratorio_2\main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	"rlutil.h"
+	"fecha.h"
+	"Empleados.h"
+	"administrador.h"
+	"FUNCIONES.h"
+
+1654365686 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1655171511 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\funciones.h
+
+1655161413 source:c:\users\escal\documents\labo 2\proyecto\laboratorio_2\jornada.cpp
+	"jornada.h"
+	"Empleados.h"
+
+1655161397 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\jornada.h
+	<string>
+	<cstring>
+	"fecha.h"
+	"Empleados.h"
+
+1655172404 source:c:\users\escal\documents\labo 2\proyecto\laboratorio_2\funciones.cpp
+	<cstring>
+	<iostream>
+	"rlutil.h"
+	"administrador.h"
+	"FUNCIONES.h"
+	"Reportes.h"
+
+1655172537 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\reportes.h
+
+1655172537 c:\users\escal\documents\labo 2\proyecto\laboratorio_2\include\reportes.h
+

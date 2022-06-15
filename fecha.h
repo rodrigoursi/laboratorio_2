@@ -19,6 +19,10 @@ class FechaHora{
         void setMinuto(int minuto);
              FechaHora(int dia, int mes, int anio, int hora, int minuto);
              FechaHora();
+             Fecha(int dia, int mes, int anio, int hora, int minuto);
+             Fecha();
+             Hora(int hora, int minuto);
+             Hora();
         std::string toString();
 
     private:

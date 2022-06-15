@@ -37,7 +37,7 @@ Jornada::Jornada(FechaHora fecha, Empleados legajo, Empleados apellido,
 void Jornada::setFecha(FechaHora fecha){_fecha=fecha;}
 void Jornada::setLegajo(Empleados legajo){_legajo=legajo;}
 void Jornada::setApellido(Empleados apellido){_apellido=apellido;}
-void Jornada::getNombre(Empleados nombre){_nombre=nombre;}
+void Jornada::setNombre(Empleados nombre){_nombre=nombre;}
 void Jornada::setHsTeorica(FechaHora horaTeorica){_hsEntradaTeorica=horaTeorica;}
 void Jornada::setHoraEntrada(FechaHora entrada){_horaEntrada=entrada;}
 void Jornada::setHoraSalida(FechaHora salida){_horaSalida=salida;}

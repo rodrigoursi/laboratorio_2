@@ -3,5 +3,6 @@
 
 void MenuPrincipal();
 void MenuAdministrador();
+//void MenuFichar();
 
 #endif // FUNCIONES_H_INCLUDED

@@ -117,32 +117,10 @@ int cantidad_registros_empleados(){
 //        cout << endl;
 //    }
 //    else{
-//        cout << endl << "No existe el estudiante";
+//        cout << endl << "No existe el empleado";
 //    }
 //}
 //
-//
-//
-//
-//
-/////FUNCION MENU FICHAR (FALTA MEJORAR)
-//void Empleados::menu_FICHAR(){
-//Empleados obj;
-//int DNI;
-//int PIN;
-//cout<<"---- MENU FICHAR ----"<<endl;
-//cout<<"INGRESE SU NUMERO DE PIN -> ";
-//cin>>PIN;
-//int i = 0;
-//int cantEmpleados = cantidad_registros_empleados();
-//int buscar_empleados(PIN);
-//        for(i=0; i<cantEmpleados; i++){
-//        obj.LeerDeDisco(i);
-//            if(obj.getPIN() == PIN){
-//            return i;
-//            }
-//        }
-//    return -1;
 //
 //
 bool Empleados::LeerDeDisco(int nroRegistro){

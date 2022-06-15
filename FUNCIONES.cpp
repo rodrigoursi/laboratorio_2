@@ -27,7 +27,7 @@ void MenuPrincipal(){
             system("cls");
         }
         switch(opcion){
-            case 1: cout << "fichar";//Empleados::menu_FICHAR();
+            case 1: cout << "fichar";//MenuFichar();
                 break;
             case 2: MenuAdministrador();
                 break;
@@ -87,3 +87,67 @@ void MenuAdministrador(){
         rlutil::anykey();
     }
 }
+/*
+void MenuFichar(){
+    Empleados reg;
+    jornada obj;
+    FechaHora hora;
+    int  legajo,cuestion;
+    char confirmarSalida;
+        rlutil::setColor(rlutil::WHITE);
+        rlutil::setBackgroundColor(rlutil::DARKGREY);
+        rlutil::cls();
+        cout << "\t\t\t\t\t  *** MENU FICHAR ***" << endl << endl;
+        cout << "\t\t\t\t*******************************************" << endl << endl;
+        cout << "\t\t\t\t\t1 - COLOQUE ES SU PIN -> ";
+        cin >> legajo;
+        cout << "\t\t\t\t\t1 - ESTA INGRESANDO O SALIENDO? MARQUE 1 SI ESTA INGRESANDO O 2 SI ESTA SALIENDO -> ";
+        cin >> cuestion;
+        cout << "\t\t\t\t*******************************************" << endl << endl;
+        rlutil::locate(60,17);
+
+        int nroRegistro;
+        nroRegistro = reg.buscar_empleados(legajo);
+
+        ///CARGA PARA CUANDO ESTE ENTRANDO
+        if (nroRegistro >= 0 && cuestion == 1){
+        reg.LeerDeDisco(nroRegistro);
+            if(legajo==reg.leg){
+            ///Se llena la info
+            obj.setFecha(hora.Fecha());
+            obj.setLegajo(legajo);
+            obj.setApellido(reg.getapellido());
+            obj.setNombre(reg.getnombre());
+            obj.setHsTeorica(reg.getcargaHoraria);
+            obj.setHoraEntrada(hora.Hora);
+            ///Se guarda en disco
+            obj.guardarEnDisco();
+            }
+        }
+        else{
+            cout << endl << "No existe el empleado";
+        }
+
+        ///CARGA PARA CUANDO ESTE SALIENDO
+        if (nroRegistro >= 0 && cuestion == 2){
+        reg.LeerDeDisco(nroRegistro);
+            if(legajo==reg.leg){
+            ///Se llena la info
+            obj.setFecha(hora.Fecha());
+            obj.setLegajo(legajo);
+            obj.setApellido(reg.getapellido());
+            obj.setNombre(reg.getnombre());
+            obj.setHsTeorica(reg.getcargaHoraria);
+            obj.setHoraSalida(hora.Hora);
+            ///Se guarda en disco
+            obj.guardarEnDisco();
+            }
+        }
+        else{
+            cout << endl << "No existe el empleado";
+        }
+
+        cin.ignore();
+        rlutil::anykey();
+}
+*/

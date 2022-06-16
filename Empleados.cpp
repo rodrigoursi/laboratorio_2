@@ -4,7 +4,49 @@ using namespace std;
 #include "Empleados.h"
 #include "fecha.h"
 
-///FUNCIONES DE CLASES
+///GET
+
+
+string Empleados::getnombre(){
+    string nom;
+    nom=nombre;
+    return nom;}
+
+string Empleados::getapellido(){
+    string apell(apellido);
+    return  apell;}
+
+int Empleados::getleg(){return leg;}
+int Empleados::getpin(){return pin;}
+int Empleados::getdni(){return dni;}
+string Empleados::getdomicilio(){string dom(domicilio); return dom;}
+string Empleados::getlocalidad(){string loc(localidad); return loc;}
+string Empleados::getprovincia(){string prov(provincia); return prov;}
+string Empleados::getpais(){string p(pais); return p;}
+FechaHora Empleados::getFnacimiento(){return fNacimiento;}
+string Empleados::getgenero(){string gen(genero); return gen;}
+FechaHora Empleados::getFechaIngreso(){return fechaIngreso;}
+int Empleados::getcargaHoraria(){return cargaHoraria;}
+bool Empleados::getEliminado(){return activo;}
+
+
+///SETS
+    void Empleados::setnombre(string nom){strcpy(nombre, nom.c_str());}
+    void Empleados::setapellido(string ape){strcpy(apellido, ape.c_str());}
+    void Empleados::setleg(int legajo){leg=legajo;}
+    void Empleados::setpin(int p){pin=p;}
+    void Empleados::setdni(int doc){dni=doc;}
+    void Empleados::setdomicilio(string dom){strcpy(domicilio, dom.c_str());}
+    void Empleados::setlocalidad(string loc){strcpy(localidad, loc.c_str());}
+    void Empleados::setprovincia(string prov){strcpy(provincia, prov.c_str());}
+    void Empleados::setpais(string p){strcpy(pais, p.c_str());}
+    void Empleados::setFnacimiento(FechaHora nac){fNacimiento=nac;}
+    void Empleados::setgenero(string g){strcpy(genero, g.c_str());}
+    void Empleados::setcargaHoraria(int carga){cargaHoraria=carga;}
+    void Empleados::setEliminado(bool on){activo=on;}
+
+
+///METODO DE LA CLASE
 
 void Empleados::mostrar(){
 Empleados obj;
@@ -26,6 +68,53 @@ cout<<"Su PIN --> ";
 cout<<obj.getpin();
 cout<<endl;
 cout<<"-----------------------------"<<endl;
+}
+
+int Empleados::contarRegistros(){
+    FILE *p = fopen("Empleados.dat", "rb");
+    if (p == NULL){
+        return 0;
+    }
+    size_t bytes;
+    int cant_reg;
+
+    fseek(p, 0, SEEK_END);
+    bytes = ftell(p);
+    fclose(p);
+    cant_reg = bytes / sizeof(Empleados);
+    return cant_reg;
+}
+
+bool Empleados::LeerDeDisco(int nroRegistro){
+    FILE *p = fopen("archivos/Empleados.dat", "rb");
+    if (p == NULL){
+        return false;
+    }
+    fseek(p, nroRegistro * sizeof(Empleados), SEEK_SET);
+    bool ok = fread(this, sizeof(Empleados), 1, p);
+    fclose(p);
+    return ok;
+}
+
+bool Empleados::GuardarEnDisco(){
+    FILE *p = fopen("archivos/Empleados.dat", "ab");
+    if (p == NULL){
+        return false;
+    }
+    bool guardo = fwrite(this, sizeof(Empleados), 1, p);
+    fclose(p);
+    return guardo;
+}
+
+bool Empleados::GuardarEnDisco(int nroRegistro){
+    FILE *p = fopen("archivos/Empleados.dat", "rb+");
+    if (p == NULL){
+        return false;
+    }
+    fseek(p, nroRegistro * sizeof(Empleados), SEEK_SET);
+    bool guardo = fwrite(this, sizeof(Empleados), 1, p);
+    fclose(p);
+    return guardo;
 }
 
 //void Empleados::cargararchivo(){
@@ -56,33 +145,11 @@ cout<<"-----------------------------"<<endl;
 //
 //
 //
-//bool Empleados::GuardarEnDisco(int nroRegistro){
-//    FILE *p = fopen("Empleados.dat", "rb+");
-//    if (p == NULL){
-//        return false;
-//    }
-//    fseek(p, nroRegistro * sizeof(Empleados), SEEK_SET);
-//    bool guardo = fwrite(this, sizeof(Empleados), 1, p);
-//    fclose(p);
-//    return guardo;
-//}
+
 //
 /////FUNCIONES GLOBALES
 
-int cantidad_registros_empleados(){
-    FILE *p = fopen("Empleados.dat", "rb");
-    if (p == NULL){
-        return 0;
-    }
-    size_t bytes;
-    int cant_reg;
 
-    fseek(p, 0, SEEK_END);
-    bytes = ftell(p);
-    fclose(p);
-    cant_reg = bytes / sizeof(Empleados);
-    return cant_reg;
-}
 //
 //void listar_empleados(){
 //    Empleados aux;
@@ -123,16 +190,7 @@ int cantidad_registros_empleados(){
 //
 //
 //
-bool Empleados::LeerDeDisco(int nroRegistro){
-    FILE *p = fopen("Empleados.dat", "rb");
-    if (p == NULL){
-        return false;
-    }
-    fseek(p, nroRegistro * sizeof(Empleados), SEEK_SET);
-    bool ok = fread(this, sizeof(Empleados), 1, p);
-    fclose(p);
-    return ok;
-}
+
 //
 //bool Empleados::GuardarEnDisco(){
 //    FILE *p = fopen("Empleados.dat", "ab");
@@ -147,7 +205,7 @@ bool Empleados::LeerDeDisco(int nroRegistro){
 int buscar_empleados(int pin){
     Empleados aux;
     int i = 0;
-    int cantEmpleados = cantidad_registros_empleados();
+    int cantEmpleados = aux.contarRegistros();
     for(i=0; i<cantEmpleados; i++){
         aux.LeerDeDisco(i);
         if(aux.getpin() == pin){

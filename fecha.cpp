@@ -32,12 +32,10 @@ void FechaHora::setHora(int hora){
 void FechaHora::setMinuto(int minuto){
     _minuto = minuto;
 }
-FechaHora::Fecha(int dia, int mes, int anio){
+FechaHora::FechaHora(int dia, int mes, int anio, int hora, int minuto){
     _dia = dia;
     _mes = mes;
     _anio = anio;
-}
-FechaHora::Hora(int hora, int minuto){
     _hora = hora;
     _minuto = minuto;
 }

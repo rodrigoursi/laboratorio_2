@@ -8,7 +8,7 @@ using namespace rlutil;
 #include "Empleados.h"
 #include "administrador.h"
 #include "FUNCIONES.h"
-
+///
 int main(){
     MenuPrincipal();
     return 0;

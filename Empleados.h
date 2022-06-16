@@ -18,63 +18,60 @@ private:
     char provincia[50];
     char pais[50];
     FechaHora fNacimiento;
-    char genero[10];
+    char genero[1];
     FechaHora fechaIngreso;
-    FechaHora horarioTrabajo;
     int cargaHoraria;
     bool activo;
 public:
     ///CONSTRUCTOR
     //Empleados::Empleados(){pin=0000;}
     ///GETS
-    const char *getnombre(){return nombre;}
-    const char *getapellido(){return apellido;}
-    int getleg(){return leg;}
-    int getpin(){return pin;}
-    int getdni(){return dni;}
-    const char *getdomicilio(){return domicilio;}
-    const char *getlocalidad(){return localidad;}
-    const char *getprovincia(){return provincia;}
-    const char *getpais(){return pais;}
-    //FechaHora getFnacimiento(){return .Fnacimiento;}
-    const char *getgenero(){return genero;}
-    //FechaHora getFechaIngreso(){return .FechaIngreso;}
-    //FechaHora getHorarioTrabajo(){return .HorarioTrabajo;}
-    int getcargaHoraria(){return cargaHoraria;}
-    bool getEliminado(){return activo;}
+    string getnombre();
+    string getapellido();
+    int getleg();
+    int getpin();
+    int getdni();
+    string getdomicilio();
+    string getlocalidad();
+    string getprovincia();
+    string getpais();
+    FechaHora getFnacimiento();
+    string getgenero();
+    FechaHora getFechaIngreso();
+    int getcargaHoraria();
+    bool getEliminado();
 
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
 
     ///SETS
-    void setnombre(const char *n){strcpy(nombre,n);}
-    void setapellido(const char *a){strcpy(apellido,a);}
-    void setleg(int l){leg=l;}
-    void setpin(int p){pin=p;}
-    void setdni(int d){dni=d;}
-    void setdomicilio(const char *d){strcpy(domicilio,d);}
-    void setlocalidad(const char *l){strcpy(localidad,l);}
-    void setprovincia(const char *p){strcpy(provincia,p);}
-    void setpais(const char *p){strcpy(pais,p);}
+    void setnombre(string);
+    void setapellido(string);
+    void setleg(int);
+    void setpin(int);
+    void setdni(int);
+    void setdomicilio(string);
+    void setlocalidad(string);
+    void setprovincia(string);
+    void setpais(string);
+    void setFnacimiento(FechaHora);
+    void setgenero(string);
+    void setcargaHoraria(int);
+    void setEliminado(bool);
 
-    //sets de (Fnacimiento-FechaIngreso-HorarioTrabajo)
-
-    void setgenero(const char *g){strcpy(genero,g);}
-    void setcargaHoraria(int c){cargaHoraria=c;}
-    void setEliminado(bool e){activo=e;}
-
-    ///DECLARACION DE FUNCIONES DE LA CLASE
-    void mostrar();
-    void cargararchivo();
-    void mostrararchivo();
+    ///METODOS DE LA CLASE
+    int contarRegistros();
     bool LeerDeDisco(int nroRegistro);
     bool GuardarEnDisco();
     bool GuardarEnDisco(int nroRegistro);
+    void mostrar();
+    void cargararchivo();
+    void mostrararchivo();
     void menu_FICHAR();
 };
 
 ///DECLARACION DE FUNCIONES GLOBALES
-int  cantidad_registros_empleados();
+/// ESTE NO VA int  cantidad_registros_empleados();
 void listar_empleados();
 int  buscar_empleados(int pin);
 void listar_empleados_x_PIN();

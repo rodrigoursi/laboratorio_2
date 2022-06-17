@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstring>
+#include <string>
 #include "FUNCIONES.h"
 #include "rlutil.h"
 #include "administrador.h"
@@ -69,30 +69,41 @@ void CargarEmpleado(){
 
     cout << "\t\t\t\t\t  *** INGRESE LOS DATOS ***" << endl << endl;
     cout << "\t\t\t\t*******************************************" << endl << endl;
-    cout << "\t\t\t\t\t** LEGAJO  : ";
-    cin>>legajo;
-    cout << "\t\t\t\t\t** NOMBRE  : ";
-    cin>>nombre;
-    cout << "\t\t\t\t\t** APELLIDO: ";
-    cin>>apellido;
-    cout << "\t\t\t\t\t** DNI     : ";
+    cout << "\t\t\t\t\t** LEGAJO       : ";
+    cin  >> legajo;
+    cout << "\t\t\t\t\t** NOMBRE       : ";
+    cin.ignore();
+    getline(cin,nombre);
+    cout << "\t\t\t\t\t** APELLIDO     : ";
+    getline(cin,apellido);
+    cout << "\t\t\t\t\t** DNI          : ";
     cin  >> DNI;
-    cout << "\t\t\t\t\t** DOMICILIO: ";
-    cin>>domicilio;
-    cout << "\t\t\t\t\t** LOCALIDAD: ";
-    cin>>localidad;
-    cout << "\t\t\t\t\t** PROVINCIA: ";
-    cin>>provincia;
-    cout << "\t\t\t\t\t** PAIS: ";
-    cin>>pais;
+    cout << "\t\t\t\t\t** DOMICILIO    : ";
+    cin.ignore();
+    getline(cin,domicilio);
+    cout << "\t\t\t\t\t** LOCALIDAD    : ";
+    getline(cin,localidad);
+    cout << "\t\t\t\t\t** PROVINCIA    : ";
+    getline(cin,provincia);
+    cout << "\t\t\t\t\t** PAIS         : ";
+    getline(cin,pais);
     cout << "\t\t\t\t\t** FECHA NACIMIENTO dd/mm/aaaa: ";
-    cin>>dia;cout<<"/";cin>>mes;cout<<"/";cin>>anio;
-    cout << "\t\t\t\t\t** GENERO: ";
-    cin>>genero;
+    rlutil::locate(73,13);
+    cin  >> dia;
+    rlutil::locate(75,13);
+    cout << "/";
+    rlutil::locate(76,13);
+    cin  >> mes;
+    rlutil::locate(78,13);
+    cout << "/";
+    rlutil::locate(79,13);
+    cin  >> anio;
+    cout << "\t\t\t\t\t** GENERO       : ";
+    cin  >> genero;
     cout << "\t\t\t\t\t** CARGA HORARIA: ";
-    cin>> carga;
-    cout << "\t\t\t\t\t** ROL ADMIN: ";
-    cin>>admin;
+    cin  >> carga;
+    cout << "\t\t\t\t\t** ROL ADMIN    : ";
+    cin  >> admin;
     FechaHora fnac(anio,mes,dia);
     FechaHora ingreso;
     Empleados obj(legajo,pin,nombre,apellido,DNI,domicilio,localidad,provincia,pais,fnac,genero,ingreso,carga,admin);

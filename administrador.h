@@ -1,6 +1,7 @@
 #ifndef ADMINISTRADOR_H_INCLUDED
 #define ADMINISTRADOR_H_INCLUDED
 
+
 class Administrador{
     private:
         char _Usuario [30], _Contrasenia[];
@@ -18,7 +19,7 @@ class Administrador{
 
 void CargarEmpleado();
 //bool EditarEmpleado();
-bool EliminarEmpleado();
+
 //void RESET PIN
 //void REPORTES
 

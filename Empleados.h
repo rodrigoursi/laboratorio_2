@@ -21,10 +21,13 @@ private:
     char genero[1];
     FechaHora fechaIngreso;
     int cargaHoraria;
+    bool adm;
     bool activo;
 public:
     ///CONSTRUCTOR
-    //Empleados::Empleados(){pin=0000;}
+    Empleados(int,int,string,string,int,string,string,string,string,FechaHora,string,FechaHora,int,bool,bool=true);
+    Empleados(int,int, string);
+    Empleados();
     ///GETS
     string getnombre();
     string getapellido();
@@ -39,6 +42,7 @@ public:
     string getgenero();
     FechaHora getFechaIngreso();
     int getcargaHoraria();
+    bool getRol();
     bool getEliminado();
 
     ///////////////////////////////////////////////
@@ -57,6 +61,7 @@ public:
     void setFnacimiento(FechaHora);
     void setgenero(string);
     void setcargaHoraria(int);
+    void setRol(bool);
     void setEliminado(bool);
 
     ///METODOS DE LA CLASE
@@ -73,7 +78,8 @@ public:
 ///DECLARACION DE FUNCIONES GLOBALES
 /// ESTE NO VA int  cantidad_registros_empleados();
 void listar_empleados();
-int  buscar_empleados(int pin);
+int buscar_empleados(int legajo);
+bool EliminarEmpleado();
 void listar_empleados_x_PIN();
 bool editar_empleados();
 

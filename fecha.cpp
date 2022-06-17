@@ -39,6 +39,14 @@ FechaHora::FechaHora(int dia, int mes, int anio, int hora, int minuto){
     _hora = hora;
     _minuto = minuto;
 }
+
+FechaHora::FechaHora(int anio, int mes, int dia){
+    _dia = dia;
+    _mes = mes;
+    _anio = anio;
+
+}
+
 FechaHora::FechaHora(){
     time_t rawtime;
     struct tm timeinfo;

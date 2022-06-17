@@ -63,28 +63,39 @@ bool Administrador::leerDeDisco(int pos){
 
 void CargarEmpleado(){
 
-    Empleados obj;
-    char apellido[50], nombre[50];
-    int DNI, Horas_trabajo, PIN;
+    string apellido, nombre, domicilio, localidad, provincia, pais, genero;
+    int DNI, legajo, pin, dia, mes, anio, carga;
+    bool admin;
 
     cout << "\t\t\t\t\t  *** INGRESE LOS DATOS ***" << endl << endl;
     cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\t** LEGAJO  : ";
+    cin>>legajo;
     cout << "\t\t\t\t\t** NOMBRE  : ";
-    cin.ignore();
-    cin.getline(nombre, 50);
-    obj.setnombre(nombre);
+    cin>>nombre;
     cout << "\t\t\t\t\t** APELLIDO: ";
-    cin.getline(apellido, 50);
-    obj.setapellido(apellido);
+    cin>>apellido;
     cout << "\t\t\t\t\t** DNI     : ";
     cin  >> DNI;
-    obj.setdni(DNI);
-    //cout<<"Cuantas son tus horas de trabajo? --> ";
-    //cin>>Horas_trabajo;
-    //obj.setHorarioTrabajo(Horas_trabajo);
-    cout << "\t\t\t\t\t** PIN     : ";
-    cin  >> PIN;
-    obj.setpin(PIN);
+    cout << "\t\t\t\t\t** DOMICILIO: ";
+    cin>>domicilio;
+    cout << "\t\t\t\t\t** LOCALIDAD: ";
+    cin>>localidad;
+    cout << "\t\t\t\t\t** PROVINCIA: ";
+    cin>>provincia;
+    cout << "\t\t\t\t\t** PAIS: ";
+    cin>>pais;
+    cout << "\t\t\t\t\t** FECHA NACIMIENTO dd/mm/aaaa: ";
+    cin>>dia;cout<<"/";cin>>mes;cout<<"/";cin>>anio;
+    cout << "\t\t\t\t\t** GENERO: ";
+    cin>>genero;
+    cout << "\t\t\t\t\t** CARGA HORARIA: ";
+    cin>> carga;
+    cout << "\t\t\t\t\t** ROL ADMIN: ";
+    cin>>admin;
+    FechaHora fnac(anio,mes,dia);
+    FechaHora ingreso;
+    Empleados obj(legajo,pin,nombre,apellido,DNI,domicilio,localidad,provincia,pais,fnac,genero,ingreso,carga,admin);
 }
 
 /* 2 - CORREGIR EDITAR EMPLEADO
@@ -114,46 +125,4 @@ bool EditarEmpleado(){
 }
 */
 
-bool EliminarEmpleado(){
-
-    Empleados reg;
-    int  pin, nroRegistro;
-    bool ok = false;
-    char confirmacion;
-
-    cout << "\t\t\t\t\t  *** SELECCIONE EMPLEADO A ELIMINAR ***" << endl << endl;
-    cout << "\t\t\t\t*******************************************" << endl << endl;
-    cout << "\t\t\t\t\t** PIN  : ";
-    cin  >> pin;
-
-    nroRegistro = buscar_empleados(pin);
-    if (nroRegistro >= 0) {
-        reg.LeerDeDisco(nroRegistro);
-        cout << endl;
-        cout << endl << endl;
-        if (reg.getEliminado()) {
-            cout << "EL EMPLEADO HA SIDO ELIMINADO" << endl;
-        }
-        else {
-            cout << "Esta seguro de que lo quiere eliminarlo? S/N" << endl;
-        }
-
-        cin >> confirmacion;
-
-        if (confirmacion == 'S' || confirmacion == 's') {
-            reg.setEliminado(!reg.getEliminado());
-            //ok = reg.GuardarEnDisco(nroRegistro);
-        }
-        else {
-            ok = true;
-        }
-    }
-    else {
-        cout << endl << "\t\t\t\t\tNO EXISTE EMPLEADO CON ESE PIN..." << endl;
-    }
-
-    return ok;
-}
-
-//...
 

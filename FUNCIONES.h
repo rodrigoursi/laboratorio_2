@@ -3,6 +3,7 @@
 
 void MenuPrincipal();
 void MenuAdministrador();
+void mostrar();
 //void MenuFichar();
 
-#endif // FUNCIONES_H_INCLUDED
+#endif FUNCIONES_H_INCLUDED

@@ -5,6 +5,7 @@ using namespace std;
 #include "administrador.h"
 #include "FUNCIONES.h"
 #include "Reportes.h"
+#include "Empleados.h"
 
 
 void MenuPrincipal(){
@@ -87,6 +88,29 @@ void MenuAdministrador(){
         rlutil::anykey();
     }
 }
+
+void mostrar(){
+Empleados obj;
+cout<<endl;
+cout<<"-----------------------------"<<endl;
+cout<<"Su nombre --> ";
+cout<<obj.getnombre()<<endl;
+cout<<"Su apellido --> ";
+cout<<obj.getapellido()<<endl;
+cout<<"Su DNI --> ";
+cout<<obj.getdni()<<endl;
+//cout<<"Horas de trabajo --> ";
+//cout<<obj.getHoras_trabajo()<<endl;
+//cout<<"Cantidad de dias ausentes --> ";
+//cout<<obj.getAusencias()<<endl;
+//cout<<"Cantidad de minutos tarde --> ";
+//cout<<obj.getllegadas_tarde()<<endl;
+cout<<"Su PIN --> ";
+cout<<obj.getpin();
+cout<<endl;
+cout<<"-----------------------------"<<endl;
+}
+
 /*
 void MenuFichar(){
     Empleados reg;

@@ -4,6 +4,14 @@ using namespace std;
 #include "Empleados.h"
 #include "fecha.h"
 
+///CONSTRUCTOR
+
+Empleados::Empleados(int legajo,int _pin,string _nombre,string _apellido,int _dni,string _domicilio,string _localidad,string _provincia,string _pais,FechaHora fnac,string _genero,FechaHora ingreso,int carga_horaria,bool admin, bool act){
+
+leg=legajo; pin=1234; strcpy(nombre, _nombre.c_str());strcpy(apellido, _apellido.c_str()); dni=_dni; strcpy(domicilio, _domicilio.c_str()); strcpy(localidad, _localidad.c_str()); strcpy(provincia, _provincia.c_str()); strcpy(pais, _pais.c_str());
+fNacimiento=fnac; strcpy(genero, _genero.c_str()); fechaIngreso=ingreso; cargaHoraria=carga_horaria; adm=admin;}
+
+Empleados::Empleados(){}
 ///GET
 
 
@@ -27,6 +35,7 @@ FechaHora Empleados::getFnacimiento(){return fNacimiento;}
 string Empleados::getgenero(){string gen(genero); return gen;}
 FechaHora Empleados::getFechaIngreso(){return fechaIngreso;}
 int Empleados::getcargaHoraria(){return cargaHoraria;}
+bool Empleados::getRol(){return adm;}
 bool Empleados::getEliminado(){return activo;}
 
 
@@ -43,32 +52,11 @@ bool Empleados::getEliminado(){return activo;}
     void Empleados::setFnacimiento(FechaHora nac){fNacimiento=nac;}
     void Empleados::setgenero(string g){strcpy(genero, g.c_str());}
     void Empleados::setcargaHoraria(int carga){cargaHoraria=carga;}
+    void Empleados::setRol(bool admin){adm=admin;}
     void Empleados::setEliminado(bool on){activo=on;}
 
 
 ///METODO DE LA CLASE
-
-void Empleados::mostrar(){
-Empleados obj;
-cout<<endl;
-cout<<"-----------------------------"<<endl;
-cout<<"Su nombre --> ";
-cout<<obj.getnombre()<<endl;
-cout<<"Su apellido --> ";
-cout<<obj.getapellido()<<endl;
-cout<<"Su DNI --> ";
-cout<<obj.getdni()<<endl;
-//cout<<"Horas de trabajo --> ";
-//cout<<obj.getHoras_trabajo()<<endl;
-//cout<<"Cantidad de dias ausentes --> ";
-//cout<<obj.getAusencias()<<endl;
-//cout<<"Cantidad de minutos tarde --> ";
-//cout<<obj.getllegadas_tarde()<<endl;
-cout<<"Su PIN --> ";
-cout<<obj.getpin();
-cout<<endl;
-cout<<"-----------------------------"<<endl;
-}
 
 int Empleados::contarRegistros(){
     FILE *p = fopen("Empleados.dat", "rb");
@@ -116,6 +104,21 @@ bool Empleados::GuardarEnDisco(int nroRegistro){
     fclose(p);
     return guardo;
 }
+
+/// FUNCIONES DE LA CLASE
+
+int buscar_empleados(int legajo){
+
+/// REALIZAR LA FUNCION
+
+}
+
+bool EliminarEmpleado(){
+
+/// REALIZAR LA FUNCION
+
+}
+
 
 //void Empleados::cargararchivo(){
 //    FILE *p;
@@ -201,8 +204,9 @@ bool Empleados::GuardarEnDisco(int nroRegistro){
 //    fclose(p);
 //    return guardo;
 //}
+
 //
-int buscar_empleados(int pin){
+/*int buscar_empleados(int pin){
     Empleados aux;
     int i = 0;
     int cantEmpleados = aux.contarRegistros();
@@ -213,4 +217,4 @@ int buscar_empleados(int pin){
         }
     }
     return -1;
-}
+}*/

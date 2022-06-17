@@ -11,12 +11,12 @@ using namespace rlutil;
 ///
 int main(){
 
-    //MenuPrincipal();
-    Empleados obj;
-
-    int pos = 0;
-    while(obj.LeerDeDisco(pos++)){
-        obj.mostrar();
-    }
-    return 0;
+    MenuPrincipal();
+    //Empleados obj;
+    //
+    //int pos = 0;
+    //while(obj.LeerDeDisco(pos++)){
+    //    obj.mostrar();
+    //}
+    //return 0;
 }

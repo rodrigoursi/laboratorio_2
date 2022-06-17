@@ -4,6 +4,7 @@
 void MenuPrincipal();
 void MenuAdministrador();
 void mostrar();
+bool pedirContrasenia();
 //void MenuFichar();
 
 #endif FUNCIONES_H_INCLUDED

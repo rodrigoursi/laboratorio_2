@@ -10,6 +10,13 @@ using namespace rlutil;
 #include "FUNCIONES.h"
 ///
 int main(){
-    MenuPrincipal();
+
+    //MenuPrincipal();
+    Empleados obj;
+
+    int pos = 0;
+    while(obj.LeerDeDisco(pos++)){
+        obj.mostrar();
+    }
     return 0;
 }

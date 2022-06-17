@@ -9,7 +9,8 @@ using namespace std;
 Empleados::Empleados(int legajo,int _pin,string _nombre,string _apellido,int _dni,string _domicilio,string _localidad,string _provincia,string _pais,FechaHora fnac,string _genero,FechaHora ingreso,int carga_horaria,bool admin, bool act){
 
 leg=legajo; pin=1234; strcpy(nombre, _nombre.c_str());strcpy(apellido, _apellido.c_str()); dni=_dni; strcpy(domicilio, _domicilio.c_str()); strcpy(localidad, _localidad.c_str()); strcpy(provincia, _provincia.c_str()); strcpy(pais, _pais.c_str());
-fNacimiento=fnac; strcpy(genero, _genero.c_str()); fechaIngreso=ingreso; cargaHoraria=carga_horaria; adm=admin;}
+fNacimiento=fnac; strcpy(genero, _genero.c_str()); fechaIngreso=ingreso; cargaHoraria=carga_horaria; adm=admin;
+}
 
 Empleados::Empleados(){}
 ///GET
@@ -74,7 +75,7 @@ int Empleados::contarRegistros(){
 }
 
 bool Empleados::LeerDeDisco(int nroRegistro){
-    FILE *p = fopen("archivos/Empleados.dat", "rb");
+    FILE *p = fopen("Empleados.dat", "rb");
     if (p == NULL){
         return false;
     }
@@ -85,17 +86,21 @@ bool Empleados::LeerDeDisco(int nroRegistro){
 }
 
 bool Empleados::GuardarEnDisco(){
-    FILE *p = fopen("archivos/Empleados.dat", "ab");
+    FILE *p = fopen("Empleados.dat", "ab");
     if (p == NULL){
+        cout << "\t\t\t\t\tNo se pudo abrir el archivo.";
         return false;
     }
     bool guardo = fwrite(this, sizeof(Empleados), 1, p);
+    if(guardo == true){
+        cout << "\t\t\t\t\tRegistro guardado.";
+    }
     fclose(p);
     return guardo;
 }
 
 bool Empleados::GuardarEnDisco(int nroRegistro){
-    FILE *p = fopen("archivos/Empleados.dat", "rb+");
+    FILE *p = fopen("Empleados.dat", "rb+");
     if (p == NULL){
         return false;
     }
@@ -105,6 +110,28 @@ bool Empleados::GuardarEnDisco(int nroRegistro){
     return guardo;
 }
 
+void Empleados::mostrar(){
+
+        cout << "\t\t\t\t" << "LEGADO          : " << getleg() << endl ;
+        cout << "\t\t\t\t" << "NOMBRE          : " << nombre << endl;
+        cout << "\t\t\t\t" << "APELLIDO        : " << apellido << endl;
+        cout << "\t\t\t\t" << "DNI             : " << dni << endl;
+        cout << "\t\t\t\t" << "DOMICILIO       : " << domicilio << endl;
+        cout << "\t\t\t\t" << "LOCALIDAD       : " << localidad << endl;
+        cout << "\t\t\t\t" << "PROVINCIA       : " << provincia << endl;
+        cout << "\t\t\t\t" << "PAIS            : " << pais << endl;
+        cout << "\t\t\t\t" << "FECHA NACIMIENTO: " << getFnacimiento().getDia() << "/" << getFnacimiento().getMes() << "/" << getFnacimiento().getAnio() <<endl;
+        cout << "\t\t\t\t" << "GENERO          : " << genero << endl;
+        cout << "\t\t\t\t" << "CARGA HORARIA   : " << cargaHoraria << endl;
+        cout << "\t\t\t\t" << "ROL             : ";
+        if(adm == true){
+            cout << "Administrador." << endl;
+        }
+        else{
+            cout << "Empleado." << endl;
+        }
+        cout << "\t\t\t\t------------------------------------------" << endl;
+}
 /// FUNCIONES DE LA CLASE
 
 int buscar_empleados(int legajo){
@@ -192,19 +219,6 @@ bool EliminarEmpleado(){
 //}
 //
 //
-//
-
-//
-//bool Empleados::GuardarEnDisco(){
-//    FILE *p = fopen("Empleados.dat", "ab");
-//    if (p == NULL){
-//        return false;
-//    }
-//    bool guardo = fwrite(this, sizeof(Empleados), 1, p);
-//    fclose(p);
-//    return guardo;
-//}
-
 //
 /*int buscar_empleados(int pin){
     Empleados aux;

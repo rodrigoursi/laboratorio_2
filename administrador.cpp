@@ -107,6 +107,7 @@ void CargarEmpleado(){
     FechaHora fnac(anio,mes,dia);
     FechaHora ingreso;
     Empleados obj(legajo,pin,nombre,apellido,DNI,domicilio,localidad,provincia,pais,fnac,genero,ingreso,carga,admin);
+    obj.GuardarEnDisco();
 }
 
 /* 2 - CORREGIR EDITAR EMPLEADO

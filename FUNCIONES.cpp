@@ -87,7 +87,7 @@ void MenuAdministrador(){
                     break;
             }
         }
-    }
+    } else cout << endl << "\t\t\t\t\tUSUARIO INVALIDO!!!";
 }
 
 void mostrar(){
@@ -113,35 +113,34 @@ cout<<"-----------------------------"<<endl;
 }
 
 bool pedirContrasenia(){
-    char usuario [30]     =  {};
-    char contrasenia [30] =  {};
-    char usuarioAdmin [30]     =  "admin";
-    char contraseniaAdmin [30] =  "admin";
+    int leg=-100, pin=1234, legajo, PIN;
     Empleados obj;
-    cout << "\t\t\t\t\tINGRESE USUARIO DE ADMINISTRADOR" << endl << endl;
+    cout << "\t\t\t\t\tINGRESE LEGAJO DE ADMINISTRADOR" << endl << endl;
     cin.ignore();
-    cout << "\t\t\t\t\tUSUARIO    : ";
+    cout << "\t\t\t\t\tLEGAJO    : ";
     rlutil::setColor(rlutil::WHITE);
-    cin.getline(usuario, 30);
+    cin>>legajo;
     cout << endl;
-    cout << "\t\t\t\t\tCONTRASENIA: ";
+    cout << "\t\t\t\t\tPIN: ";
     rlutil::setColor(rlutil::DARKGREY);
-    cin.getline(contrasenia, 30);
+    cin>>PIN;
     rlutil::setColor(rlutil::WHITE);
 
-    if(strcmp(usuarioAdmin, usuario) == 0 && strcmp(contraseniaAdmin, contrasenia) == 0){
+    if(leg == legajo && pin == PIN){
         cout << endl;
         cout << "\t\t\t\t\tBIENVENIDO!!! " << endl << endl;
+        cout << "\t\t\t\t\tPresione una TECLA para continuar " << endl << endl;
         system("pause > nul");
         system("cls");
         return true;
     }
-    else{
+    /*else{
         cout << endl << "\t\t\t\t\tUSUARIO INVALIDO!!!" << endl << endl;
-        system("pause > nul");
-        system("cls");
+        //system("pause > nul");
+        //system("cls");
         return false;
-    }
+    }*/
+    return false;
 }
 /*
 void MenuFichar(){

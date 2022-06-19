@@ -40,81 +40,85 @@ void MenuPrincipal(){
                 break;
         }
         cin.ignore();
-        rlutil::anykey();
     }
 }
 
 void MenuAdministrador(){
-
     int  opcion;
+    Empleados obj;
     char confirmarSalida;
-    if(pedirContrasenia()){
-        while(true){
-            rlutil::setColor(rlutil::WHITE);
-            rlutil::setBackgroundColor(rlutil::DARKGREY);
-            rlutil::cls();
-            cout << "\t\t\t\t\t  *** MENU ADMINISTRADOR ***" << endl << endl;
-            cout << "\t\t\t\t*******************************************" << endl << endl;
-            cout << "\t\t\t\t\t1 - CARGAR EMPLEADO. " << endl << endl;
-            cout << "\t\t\t\t\t2 - EDITAR EMPLEADO. " << endl << endl;
-            cout << "\t\t\t\t\t3 - ELIMINAR EMPLEADO. " << endl << endl;
-            cout << "\t\t\t\t\t4 - RESET PIN. " << endl << endl;
-            cout << "\t\t\t\t\t5 - REPORTES. " << endl << endl;
-            cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
-            cout << "\t\t\t\t*******************************************" << endl << endl;
-            cout << "\t\t\t\t\tSELECCIONE OPCION: ";
-            rlutil::locate(60,19);
-            cin  >> opcion;
-            if(opcion >= 1 && opcion < 5){
-                system("cls");
-            }
-            switch(opcion){
-                case 1: CargarEmpleado();
-                    break;
-                case 2: //EditarEmpleado();
-                    break;
-                case 3: EliminarEmpleado();
-                    break;
-                case 4: //RESET PIN();
-                    break;
-                case 5: Reportes();
-                    break;
-                case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
-                        cin >> confirmarSalida;
-                        if (tolower(confirmarSalida) == 's'){
-                            MenuPrincipal();
-                        }
-                    break;
-            }
+    while(pedirContrasenia()){
+        rlutil::setColor(rlutil::WHITE);
+        rlutil::setBackgroundColor(rlutil::DARKGREY);
+        rlutil::cls();
+        cout << "\t\t\t\t\t  *** MENU ADMINISTRADOR ***" << endl << endl;
+        cout << "\t\t\t\t*******************************************" << endl << endl;
+        cout << "\t\t\t\t\t1 - CARGAR EMPLEADO. " << endl << endl;
+        cout << "\t\t\t\t\t2 - EDITAR EMPLEADO. " << endl << endl;
+        cout << "\t\t\t\t\t3 - ELIMINAR EMPLEADO. " << endl << endl;
+        cout << "\t\t\t\t\t4 - RESET PIN. " << endl << endl;
+        cout << "\t\t\t\t\t5 - REPORTES. " << endl << endl;
+        cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
+        cout << "\t\t\t\t*******************************************" << endl << endl;
+        cout << "\t\t\t\t\tSELECCIONE OPCION: ";
+        rlutil::locate(60,19);
+        cin  >> opcion;
+        if(opcion >= 1 && opcion < 5){
+            system("cls");
         }
-    } else cout << endl << "\t\t\t\t\tUSUARIO INVALIDO!!!";
+        switch(opcion){
+            case 1: CargarEmpleado();
+                break;
+            case 2: //EditarEmpleado();
+                break;
+            case 3: EliminarEmpleado();
+                break;
+            case 4: //RESET PIN();
+                break;
+            case 5: mostrar();//Reportes();
+                break;
+            case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
+                    cin >> confirmarSalida;
+                    if (tolower(confirmarSalida) == 's'){
+                        MenuPrincipal();
+                    }
+                break;
+        }
+    }
 }
 
 void mostrar(){
 Empleados obj;
-cout<<endl;
-cout<<"-----------------------------"<<endl;
-cout<<"Su nombre --> ";
-cout<<obj.getnombre()<<endl;
-cout<<"Su apellido --> ";
-cout<<obj.getapellido()<<endl;
-cout<<"Su DNI --> ";
-cout<<obj.getdni()<<endl;
-//cout<<"Horas de trabajo --> ";
-//cout<<obj.getHoras_trabajo()<<endl;
-//cout<<"Cantidad de dias ausentes --> ";
-//cout<<obj.getAusencias()<<endl;
-//cout<<"Cantidad de minutos tarde --> ";
-//cout<<obj.getllegadas_tarde()<<endl;
-cout<<"Su PIN --> ";
-cout<<obj.getpin();
-cout<<endl;
-cout<<"-----------------------------"<<endl;
+cout<<endl<<obj.contarRegistros();
+int pos;
+bool leer;
+    for(pos=0;pos<obj.contarRegistros();pos++){
+            obj.LeerDeDisco(pos);
+            cout<<"\t\t\t\tLISTADO --->"<<endl<<endl;
+            cout << "\t\t\t\t" << "LEGAJO          : " << obj.getleg() << endl ;
+            cout << "\t\t\t\t" << "NOMBRE          : " << obj.getnombre() << endl;
+            cout << "\t\t\t\t" << "APELLIDO        : " << obj.getapellido() << endl;
+            cout << "\t\t\t\t" << "DNI             : " << obj.getdni() << endl;
+            cout << "\t\t\t\t" << "DOMICILIO       : " << obj.getdomicilio() << endl;
+            cout << "\t\t\t\t" << "LOCALIDAD       : " << obj.getlocalidad() << endl;
+            cout << "\t\t\t\t" << "PROVINCIA       : " << obj.getprovincia() << endl;
+            cout << "\t\t\t\t" << "PAIS            : " << obj.getpais() << endl;
+            cout << "\t\t\t\t" << "FECHA NACIMIENTO: " << obj.getFnacimiento().getDia() << "/" << obj.getFnacimiento().getMes() << "/" << obj.getFnacimiento().getAnio() <<endl;
+            cout << "\t\t\t\t" << "GENERO          : " << obj.getgenero() << endl;
+            cout << "\t\t\t\t" << "CARGA HORARIA   : " << obj.getcargaHoraria() << endl;
+            cout << "\t\t\t\t" << "ROL             : ";
+            if(obj.getRol() == true){
+                cout << "Administrador." << endl;
+            }
+            else{
+                cout << "Empleado." << endl;
+            }
+            cout << "\t\t\t\t------------------------------------------" << endl;
+    }
 }
 
 bool pedirContrasenia(){
     int leg=-100, pin=1234, legajo, PIN;
-    Empleados obj;
     cout << "\t\t\t\t\tINGRESE LEGAJO DE ADMINISTRADOR" << endl << endl;
     cin.ignore();
     cout << "\t\t\t\t\tLEGAJO    : ";
@@ -134,12 +138,10 @@ bool pedirContrasenia(){
         system("cls");
         return true;
     }
-    /*else{
-        cout << endl << "\t\t\t\t\tUSUARIO INVALIDO!!!" << endl << endl;
-        //system("pause > nul");
-        //system("cls");
-        return false;
-    }*/
+
+    cout << endl << "\t\t\t\t\tUSUARIO INVALIDO!!!" << endl << endl<<"\t\t\t\t\tPresione una tecla";
+    system("pause > nul");
+    system("cls");
     return false;
 }
 /*

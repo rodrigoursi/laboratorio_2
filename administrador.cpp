@@ -65,7 +65,7 @@ void CargarEmpleado(){
 
     string apellido, nombre, domicilio, localidad, provincia, pais, genero;
     int DNI, legajo, pin, dia, mes, anio, carga;
-    bool admin;
+    bool ok, admin;
 
     cout << "\t\t\t\t\t  *** INGRESE LOS DATOS ***" << endl << endl;
     cout << "\t\t\t\t*******************************************" << endl << endl;
@@ -107,7 +107,7 @@ void CargarEmpleado(){
     FechaHora fnac(anio,mes,dia);
     FechaHora ingreso;
     Empleados obj(legajo,pin,nombre,apellido,DNI,domicilio,localidad,provincia,pais,fnac,genero,ingreso,carga,admin);
-    obj.GuardarEnDisco();
+    ok=obj.GuardarEnDisco();
 }
 
 /* 2 - CORREGIR EDITAR EMPLEADO

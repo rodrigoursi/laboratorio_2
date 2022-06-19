@@ -60,7 +60,7 @@ bool Empleados::getEliminado(){return activo;}
 ///METODO DE LA CLASE
 
 int Empleados::contarRegistros(){
-    FILE *p = fopen("Empleados.dat", "rb");
+    FILE *p = fopen("datos/Empleados.dat", "rb");
     if (p == NULL){
         return 0;
     }
@@ -75,7 +75,7 @@ int Empleados::contarRegistros(){
 }
 
 bool Empleados::LeerDeDisco(int nroRegistro){
-    FILE *p = fopen("Empleados.dat", "rb");
+    FILE *p = fopen("datos/Empleados.dat", "rb");
     if (p == NULL){
         return false;
     }
@@ -86,7 +86,7 @@ bool Empleados::LeerDeDisco(int nroRegistro){
 }
 
 bool Empleados::GuardarEnDisco(){
-    FILE *p = fopen("Empleados.dat", "ab");
+    FILE *p = fopen("datos/Empleados.dat", "ab");
     if (p == NULL){
         cout << "\t\t\t\t\tNo se pudo abrir el archivo.";
         return false;
@@ -100,7 +100,7 @@ bool Empleados::GuardarEnDisco(){
 }
 
 bool Empleados::GuardarEnDisco(int nroRegistro){
-    FILE *p = fopen("Empleados.dat", "rb+");
+    FILE *p = fopen("datos/Empleados.dat", "rb+");
     if (p == NULL){
         return false;
     }
@@ -110,28 +110,6 @@ bool Empleados::GuardarEnDisco(int nroRegistro){
     return guardo;
 }
 
-void Empleados::mostrar(){
-
-        cout << "\t\t\t\t" << "LEGADO          : " << getleg() << endl ;
-        cout << "\t\t\t\t" << "NOMBRE          : " << nombre << endl;
-        cout << "\t\t\t\t" << "APELLIDO        : " << apellido << endl;
-        cout << "\t\t\t\t" << "DNI             : " << dni << endl;
-        cout << "\t\t\t\t" << "DOMICILIO       : " << domicilio << endl;
-        cout << "\t\t\t\t" << "LOCALIDAD       : " << localidad << endl;
-        cout << "\t\t\t\t" << "PROVINCIA       : " << provincia << endl;
-        cout << "\t\t\t\t" << "PAIS            : " << pais << endl;
-        cout << "\t\t\t\t" << "FECHA NACIMIENTO: " << getFnacimiento().getDia() << "/" << getFnacimiento().getMes() << "/" << getFnacimiento().getAnio() <<endl;
-        cout << "\t\t\t\t" << "GENERO          : " << genero << endl;
-        cout << "\t\t\t\t" << "CARGA HORARIA   : " << cargaHoraria << endl;
-        cout << "\t\t\t\t" << "ROL             : ";
-        if(adm == true){
-            cout << "Administrador." << endl;
-        }
-        else{
-            cout << "Empleado." << endl;
-        }
-        cout << "\t\t\t\t------------------------------------------" << endl;
-}
 /// FUNCIONES DE LA CLASE
 
 int buscar_empleados(int legajo){

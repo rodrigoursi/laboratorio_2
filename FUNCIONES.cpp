@@ -91,7 +91,7 @@ void mostrar(){
 Empleados obj;
 cout<<endl<<obj.contarRegistros();
 int pos;
-bool leer;
+
     for(pos=0;pos<obj.contarRegistros();pos++){
             obj.LeerDeDisco(pos);
             cout<<"\t\t\t\tLISTADO --->"<<endl<<endl;
@@ -118,6 +118,42 @@ bool leer;
 }
 
 bool pedirContrasenia(){
+    int legajo,PIN;
+    cout << "\t\t\t\t\tINGRESE LEGAJO DE ADMINISTRADOR" << endl << endl;
+    cin.ignore();
+    cout << "\t\t\t\t\tLEGAJO    : ";
+    rlutil::setColor(rlutil::WHITE);
+    cin>>legajo;
+    cout << endl;
+    cout << "\t\t\t\t\tPIN: ";
+    rlutil::setColor(rlutil::DARKGREY);
+    cin>>PIN;
+    rlutil::setColor(rlutil::WHITE);
+
+    Empleados empleado;
+    for(int pos=0;pos<empleado.contarRegistros();pos++){
+        empleado.LeerDeDisco(pos);
+        if(legajo==empleado.getleg()&&PIN==empleado.getpin()&&empleado.getRol()){
+            cout << endl;
+            cout << "\t\t\t\t\tBIENVENIDO!!! " << endl << endl;
+            cout << "\t\t\t\t\tPresione una TECLA para continuar " << endl << endl;
+            system("pause > nul");
+            system("cls");
+            return true;
+        } /*else {
+            cout << endl << "\t\t\t\t\tUSUARIO INVALIDO!!!" << endl << endl<<"\t\t\t\t\tPresione una tecla";
+            system("pause > nul");
+            system("cls");
+            return false;
+        }*/
+    }
+        cout << endl << "\t\t\t\t\tUSUARIO INVALIDO!!!" << endl << endl<<"\t\t\t\t\tPresione una tecla";
+        system("pause > nul");
+        system("cls");
+        return false;
+
+    /*
+
     int leg=-100, pin=1234, legajo, PIN;
     cout << "\t\t\t\t\tINGRESE LEGAJO DE ADMINISTRADOR" << endl << endl;
     cin.ignore();
@@ -142,7 +178,7 @@ bool pedirContrasenia(){
     cout << endl << "\t\t\t\t\tUSUARIO INVALIDO!!!" << endl << endl<<"\t\t\t\t\tPresione una tecla";
     system("pause > nul");
     system("cls");
-    return false;
+    return false;*/
 }
 /*
 void MenuFichar(){

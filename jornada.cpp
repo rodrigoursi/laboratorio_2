@@ -1,44 +1,32 @@
 #include "jornada.h"
 #include "Empleados.h"
-/*
-Jornada::Jornada(FechaHora fecha, Empleados legajo, Empleados apellido,
-                Empleados nombre, FechaHora hsEntradaTeorica,
-                FechaHora horaEnt, FechaHora horaSalida, FechaHora horaTotal,
-                char estado, bool ausente)
+#include <cstring>
+#include <string>
+
+Jornada::Jornada(FechaHora fecha, Empleados legajo, FechaHora horaEnt, FechaHora horaSalida, FechaHora horaTotal, string estado, bool ausente)
 {
     _fecha=fecha;
     _legajo=legajo;
-    _apellido=apellido;
-    _nombre=nombre;
-    _hsEntradaTeorica=hsEntradaTeorica;
     _horaEntrada=horaEnt;
     _horaSalida=horaSalida;
     _horaTotal=horaTotal;
-    _estado=estado;
+    strcpy(_estado, estado.c_str());
     _ausente=ausente;
 }
 /// ///GET///
 
     FechaHora Jornada::getFecha(){return _fecha;}
     Empleados Jornada::getLegajo(){return _legajo;}
-    Empleados Jornada::getApellido(){return _apellido;}
-    Empleados Jornada::getNombre(){return _nombre;}
-    FechaHora Jornada::getHsTeorica(){return _hsEntradaTeorica;}
     FechaHora Jornada::getHoraEntrada(){return _horaEntrada;}
     FechaHora Jornada::getHoraSalida(){return _horaSalida;}
-    Fechahora Jornada::getHoraTotal(){return _horaTotal;}
-    string getEstado(){
-        string estado(_estado);
-        return estado;}
-    bool getAusente(){ return _ausente;}
+    FechaHora Jornada::getHoraTotal(){return _horaTotal;}
+    string Jornada::getEstado(){string estado(_estado);return estado;}
+    bool Jornada::getAusente(){ return _ausente;}
 
 /// ///SET///
 
 void Jornada::setFecha(FechaHora fecha){_fecha=fecha;}
 void Jornada::setLegajo(Empleados legajo){_legajo=legajo;}
-void Jornada::setApellido(Empleados apellido){_apellido=apellido;}
-void Jornada::setNombre(Empleados nombre){_nombre=nombre;}
-void Jornada::setHsTeorica(FechaHora horaTeorica){_hsEntradaTeorica=horaTeorica;}
 void Jornada::setHoraEntrada(FechaHora entrada){_horaEntrada=entrada;}
 void Jornada::setHoraSalida(FechaHora salida){_horaSalida=salida;}
 void Jornada::setHoraTotal(FechaHora total){_horaTotal=total;}
@@ -62,7 +50,7 @@ bool Jornada::guardarEnDisco(int pos){
         if(p==NULL){
             return false;
         }
-        fseek(p,pos*sizeof(Estudiante),SEEK_SET);
+        fseek(p,pos*sizeof(Jornada),SEEK_SET);
         bool guardo= fwrite(this,sizeof (Jornada),1,p);
         fclose(p);
         return guardo;
@@ -73,9 +61,9 @@ bool Jornada::leerDeDisco(int pos){
     if(p==NULL){
         false;
     }
-    fseek(p,pos*sizeof(jornada),SEEK_SET);
-    bool ok= fread(this,sizeof(Estudiante),1,p);
+    fseek(p,pos*sizeof(Jornada),SEEK_SET);
+    bool ok= fread(this,sizeof(Jornada),1,p);
     fclose(p);
     return ok;
 }
-*/
+

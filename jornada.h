@@ -7,15 +7,12 @@
 #include "Empleados.h"
 
 using namespace std;
-/*
-class jornada{
+
+class Jornada{
 
 private:
     FechaHora _fecha;
     Empleados _legajo;
-    Empleados _apellido;
-    Empleados _nombre;
-    FechaHora _hsEntradaTeorica;
     FechaHora _horaEntrada;
     FechaHora _horaSalida;
     FechaHora _horaTotal;
@@ -24,26 +21,20 @@ private:
 
 public:
     ///constructor
-    Jornada(FechaHora, Empleados, Empleados, Empleados, FechaHora, FechaHora, FechaHora horaSalida, FechaHora, char, bool);
+    Jornada(FechaHora, Empleados, FechaHora, FechaHora, FechaHora, string, bool ausente=0);
     ///
     ///get
     FechaHora getFecha();
     Empleados getLegajo();
-    Empleados getApellido();
-    Empleados getNombre();
-    FechaHora getHsTeorica();
     FechaHora getHoraEntrada();
     FechaHora getHoraSalida();
-    Fechahora getHoraTotal();
+    FechaHora getHoraTotal();
     string getEstado();
     bool getAusente();
     ///
     ///set
     void setFecha(FechaHora);
     void setLegajo(Empleados);
-    void setApellido(Empleados);
-    void getNombre(Empleados);
-    void setHsTeorica(FechaHora);
     void setHoraEntrada(FechaHora);
     void setHoraSalida(FechaHora);
     void setHoraTotal(FechaHora);
@@ -55,5 +46,5 @@ public:
     bool leerDeDisco(int pos);
 
 };
-*/
+
 #endif // JORNADA_H_INCLUDED

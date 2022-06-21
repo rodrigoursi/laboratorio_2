@@ -2,6 +2,9 @@
 #include "Empleados.h"
 #include <cstring>
 #include <string>
+#include "FUNCIONES.h"
+
+#include <iostream>
 
 Jornada::Jornada(FechaHora fecha, Empleados legajo, FechaHora horaEnt, FechaHora horaSalida, FechaHora horaTotal, string estado, bool ausente)
 {
@@ -65,5 +68,26 @@ bool Jornada::leerDeDisco(int pos){
     bool ok= fread(this,sizeof(Jornada),1,p);
     fclose(p);
     return ok;
+}
+
+void fichar(){
+
+    int legajo,PIN;
+    cout<<"MENU FICHAR...!"<<endl<<endl;
+    cout<<"INGRESE LEGAJO: ";
+    cin>>legajo;
+    cout<<endl<<"INGRESE PIN: ";
+    cin>>PIN;
+    system ("cls");
+    if(validarLoginEmpleado(legajo,PIN)){
+        cout<<"EN CONSTRUCCION"<<endl;
+        system ("pause");
+    } else{
+        cout<<"LEGAJO O PIN INCORRECTO"<<endl;
+        system ("pause");
+        cout<<endl<<"Presione una tecla para continuar";
+        system ("cls");
+    }
+
 }
 

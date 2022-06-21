@@ -76,7 +76,6 @@ public:
 };
 
 ///DECLARACION DE FUNCIONES GLOBALES
-/// ESTE NO VA int  cantidad_registros_empleados();
 void listar_empleados();
 int buscar_empleados(int legajo);
 bool EliminarEmpleado();

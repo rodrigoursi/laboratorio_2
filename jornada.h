@@ -6,6 +6,7 @@
 #include "fecha.h"
 #include "Empleados.h"
 
+
 using namespace std;
 
 class Jornada{
@@ -46,5 +47,9 @@ public:
     bool leerDeDisco(int pos);
 
 };
+
+///DECLARACION DE FUNCIONES GLOBALES
+
+void fichar();
 
 #endif // JORNADA_H_INCLUDED

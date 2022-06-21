@@ -6,6 +6,21 @@ using namespace std;
 #include "FUNCIONES.h"
 #include "Reportes.h"
 #include "Empleados.h"
+#include "jornada.h"
+
+
+bool validarLoginEmpleado(int legajo, int PIN) {
+
+    Empleados empleado;
+    for(int pos=0;pos<empleado.contarRegistros();pos++){
+        empleado.LeerDeDisco(pos);
+        if(legajo==empleado.getleg()&&PIN==empleado.getpin()){
+            return true;
+        }
+    }
+    return false;
+}
+
 
 
 void MenuPrincipal(){
@@ -28,7 +43,7 @@ void MenuPrincipal(){
             system("cls");
         }
         switch(opcion){
-            case 1: cout << "fichar";//MenuFichar();
+            case 1: fichar();
                 break;
             case 2: MenuAdministrador();
                 break;

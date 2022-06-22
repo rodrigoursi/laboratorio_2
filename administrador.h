@@ -4,7 +4,7 @@
 
 class Administrador{
     private:
-        char _Usuario [30], _Contrasenia[];
+        char _Usuario [30], _Contrasenia[4];
     public:
         Administrador();
         void setUsuarioAdmin(char *Usuario);

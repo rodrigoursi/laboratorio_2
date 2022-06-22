@@ -99,10 +99,7 @@ void fichar(){
         /*cout<<"EN CONSTRUCCION"<<endl;
         system ("pause");*/
     } else{
-        cout<<"LEGAJO O PIN INCORRECTO"<<endl;
-        system ("pause");
-        cout<<endl<<"Presione una tecla para continuar";
-        system ("cls");
+     Leg_pin_incorrecto();
     }
 
 }

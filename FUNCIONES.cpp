@@ -24,43 +24,6 @@ bool validarLoginEmpleado(int legajo, int PIN) {
     return false;
 }
 
-
-
-void MenuPrincipal(){
-
-    int  opcion;
-    char confirmarSalida;
-    while(true){
-        rlutil::setColor(rlutil::WHITE);
-        rlutil::setBackgroundColor(rlutil::DARKGREY);
-        rlutil::cls();
-        cout << "\t\t\t\t\t  *** MENU PRINCIPAL ***" << endl << endl;
-        cout << "\t\t\t\t*******************************************" << endl << endl;
-        cout << "\t\t\t\t\t1 - FICHAR. " << endl << endl;
-        cout << "\t\t\t\t\t2 - ADMINISTRADOR. " << endl << endl;
-        cout << "\t\t\t\t*******************************************" << endl << endl;
-        cout << "\t\t\t\t\tSELECCIONE OPCION: ";
-        rlutil::locate(60,11);
-        cin  >> opcion;
-        if(opcion >= 0 && opcion < 3){
-            system("cls");
-        }
-        switch(opcion){
-            case 1: fichar();
-                break;
-            case 2: MenuAdministrador();
-                break;
-            case 0: cout << "¿Confirma salir? (S/N) ";
-                    cin >> confirmarSalida;
-                    if (tolower(confirmarSalida) == 's'){
-                        exit (-1);
-                    }
-                break;
-        }
-        cin.ignore();
-    }
-}
-
 void MenuAdministrador(){
     int  opcion;
     Empleados obj;
@@ -103,7 +66,7 @@ void MenuAdministrador(){
                     cin >> confirmarSalida;
                     if (tolower(confirmarSalida) == 's'){
                         password=false;
-                        MenuPrincipal();
+                        exit(-1);
                     }
                 break;
         }
@@ -230,7 +193,7 @@ void Listados(){
         case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                 cin >> confirmarSalida;
                 if (tolower(confirmarSalida) == 's'){
-                    MenuPrincipal();
+                    exit(-1);
                 }
             break;
     }
@@ -258,7 +221,7 @@ void guardarFichada(int legajo){
             <<aux.getEstado()<<endl
             <<aux.getAusente()<<endl;
             system("pause");
-            MenuPrincipal();
+            exit(-1);
            }
     }
     empleado.LeerDeDisco(buscarEmpleado(legajo));
@@ -274,6 +237,52 @@ void guardarFichada(int legajo){
     <<jornada.getEstado()<<endl
     <<jornada.getAusente()<<endl;
     system ("pause");
+}
+
+void Leg_pin_incorrecto(){
+    cout<<endl;
+    cout<<"\t\t\t\t ========================="<<endl;
+    cout<<"\t\t\t\t| Legajo o PIN incorrecto |"<<endl;
+    cout<<"\t\t\t\t ========================="<<endl;
+    cout<<endl;cout<<endl;cout<<endl;
+    cout<<" ----------------------------------"<<endl;
+    cout<<"| ";
+    system ("pause");
+    cout<<"-------------------------"<<endl;
+    system ("cls");
+}
+
+void Cerrar_Programa(){
+Empleados reg;
+int leg, pin;
+bool activo;
+system ("cls");
+cout << "\t\t\t\t\t  *** CERRAR PROGRAMA ***" << endl << endl;
+cout << "\t\t\t\t*******************************************" << endl << endl;
+cout<<"\t\t\t\t Legajo de admin -> ";
+cin>>leg;
+cout<<endl;
+cout<<"\t\t\t\t PIN de admin -> ";
+cin>>pin;
+cout<<endl;
+activo=validarLoginEmpleado(leg,pin);
+    if(activo==true){
+    int pos;
+    pos=buscarEmpleado(leg);
+    reg.LeerDeDisco(pos);
+        if(reg.getleg()==leg && pin==reg.getpin()&&reg.getRol()){
+        exit (0);
+        }
+        else{
+        cout<<"\t\t\t\t ==============================="<<endl;
+        cout<<"\t\t\t\t| No tiene rol de administrador |"<<endl;
+        cout<<"\t\t\t\t ==============================="<<endl;
+        system("pause");
+        }
+    }
+    if(activo!=true){
+    Leg_pin_incorrecto();
+    }
 }
 
 /*

@@ -39,7 +39,7 @@ void Jornada::setAusente(bool aus){_ausente=aus;}
 /// ///DISCO///
 
 bool Jornada::guardarEnDisco(){
-    FILE *p = fopen("jornada.dat","ab");
+    FILE *p = fopen("datos/jornada.dat","ab");
         if(p==NULL){
             return false;
         }
@@ -49,7 +49,7 @@ bool Jornada::guardarEnDisco(){
 }
 
 bool Jornada::guardarEnDisco(int pos){
-    FILE *p = fopen("jornada.dat","rb+");
+    FILE *p = fopen("datos/jornada.dat","rb+");
         if(p==NULL){
             return false;
         }
@@ -60,7 +60,7 @@ bool Jornada::guardarEnDisco(int pos){
 }
 
 bool Jornada::leerDeDisco(int pos){
-    FILE *p=fopen("jornada.dat","rb");
+    FILE *p=fopen("datos/jornada.dat","rb");
     if(p==NULL){
         false;
     }
@@ -68,6 +68,21 @@ bool Jornada::leerDeDisco(int pos){
     bool ok= fread(this,sizeof(Jornada),1,p);
     fclose(p);
     return ok;
+}
+
+int Jornada::contarRegistros(){
+    FILE *p = fopen("datos/jornada.dat", "rb");
+    if (p == NULL){
+        return 0;
+    }
+    size_t bytes;
+    int cant_reg;
+
+    fseek(p, 0, SEEK_END);
+    bytes = ftell(p);
+    fclose(p);
+    cant_reg = bytes / sizeof(Jornada);
+    return cant_reg;
 }
 
 void fichar(){
@@ -80,8 +95,9 @@ void fichar(){
     cin>>PIN;
     system ("cls");
     if(validarLoginEmpleado(legajo,PIN)){
-        cout<<"EN CONSTRUCCION"<<endl;
-        system ("pause");
+        guardarFichada(legajo);
+        /*cout<<"EN CONSTRUCCION"<<endl;
+        system ("pause");*/
     } else{
         cout<<"LEGAJO O PIN INCORRECTO"<<endl;
         system ("pause");

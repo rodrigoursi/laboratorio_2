@@ -1,4 +1,5 @@
 #include <cstring>
+#include <string>
 #include <iostream>
 using namespace std;
 #include "rlutil.h"
@@ -7,7 +8,9 @@ using namespace std;
 #include "Reportes.h"
 #include "Empleados.h"
 #include "jornada.h"
+#include "fecha.h"
 
+bool password=false;
 
 bool validarLoginEmpleado(int legajo, int PIN) {
 
@@ -50,7 +53,7 @@ void MenuPrincipal(){
             case 0: cout << "¿Confirma salir? (S/N) ";
                     cin >> confirmarSalida;
                     if (tolower(confirmarSalida) == 's'){
-                        exit -1;
+                        exit (-1);
                     }
                 break;
         }
@@ -62,7 +65,8 @@ void MenuAdministrador(){
     int  opcion;
     Empleados obj;
     char confirmarSalida;
-    while(pedirContrasenia()){
+    if(password==false){password=pedirContrasenia();}
+    while(password){
         rlutil::setColor(rlutil::WHITE);
         rlutil::setBackgroundColor(rlutil::DARKGREY);
         rlutil::cls();
@@ -91,13 +95,14 @@ void MenuAdministrador(){
                 break;
             case 4: //RESET PIN();
                 break;
-            case 5: mostrar();//Reportes();
+            case 5: Reportes();//Reportes();
                 break;
             case 6: Listados();
                 break;
             case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                     cin >> confirmarSalida;
                     if (tolower(confirmarSalida) == 's'){
+                        password=false;
                         MenuPrincipal();
                     }
                 break;
@@ -133,6 +138,7 @@ int pos;
             }
             cout << "\t\t\t\t------------------------------------------" << endl;
     }
+    system ("pause");
 }
 
 bool pedirContrasenia(){
@@ -217,7 +223,7 @@ void Listados(){
         system("cls");
     }
     switch(opcion){
-        case 1: // LISTAR EMPLEADOS ACTIVOS
+        case 1: mostrar(); // LISTAR EMPLEADOS ACTIVOS
             break;
         case 2: //LISTAR EMPLEADOS DADOS DE BAJA
             break;
@@ -228,6 +234,46 @@ void Listados(){
                 }
             break;
     }
+}
+
+void guardarFichada(int legajo){
+
+    FechaHora hora;
+    Empleados empleado;
+    Jornada aux;
+    int pos=0;
+    while(aux.leerDeDisco(pos++)){
+        if(hora.getAnio()==aux.getFecha().getAnio()&&
+           hora.getMes()==aux.getFecha().getMes()&&
+           hora.getDia()==aux.getFecha().getDia()&&
+           legajo==aux.getLegajo().getleg()){
+            aux.setHoraSalida(hora);
+            cout<<"SALIDA GUARDADA"<<endl;
+            system("pause");
+            cout<<endl<<endl<<aux.getFecha().getDia()<<"/"<<aux.getFecha().getMes()<<"/"<<aux.getFecha().getAnio()<<endl
+            <<"legajo: "<<aux.getLegajo().getleg()<<endl
+            <<"Entrada: "<<aux.getHoraEntrada().getHora()<<":"<<aux.getHoraEntrada().getMinuto()<<endl
+            <<"Salida: "<<aux.getHoraSalida().getHora()<<":"<<aux.getHoraSalida().getMinuto()<<endl
+            <<"Total: "<<aux.getHoraTotal().getHora()<<":"<<aux.getHoraTotal().getMinuto()<<endl
+            <<aux.getEstado()<<endl
+            <<aux.getAusente()<<endl;
+            system("pause");
+            MenuPrincipal();
+           }
+    }
+    empleado.LeerDeDisco(buscarEmpleado(legajo));
+    Jornada jornada(hora,empleado,hora,hora,hora);
+    jornada.guardarEnDisco();
+    cout<<"ENTRADA GUARDADA"<<endl;
+    system("pause");
+    cout<<endl<<endl<<jornada.getFecha().getDia()<<"/"<<jornada.getFecha().getMes()<<"/"<<jornada.getFecha().getAnio()<<endl
+    <<"legajo: "<<jornada.getLegajo().getleg()<<endl
+    <<jornada.getHoraEntrada().getHora()<<":"<<jornada.getHoraEntrada().getMinuto()<<endl
+    <<jornada.getHoraSalida().getHora()<<":"<<jornada.getHoraSalida().getMinuto()<<endl
+    <<jornada.getHoraTotal().getHora()<<":"<<jornada.getHoraTotal().getMinuto()<<endl
+    <<jornada.getEstado()<<endl
+    <<jornada.getAusente()<<endl;
+    system ("pause");
 }
 
 /*

@@ -22,7 +22,8 @@ private:
 
 public:
     ///constructor
-    Jornada(FechaHora, Empleados, FechaHora, FechaHora, FechaHora, string, bool ausente=0);
+    Jornada(FechaHora, Empleados, FechaHora, FechaHora, FechaHora, string estado="sin_novedad", bool ausente=0);
+    Jornada(){};
     ///
     ///get
     FechaHora getFecha();
@@ -45,6 +46,7 @@ public:
     bool guardarEnDisco();
     bool guardarEnDisco(int);
     bool leerDeDisco(int pos);
+    int contarRegistros();
 
 };
 

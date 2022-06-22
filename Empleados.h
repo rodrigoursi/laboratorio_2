@@ -77,7 +77,7 @@ public:
 
 ///DECLARACION DE FUNCIONES GLOBALES
 void listar_empleados();
-int buscar_empleados(int legajo);
+int buscarEmpleado(int legajo);
 bool EliminarEmpleado();
 void listar_empleados_x_PIN();
 bool editar_empleados();

@@ -112,10 +112,15 @@ bool Empleados::GuardarEnDisco(int nroRegistro){
 
 /// FUNCIONES DE LA CLASE
 
-int buscar_empleados(int legajo){
-
-/// REALIZAR LA FUNCION
-
+int buscarEmpleado(int legajo){
+    Empleados aux;
+    for(int pos=0;pos<aux.contarRegistros();pos++){
+        aux.LeerDeDisco(pos);
+        if(aux.getleg()==legajo){
+            return pos;
+        }
+    }
+    return -1;
 }
 
 bool EliminarEmpleado(){

@@ -73,12 +73,13 @@ void MenuAdministrador(){
         cout << "\t\t\t\t\t3 - ELIMINAR EMPLEADO. " << endl << endl;
         cout << "\t\t\t\t\t4 - RESET PIN. " << endl << endl;
         cout << "\t\t\t\t\t5 - REPORTES. " << endl << endl;
+        cout << "\t\t\t\t\t6 - LISTADOS. " << endl << endl;
         cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
         cout << "\t\t\t\t*******************************************" << endl << endl;
         cout << "\t\t\t\t\tSELECCIONE OPCION: ";
-        rlutil::locate(60,19);
+        rlutil::locate(60,21);
         cin  >> opcion;
-        if(opcion >= 1 && opcion < 5){
+        if(opcion >= 1 && opcion < 6){
             system("cls");
         }
         switch(opcion){
@@ -91,6 +92,8 @@ void MenuAdministrador(){
             case 4: //RESET PIN();
                 break;
             case 5: mostrar();//Reportes();
+                break;
+            case 6: Listados();
                 break;
             case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                     cin >> confirmarSalida;
@@ -195,6 +198,38 @@ bool pedirContrasenia(){
     system("cls");
     return false;*/
 }
+void Listados(){
+    int opcion;
+    char confirmarSalida;
+    rlutil::setColor(rlutil::WHITE);
+    rlutil::setBackgroundColor(rlutil::DARKGREY);
+    rlutil::cls();
+    cout << "\t\t\t\t\t  *** LISTADOS ***" << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\t1 - LISTAR EMPLEADOS ACTIVOS. " << endl << endl;
+    cout << "\t\t\t\t\t2 - LISTAR EMPLEADOS DADOS DE BAJA. " << endl << endl;
+    cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\tSELECCIONE OPCION: ";
+    rlutil::locate(60,13);
+    cin  >> opcion;
+    if(opcion >= 1 && opcion < 3){
+        system("cls");
+    }
+    switch(opcion){
+        case 1: // LISTAR EMPLEADOS ACTIVOS
+            break;
+        case 2: //LISTAR EMPLEADOS DADOS DE BAJA
+            break;
+        case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
+                cin >> confirmarSalida;
+                if (tolower(confirmarSalida) == 's'){
+                    MenuPrincipal();
+                }
+            break;
+    }
+}
+
 /*
 void MenuFichar(){
     Empleados reg;

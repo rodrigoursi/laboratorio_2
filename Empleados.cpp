@@ -93,7 +93,7 @@ bool Empleados::GuardarEnDisco(){
     }
     bool guardo = fwrite(this, sizeof(Empleados), 1, p);
     if(guardo == true){
-        cout << "\t\t\t\t\tRegistro guardado.";
+        cout << endl << endl << "\t\t\t\t\tRegistro guardado.";
     }
     fclose(p);
     return guardo;

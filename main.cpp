@@ -13,10 +13,10 @@ int main(){
 
     MenuPrincipal();
     //Empleados obj;
-    //
+//
     //int pos = 0;
     //while(obj.LeerDeDisco(pos++)){
-    //    obj.mostrar();
+    //    mostrar();
     //}
     //return 0;
 }

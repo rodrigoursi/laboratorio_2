@@ -107,7 +107,10 @@ void CargarEmpleado(){
     FechaHora fnac(anio,mes,dia);
     FechaHora ingreso;
     Empleados obj(legajo,pin,nombre,apellido,DNI,domicilio,localidad,provincia,pais,fnac,genero,ingreso,carga,admin);
-    ok=obj.GuardarEnDisco();
+    ok = obj.GuardarEnDisco();
+    cout << endl << "\t\t\t\t\t" << system("pause");
+    system("cls");
+    MenuAdministrador();
 }
 
 /* 2 - CORREGIR EDITAR EMPLEADO

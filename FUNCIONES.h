@@ -4,6 +4,8 @@
 bool validarLoginEmpleado(int, int);
 void MenuAdministrador();
 void mostrar();
+void mostrarActivos();
+void mostrarEliminados();
 bool pedirContrasenia();
 void Listados();
 void guardarFichada(int);

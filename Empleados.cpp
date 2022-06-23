@@ -3,13 +3,16 @@
 using namespace std;
 #include "Empleados.h"
 #include "fecha.h"
+#include "jornada.h"
+#include "FUNCIONES.h"
+
 
 ///CONSTRUCTOR
 
 Empleados::Empleados(int legajo,int _pin,string _nombre,string _apellido,int _dni,string _domicilio,string _localidad,string _provincia,string _pais,FechaHora fnac,string _genero,FechaHora ingreso,int carga_horaria,bool admin, bool act){
 
 leg=legajo; pin=1234; strcpy(nombre, _nombre.c_str());strcpy(apellido, _apellido.c_str()); dni=_dni; strcpy(domicilio, _domicilio.c_str()); strcpy(localidad, _localidad.c_str()); strcpy(provincia, _provincia.c_str()); strcpy(pais, _pais.c_str());
-fNacimiento=fnac; strcpy(genero, _genero.c_str()); fechaIngreso=ingreso; cargaHoraria=carga_horaria; adm=admin;
+fNacimiento=fnac; strcpy(genero, _genero.c_str()); fechaIngreso=ingreso; cargaHoraria=carga_horaria; adm=admin; activo=act;
 }
 
 Empleados::Empleados(){}
@@ -134,7 +137,7 @@ bool EliminarEmpleado(){
     cin  >> legajo;
 
     pos = buscarEmpleado(legajo);
-
+    system("pause");
     if(pos == -1){
         cout << endl << endl,
         cout << "\t\t\t\t\tNO EXISTE EL ID INGRESADO." << endl << endl,
@@ -145,94 +148,42 @@ bool EliminarEmpleado(){
     reg.LeerDeDisco(pos);
     reg.setEliminado(false);
     reg.GuardarEnDisco(pos);
-    cout << "\t\t\t\t\tNO EXISTE EL ID INGRESADO." << endl << endl,
+    cout << "\t\t\t\t\tEMPLEADO DADO DE BAJA." << endl << endl,
     cout << "\t\t\t\t\t" << system("pause");
     system("cls");
     return true;
 }
 
-//void Empleados::cargararchivo(){
-//    FILE *p;
-//    Empleados obj;
-//    obj.cargar();
-//    p=fopen("Empleados.dat","ab");
-//    if(p==NULL){
-//        cout<<"error de archivo"<<endl;
-//    }
-//    fwrite(&obj, sizeof obj, 1, p);
-//    fclose(p);
-//    cout<<"Empleado cargado con exito"<<endl;
-//}
-//
-//void Empleados::mostrararchivo(){
-//    FILE *p;
-//    Empleados obj;
-//    p=fopen("Empleados.dat","rb");
-//    if(p==NULL){
-//        cout<<"error de archivo"<<endl;
-//    }
-//    while(fread(&obj, sizeof obj, 1, p)==1){
-//    obj.mostrar();
-//    }
-//    fclose(p);
-//}
-//
-//
-//
+void mostrarJorEmpXMes(){
 
-//
-/////FUNCIONES GLOBALES
+//mostrar();
+Jornada jornada;
+cout<<endl<<jornada.contarRegistros();
+system("pause");
 
+}
+void mostrarJorXFec(){
+    int dia,mes,anio;
+    system ("cls");
+    cout<<"COLOQUE LA FECHA DEL LISTADO JORNAL Q NECESITA VER...!"<<endl;
+    cout<<"DIA: ";cin>>dia;
+    cout<<endl<<"MES: ";cin>>mes;
+    cout<<endl<<"YEAR: ";cin>>anio;
 
-//
-//void listar_empleados(){
-//    Empleados aux;
-//    int i = 0;
-//    int cantEmpleados = cantidad_registros_empleados();
-//    int cantidad = 0;
-//    cout << "LISTADO DE EMPLEADOS" << endl;
-//    cout << "----------------------------------" << endl;
-//
-//    for(i=0; i<cantEmpleados; i++){
-//        aux.LeerDeDisco(i);
-//        if (!aux.getEliminado()){
-//        aux.mostrar();
-//        cantidad++;
-//        }
-//    }
-//    cout << "----------------------------------" << endl;
-//    cout << "Total: " << cantidad<< " registros.";
-//}
-//
-//
-//
-//void listar_empleados_x_PIN(){
-//    int pin, nroRegistro;
-//    cout << "PIN: ";
-//    cin >> pin;
-//
-//    nroRegistro = buscar_empleados(pin);
-//    if (nroRegistro >= 0){
-//        Empleados reg;
-//        reg.LeerDeDisco(nroRegistro);
-//        cout << endl;
-//    }
-//    else{
-//        cout << endl << "No existe el empleado";
-//    }
-//}
-//
-//
-//
-/*int buscar_empleados(int pin){
-    Empleados aux;
-    int i = 0;
-    int cantEmpleados = aux.contarRegistros();
-    for(i=0; i<cantEmpleados; i++){
-        aux.LeerDeDisco(i);
-        if(aux.getpin() == pin){
-            return i;
-        }
+    Jornada jornada;
+    int pos=0;
+    while(jornada.leerDeDisco(pos++)){
+        if(jornada.getFecha().getAnio()==anio&&
+           jornada.getFecha().getMes()==mes&&
+           jornada.getFecha().getDia()==dia){
+            cout<<jornada.getLegajo().getleg()<<"||"<<jornada.getHoraEntrada().getHora()<<
+            ":"<<jornada.getHoraEntrada().getMinuto()<<"||"<<jornada.getHoraSalida().getHora()<<
+            ":"<<jornada.getHoraSalida().getMinuto()<<"||"<<jornada.getEstado()<<endl<<
+            "------------------------------------------"<<endl;
+           }
     }
-    return -1;
-}*/
+    system("pause");
+}
+
+
+

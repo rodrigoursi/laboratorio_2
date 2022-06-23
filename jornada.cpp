@@ -3,6 +3,7 @@
 #include <cstring>
 #include <string>
 #include "FUNCIONES.h"
+#include "rlutil.h"
 
 #include <iostream>
 
@@ -88,11 +89,15 @@ int Jornada::contarRegistros(){
 void fichar(){
 
     int legajo,PIN;
-    cout<<"MENU FICHAR...!"<<endl<<endl;
-    cout<<"INGRESE LEGAJO: ";
+    cout << "\t\t\t\t\t  *** MENU FICHAR ***" << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\tINGRESE LEGAJO: ";
+    rlutil::setColor(rlutil::WHITE);
     cin>>legajo;
-    cout<<endl<<"INGRESE PIN: ";
+    cout << endl << "\t\t\t\t\tINGRESE PIN: ";
+    rlutil::setColor(rlutil::DARKGREY);
     cin>>PIN;
+    rlutil::setColor(rlutil::WHITE);
     system ("cls");
     if(validarLoginEmpleado(legajo,PIN)){
         guardarFichada(legajo);

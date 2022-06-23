@@ -58,7 +58,7 @@ void MenuAdministrador(){
                 break;
             case 4: //RESET PIN();
                 break;
-            case 5: Reportes();//Reportes();
+            case 5: Reportes();
                 break;
             case 6: Listados();
                 break;
@@ -66,7 +66,6 @@ void MenuAdministrador(){
                     cin >> confirmarSalida;
                     if (tolower(confirmarSalida) == 's'){
                         password=false;
-
                     }
                 break;
         }
@@ -190,7 +189,8 @@ int pos;
 
 bool pedirContrasenia(){
     int legajo,PIN;
-    cout << "\t\t\t\t\tINGRESE LEGAJO DE ADMINISTRADOR" << endl << endl;
+    cout << "\t\t\t\t  *** INGRESE USUARIO DE ADMINISTRADOR ***" << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
     cin.ignore();
     cout << "\t\t\t\t\tLEGAJO    : ";
     rlutil::setColor(rlutil::WHITE);
@@ -239,7 +239,7 @@ void Listados(){
     cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
     cout << "\t\t\t\t*******************************************" << endl << endl;
     cout << "\t\t\t\t\tSELECCIONE OPCION: ";
-    rlutil::locate(60,13);
+    rlutil::locate(60,17);
     cin  >> opcion;
     if(opcion >= 1 && opcion < 3){
         system("cls");
@@ -313,9 +313,9 @@ void Leg_pin_incorrecto(){
     cout<<"\t\t\t\t| Legajo o PIN incorrecto |"<<endl;
     cout<<"\t\t\t\t ========================="<<endl;
     cout<<endl;cout<<endl;cout<<endl;
-    cout<<" ----------------------------------"<<endl;
-    cout<<"| ";
-    system ("pause");
+    cout<<"\t\t\t\t----------------------------------"<<endl;
+    cout<<"\t\t\t\t|";
+    cout << system ("pause");
     cout<<"-------------------------"<<endl;
     system ("cls");
 }
@@ -328,10 +328,13 @@ system ("cls");
 cout << "\t\t\t\t\t  *** CERRAR PROGRAMA ***" << endl << endl;
 cout << "\t\t\t\t*******************************************" << endl << endl;
 cout<<"\t\t\t\t Legajo de admin -> ";
+rlutil::setColor(rlutil::WHITE);
 cin>>leg;
 cout<<endl;
 cout<<"\t\t\t\t PIN de admin -> ";
+rlutil::setColor(rlutil::DARKGREY);
 cin>>pin;
+rlutil::setColor(rlutil::WHITE);
 cout<<endl;
 activo=validarLoginEmpleado(leg,pin);
     if(activo==true){
@@ -345,7 +348,7 @@ activo=validarLoginEmpleado(leg,pin);
         cout<<"\t\t\t\t ==============================="<<endl;
         cout<<"\t\t\t\t| No tiene rol de administrador |"<<endl;
         cout<<"\t\t\t\t ==============================="<<endl;
-        system("pause");
+        cout << endl << "\t\t\t\t" << system("pause");
         }
     }
     if(activo!=true){

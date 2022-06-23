@@ -125,10 +125,31 @@ int buscarEmpleado(int legajo){
 
 bool EliminarEmpleado(){
 
-/// REALIZAR LA FUNCION
+    Empleados reg;
+    int legajo, pos;
 
+    cout << "\t\t\t\t\t\t***ELIMINAR EMPLEADO***" << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\tINGRESE LEGAJO: ";
+    cin  >> legajo;
+
+    pos = buscarEmpleado(legajo);
+
+    if(pos == -1){
+        cout << endl << endl,
+        cout << "\t\t\t\t\tNO EXISTE EL ID INGRESADO." << endl << endl,
+        cout << "\t\t\t\t\t" << system("pause");
+        system("cls");
+        return false;
+    }
+    reg.LeerDeDisco(pos);
+    reg.setEliminado(false);
+    reg.GuardarEnDisco(pos);
+    cout << "\t\t\t\t\tNO EXISTE EL ID INGRESADO." << endl << endl,
+    cout << "\t\t\t\t\t" << system("pause");
+    system("cls");
+    return true;
 }
-
 
 //void Empleados::cargararchivo(){
 //    FILE *p;

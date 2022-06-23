@@ -99,9 +99,16 @@ int pos;
             else{
                 cout << "Empleado." << endl;
             }
+            cout << "\t\t\t\t" << "EMPLEADO ACTIVO : ";
+            if(obj.getEliminado() == true){
+             cout << "Si." << endl;
+            }
+            else{
+                cout << "No." << endl;
+            }
             cout << "\t\t\t\t------------------------------------------" << endl;
     }
-    system ("pause");
+    cout << endl << "\t\t\t\t" << system ("pause");
 }
 
 bool pedirContrasenia(){
@@ -167,6 +174,7 @@ bool pedirContrasenia(){
     system("cls");
     return false;*/
 }
+
 void Listados(){
     int opcion;
     char confirmarSalida;
@@ -349,3 +357,5 @@ void MenuFichar(){
         rlutil::anykey();
 }
 */
+
+

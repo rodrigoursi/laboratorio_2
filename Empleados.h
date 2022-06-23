@@ -69,16 +69,17 @@ public:
     bool LeerDeDisco(int nroRegistro);
     bool GuardarEnDisco();
     bool GuardarEnDisco(int nroRegistro);
-    void mostrar();
-    void cargararchivo();
-    void mostrararchivo();
-    void menu_FICHAR();
+    //void mostrar();
+    //void cargararchivo();
+    //void mostrararchivo();
+    //void menu_FICHAR();
 };
 
-///DECLARACION DE FUNCIONES GLOBALES
+///DECLARACION DE FUNCIONES DE LA CLASE
 int  buscarEmpleado(int legajo);
 bool editar_empleados();
 bool EliminarEmpleado();
+void mostrarEmpleado();
 void mostrarJorEmpXMes();
 void mostrarJorXFec();
 

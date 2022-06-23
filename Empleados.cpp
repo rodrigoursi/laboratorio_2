@@ -5,6 +5,7 @@ using namespace std;
 #include "fecha.h"
 #include "jornada.h"
 #include "FUNCIONES.h"
+#include "rlutil.h"
 
 
 ///CONSTRUCTOR
@@ -126,6 +127,90 @@ int buscarEmpleado(int legajo){
     return -1;
 }
 
+bool editar_empleados(){
+
+    Empleados reg;
+    int legajo, pos;
+    int opcion;
+    char confirmarSalida;
+
+
+    cout << "\t\t\t\t\t\t***EDITAR EMPLEADO***" << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\tINGRESE LEGAJO: ";
+    cin  >> legajo;
+
+    pos = buscarEmpleado(legajo);
+    system("pause");
+    if(pos == -1){
+        cout << endl << endl,
+        cout << "\t\t\t\t\tNO EXISTE EL LEGAJO INGRESADO." << endl << endl,
+        cout << "\t\t\t\t\t" << system("pause");
+        system("cls");
+        return false;
+    }
+
+    rlutil::setColor(rlutil::WHITE);
+    rlutil::setBackgroundColor(rlutil::DARKGREY);
+    rlutil::cls();
+    cout << "\t\t\t\t\t  *** MENU EDITAR LEGAJO "<<legajo<<" ***" << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\t1  - NOMBRE. " << endl << endl;
+    cout << "\t\t\t\t\t2  - APELLIDO. " << endl << endl;
+    cout << "\t\t\t\t\t3  - DNI. " << endl << endl;
+    cout << "\t\t\t\t\t4  - DOMICILIO. " << endl << endl;
+    cout << "\t\t\t\t\t5  - LOCALIDAD. " << endl << endl;
+    cout << "\t\t\t\t\t6  - PROVINCIA. " << endl << endl;
+    cout << "\t\t\t\t\t7  - PAIS. " << endl << endl;
+    cout << "\t\t\t\t\t8  - FECHA NACIMIENTO. " << endl << endl;
+    cout << "\t\t\t\t\t9  - GENERO. " << endl << endl;
+    cout << "\t\t\t\t\t10 - CARGA HORARIA. " << endl << endl;
+    cout << "\t\t\t\t\t11 - ROL. " << endl << endl;
+    cout << "\t\t\t\t\t0  - VOLVER. " << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\tSELECCIONE OPCION: ";
+    reg.LeerDeDisco(pos);
+    rlutil::locate(60,31);
+    cin  >> opcion;
+    if(opcion >= 1 && opcion < 12){
+        system("cls");
+    }
+    switch(opcion){
+        case 1: //CargarEmpleado();
+            break;
+        case 2: //EditarEmpleado();
+            break;
+        case 3: //EliminarEmpleado();
+            break;
+        case 4: //RESET PIN();
+            break;
+        case 5: //Reportes();
+            break;
+        case 6: //Listados();
+            break;
+        case 7: //Listados();
+            break;
+        case 8: //Listados();
+            break;
+        case 9: //Listados();
+            break;
+        case 10: //Listados();
+            break;
+        case 11:
+            if(reg.getRol()){reg.setRol(false);
+            }else reg.setRol(true);
+            reg.GuardarEnDisco(pos);cout<<"CAMBIO DE ROL REALIZADO CON EXITO...!"<<endl; system("pause");
+            break;
+        case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
+                cin >> confirmarSalida;
+                if (tolower(confirmarSalida) == 's'){
+                    MenuAdministrador();
+                }
+            break;
+    }
+
+}
+
 bool EliminarEmpleado(){
 
     Empleados reg;
@@ -140,7 +225,7 @@ bool EliminarEmpleado(){
     system("pause");
     if(pos == -1){
         cout << endl << endl,
-        cout << "\t\t\t\t\tNO EXISTE EL ID INGRESADO." << endl << endl,
+        cout << "\t\t\t\t\tNO EXISTE EL LEGAJO INGRESADO." << endl << endl,
         cout << "\t\t\t\t\t" << system("pause");
         system("cls");
         return false;
@@ -154,9 +239,14 @@ bool EliminarEmpleado(){
     return true;
 }
 
-void mostrarJorEmpXMes(){
+void mostrarEmpleado(){
 
-//mostrar();
+/// HAY Q TRABAJAR ESTA FUNCION AUN
+
+}
+
+void mostrarJorEmpXMes(){
+/// HAY Q TRABAJAR ESTA FUNCION AUN
 Jornada jornada;
 cout<<endl<<jornada.contarRegistros();
 system("pause");

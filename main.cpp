@@ -21,7 +21,7 @@ int main(){
         cout << "\t\t\t\t*******************************************" << endl << endl;
         cout << "\t\t\t\t\t1 - FICHAR. " << endl << endl;
         cout << "\t\t\t\t\t2 - ADMINISTRADOR. " << endl << endl;
-        cout << "\t\t\t\t\t3 - CERRAR PROGRAMA. " << endl << endl;
+        cout << "\t\t\t\t\t0 - CERRAR PROGRAMA. " << endl << endl;
         cout << "\t\t\t\t*******************************************" << endl << endl;
         cout << "\t\t\t\t\tSELECCIONE OPCION: ";
         cin  >> opcion;
@@ -34,13 +34,7 @@ int main(){
                 break;
             case 2: MenuAdministrador();
                 break;
-            case 3: Cerrar_Programa();
-                break;
-            case 0: cout << "¿Confirma salir? (S/N) ";
-                    cin >> confirmarSalida;
-                    if (tolower(confirmarSalida) == 's'){
-                        exit (-1);
-                    }
+            case 0: Cerrar_Programa();
                 break;
         }
         cin.ignore();

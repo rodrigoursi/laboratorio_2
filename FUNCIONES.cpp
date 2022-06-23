@@ -25,7 +25,7 @@ bool validarLoginEmpleado(int legajo, int PIN) {
 }
 
 void MenuAdministrador(){
-    int  opcion;
+    int opcion;
     Empleados obj;
     char confirmarSalida;
     if(password==false){password=pedirContrasenia();}
@@ -52,7 +52,7 @@ void MenuAdministrador(){
         switch(opcion){
             case 1: CargarEmpleado();
                 break;
-            case 2: //EditarEmpleado();
+            case 2: editar_empleados();
                 break;
             case 3: EliminarEmpleado();
                 break;
@@ -234,8 +234,9 @@ void Listados(){
     cout << "\t\t\t\t*******************************************" << endl << endl;
     cout << "\t\t\t\t\t1 - LISTAR EMPLEADOS ACTIVOS. " << endl << endl;
     cout << "\t\t\t\t\t2 - LISTAR EMPLEADOS DADOS DE BAJA. " << endl << endl;
-    cout << "\t\t\t\t\t3 - LISTAR JORNADA EMPLEADO POR MES. " << endl << endl;
-    cout << "\t\t\t\t\t4 - LISTAR JORNADA POR FECHA TODOS LOS EMPLEADOS. " << endl << endl;
+    cout << "\t\t\t\t\t3 - LISTAR FICHA EMPLEADO. " << endl << endl;
+    cout << "\t\t\t\t\t4 - LISTAR JORNADA EMPLEADO POR MES. " << endl << endl;
+    cout << "\t\t\t\t\t5 - LISTAR JORNADA POR FECHA TODOS LOS EMPLEADOS. " << endl << endl;
     cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
     cout << "\t\t\t\t*******************************************" << endl << endl;
     cout << "\t\t\t\t\tSELECCIONE OPCION: ";
@@ -249,9 +250,11 @@ void Listados(){
             break;
         case 2: mostrarEliminados(); //LISTAR EMPLEADOS DADOS DE BAJA
             break;
-        case 3: mostrarJorEmpXMes();
+        case 3: mostrarEmpleado();
             break;
-        case 4: mostrarJorXFec();
+        case 4:mostrarJorEmpXMes();
+            break;
+        case 5: mostrarJorXFec();
             break;
         case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                 cin >> confirmarSalida;
@@ -267,15 +270,15 @@ void guardarFichada(int legajo){
     FechaHora hora;
     Empleados empleado;
     Jornada aux;
-    int pos=0;
     bool salir=0;
-    while(aux.leerDeDisco(pos++)){
+    for(int pos=0;pos<aux.contarRegistros();pos++){
+        aux.leerDeDisco(pos);
         if(hora.getAnio()==aux.getFecha().getAnio()&&
            hora.getMes()==aux.getFecha().getMes()&&
            hora.getDia()==aux.getFecha().getDia()&&
            legajo==aux.getLegajo().getleg()){
             aux.setHoraSalida(hora);
-            aux.guardarEnDisco(buscarEmpleado(legajo));
+            aux.guardarEnDisco(pos);
             cout<<"SALIDA GUARDADA"<<endl;
             system("pause");
             cout<<endl<<endl<<aux.getFecha().getDia()<<"/"<<aux.getFecha().getMes()<<"/"<<aux.getFecha().getAnio()<<endl
@@ -356,69 +359,6 @@ activo=validarLoginEmpleado(leg,pin);
     }
 }
 
-/*
-void MenuFichar(){
-    Empleados reg;
-    jornada obj;
-    FechaHora hora;
-    int  legajo,cuestion;
-    char confirmarSalida;
-        rlutil::setColor(rlutil::WHITE);
-        rlutil::setBackgroundColor(rlutil::DARKGREY);
-        rlutil::cls();
-        cout << "\t\t\t\t\t  *** MENU FICHAR ***" << endl << endl;
-        cout << "\t\t\t\t*******************************************" << endl << endl;
-        cout << "\t\t\t\t\t1 - COLOQUE ES SU PIN -> ";
-        cin >> legajo;
-        cout << "\t\t\t\t\t1 - ESTA INGRESANDO O SALIENDO? MARQUE 1 SI ESTA INGRESANDO O 2 SI ESTA SALIENDO -> ";
-        cin >> cuestion;
-        cout << "\t\t\t\t*******************************************" << endl << endl;
-        rlutil::locate(60,17);
 
-        int nroRegistro;
-        nroRegistro = reg.buscar_empleados(legajo);
-
-        ///CARGA PARA CUANDO ESTE ENTRANDO
-        if (nroRegistro >= 0 && cuestion == 1){
-        reg.LeerDeDisco(nroRegistro);
-            if(legajo==reg.leg){
-            ///Se llena la info
-            obj.setFecha(hora.Fecha());
-            obj.setLegajo(legajo);
-            obj.setApellido(reg.getapellido());
-            obj.setNombre(reg.getnombre());
-            obj.setHsTeorica(reg.getcargaHoraria);
-            obj.setHoraEntrada(hora.Hora);
-            ///Se guarda en disco
-            obj.guardarEnDisco();
-            }
-        }
-        else{
-            cout << endl << "No existe el empleado";
-        }
-
-        ///CARGA PARA CUANDO ESTE SALIENDO
-        if (nroRegistro >= 0 && cuestion == 2){
-        reg.LeerDeDisco(nroRegistro);
-            if(legajo==reg.leg){
-            ///Se llena la info
-            obj.setFecha(hora.Fecha());
-            obj.setLegajo(legajo);
-            obj.setApellido(reg.getapellido());
-            obj.setNombre(reg.getnombre());
-            obj.setHsTeorica(reg.getcargaHoraria);
-            obj.setHoraSalida(hora.Hora);
-            ///Se guarda en disco
-            obj.guardarEnDisco();
-            }
-        }
-        else{
-            cout << endl << "No existe el empleado";
-        }
-
-        cin.ignore();
-        rlutil::anykey();
-}
-*/
 
 

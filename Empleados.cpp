@@ -169,9 +169,9 @@ bool editar_empleados(){
     cout << "\t\t\t\t\t0  - VOLVER. " << endl << endl;
     cout << "\t\t\t\t*******************************************" << endl << endl;
     cout << "\t\t\t\t\tSELECCIONE OPCION: ";
+    cin  >> opcion;
     reg.LeerDeDisco(pos);
     rlutil::locate(60,31);
-    cin  >> opcion;
     if(opcion >= 1 && opcion < 12){
         system("cls");
     }
@@ -252,6 +252,7 @@ cout<<endl<<jornada.contarRegistros();
 system("pause");
 
 }
+
 void mostrarJorXFec(){
     int dia,mes,anio;
     system ("cls");
@@ -262,16 +263,21 @@ void mostrarJorXFec(){
 
     Jornada jornada;
     int pos=0;
+    system("cls");
+    cout<<endl<<"---------EMPLEADOS DEL DIA "<<dia<<"/"<<mes<<"/"<<anio<<"----------"<<endl;
     while(jornada.leerDeDisco(pos++)){
         if(jornada.getFecha().getAnio()==anio&&
            jornada.getFecha().getMes()==mes&&
            jornada.getFecha().getDia()==dia){
-            cout<<jornada.getLegajo().getleg()<<"||"<<jornada.getHoraEntrada().getHora()<<
-            ":"<<jornada.getHoraEntrada().getMinuto()<<"||"<<jornada.getHoraSalida().getHora()<<
-            ":"<<jornada.getHoraSalida().getMinuto()<<"||"<<jornada.getEstado()<<endl<<
-            "------------------------------------------"<<endl;
+            cout<<endl<<"----------------------------------------------"<<endl;
+            cout<<"LEGAJO"<<"||"<<"HORA ENTRADA"<<"||"<<"HORA SALIDA"<<"||"<<"ESTADO"<<endl;
+            cout<<jornada.getLegajo().getleg()<<"   ||"<<"    "<<jornada.getHoraEntrada().getHora()<<
+            ":"<<jornada.getHoraEntrada().getMinuto()<<"    ||"<<"    "<<jornada.getHoraSalida().getHora()<<
+            ":"<<jornada.getHoraSalida().getMinuto()<<"   ||"<<jornada.getEstado()<<endl<<
+            "----------------------------------------------"<<endl;
            }
     }
+    cout<<endl;
     system("pause");
 }
 

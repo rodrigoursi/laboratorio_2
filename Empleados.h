@@ -76,10 +76,10 @@ public:
 };
 
 ///DECLARACION DE FUNCIONES DE LA CLASE
-int  buscarEmpleado(int legajo);
-bool editar_empleados();
-bool EliminarEmpleado();
-void mostrarEmpleado();
+int  buscarEmpleado(int legajo);//
+bool editar_empleados();//
+bool EliminarEmpleado();//
+void mostrarEmpleado();//
 void mostrarJorEmpXMes();
 void mostrarJorXFec();
 

@@ -44,8 +44,8 @@ void MenuAdministrador(){
         cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
         cout << "\t\t\t\t*******************************************" << endl << endl;
         cout << "\t\t\t\t\tSELECCIONE OPCION: ";
-        rlutil::locate(60,21);
         cin  >> opcion;
+        rlutil::locate(60,21);
         if(opcion >= 1 && opcion < 6){
             system("cls");
         }
@@ -240,19 +240,19 @@ void Listados(){
     cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
     cout << "\t\t\t\t*******************************************" << endl << endl;
     cout << "\t\t\t\t\tSELECCIONE OPCION: ";
-    rlutil::locate(60,17);
     cin  >> opcion;
+    rlutil::locate(60,17);
     if(opcion >= 1 && opcion < 3){
         system("cls");
     }
     switch(opcion){
-        case 1: mostrarActivos(); // LISTAR EMPLEADOS ACTIVOS
+        case 1: mostrarActivos(); //LISTAR EMPLEADOS ACTIVOS
             break;
         case 2: mostrarEliminados(); //LISTAR EMPLEADOS DADOS DE BAJA
             break;
         case 3: mostrarEmpleado();
             break;
-        case 4:mostrarJorEmpXMes();
+        case 4: mostrarJorEmpXMes();
             break;
         case 5: mostrarJorXFec();
             break;

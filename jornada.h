@@ -52,6 +52,6 @@ public:
 
 ///DECLARACION DE FUNCIONES GLOBALES
 
-void fichar();
+void fichar();//
 
 #endif // JORNADA_H_INCLUDED

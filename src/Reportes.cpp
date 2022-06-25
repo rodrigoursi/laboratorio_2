@@ -11,30 +11,38 @@ void Reportes(){
 
     int opcion;
     char confirmarSalida;
-    rlutil::setColor(rlutil::WHITE);
-    rlutil::setBackgroundColor(rlutil::DARKGREY);
-    rlutil::cls();
-    cout << "\t\t\t\t\t  *** REPORTES ADMINISTRADOR ***" << endl << endl;
-    cout << "\t\t\t\t*******************************************" << endl << endl;
-    cout << "\t\t\t\t\t1 - REPORTE BALANCE POR PERIODO. " << endl << endl;
-    cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
-    cout << "\t\t\t\t*******************************************" << endl << endl;
-    cout << "\t\t\t\t\tSELECCIONE OPCION: ";
-    rlutil::locate(60,11);
-    cin  >> opcion;
-    if(opcion >= 1 && opcion < 2){
-        system("cls");
-    }
-    switch(opcion){
-        case 1: ReportePorEmpleadoPorMes();
-            break;
-        case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
-            cin >> confirmarSalida;
-            if (tolower(confirmarSalida) == 's'){
-                MenuAdministrador();
-            }
-            break;
-    }
+    do{
+        rlutil::setColor(rlutil::WHITE);
+        rlutil::setBackgroundColor(rlutil::DARKGREY);
+        rlutil::cls();
+        cout << "\t\t\t\t\t  *** REPORTES ADMINISTRADOR ***" << endl << endl;
+        cout << "\t\t\t\t*******************************************" << endl << endl;
+        cout << "\t\t\t\t\t1 - REPORTE BALANCE POR PERIODO. " << endl << endl;
+        cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
+        cout << "\t\t\t\t*******************************************" << endl << endl;
+        cout << "\t\t\t\t\tSELECCIONE OPCION: ";
+        rlutil::locate(60,11);
+        cin  >> opcion;
+
+        if(opcion >= 1 && opcion < 2){
+            system("cls");
+        }
+        switch(opcion){
+            case 1: ReportePorEmpleadoPorMes();
+                break;
+            case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
+                cin >> confirmarSalida;
+                if (tolower(confirmarSalida) == 's'){
+                    MenuAdministrador();
+                }
+                break;
+            default : rlutil::locate(41,13);
+                    cout << "OPCION INVALIDA!!!" << endl << endl;
+                    system("pause > nul");
+                    system("cls");
+                break;
+        }
+    }while(opcion >= 0 || opcion < 2);
 }
 
 void ReportePorEmpleadoPorMes(){

@@ -11,5 +11,6 @@ void Listados();//
 void guardarFichada(int);//
 void Leg_pin_incorrecto();//
 void Cerrar_Programa();//
+bool ValidadLegajoExistente(int legajo);
 
 #endif // FUNCIONES_H_INCLUDED

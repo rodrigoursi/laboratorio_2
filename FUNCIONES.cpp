@@ -227,42 +227,49 @@ bool pedirContrasenia(){
 void Listados(){
     int opcion;
     char confirmarSalida;
-    rlutil::setColor(rlutil::WHITE);
-    rlutil::setBackgroundColor(rlutil::DARKGREY);
-    rlutil::cls();
-    cout << "\t\t\t\t\t  *** LISTADOS ***" << endl << endl;
-    cout << "\t\t\t\t*******************************************" << endl << endl;
-    cout << "\t\t\t\t\t1 - LISTAR EMPLEADOS ACTIVOS. " << endl << endl;
-    cout << "\t\t\t\t\t2 - LISTAR EMPLEADOS DADOS DE BAJA. " << endl << endl;
-    cout << "\t\t\t\t\t3 - LISTAR FICHA EMPLEADO. " << endl << endl;
-    cout << "\t\t\t\t\t4 - LISTAR JORNADA EMPLEADO POR MES. " << endl << endl;
-    cout << "\t\t\t\t\t5 - LISTAR JORNADA POR FECHA TODOS LOS EMPLEADOS. " << endl << endl;
-    cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
-    cout << "\t\t\t\t*******************************************" << endl << endl;
-    cout << "\t\t\t\t\tSELECCIONE OPCION: ";
-    cin  >> opcion;
-    rlutil::locate(60,17);
-    if(opcion >= 1 && opcion < 3){
-        system("cls");
-    }
-    switch(opcion){
-        case 1: mostrarActivos(); //LISTAR EMPLEADOS ACTIVOS
-            break;
-        case 2: mostrarEliminados(); //LISTAR EMPLEADOS DADOS DE BAJA
-            break;
-        case 3: mostrarEmpleado();
-            break;
-        case 4: mostrarJorEmpXMes();
-            break;
-        case 5: mostrarJorXFec();
-            break;
-        case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
-                cin >> confirmarSalida;
-                if (tolower(confirmarSalida) == 's'){
-                    MenuAdministrador();
-                }
-            break;
-    }
+    do{
+        rlutil::setColor(rlutil::WHITE);
+        rlutil::setBackgroundColor(rlutil::DARKGREY);
+        rlutil::cls();
+        cout << "\t\t\t\t\t  *** LISTADOS ***" << endl << endl;
+        cout << "\t\t\t\t*******************************************" << endl << endl;
+        cout << "\t\t\t\t\t1 - LISTAR EMPLEADOS ACTIVOS. " << endl << endl;
+        cout << "\t\t\t\t\t2 - LISTAR EMPLEADOS DADOS DE BAJA. " << endl << endl;
+        cout << "\t\t\t\t\t3 - LISTAR FICHA EMPLEADO. " << endl << endl;
+        cout << "\t\t\t\t\t4 - LISTAR JORNADA EMPLEADO POR MES. " << endl << endl;
+        cout << "\t\t\t\t\t5 - LISTAR JORNADA POR FECHA TODOS LOS EMPLEADOS. " << endl << endl;
+        cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
+        cout << "\t\t\t\t*******************************************" << endl << endl;
+        cout << "\t\t\t\t\tSELECCIONE OPCION: ";
+        cin  >> opcion;
+        rlutil::locate(60,17);
+        if(opcion >= 1 && opcion < 6){
+            system("cls");
+        }
+        switch(opcion){
+            case 1: mostrarActivos(); //LISTAR EMPLEADOS ACTIVOS
+                break;
+            case 2: mostrarEliminados(); //LISTAR EMPLEADOS DADOS DE BAJA
+                break;
+            case 3: mostrarEmpleado();
+                break;
+            case 4: mostrarJorEmpXMes();
+                break;
+            case 5: mostrarJorXFec();
+                break;
+            case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
+                    cin >> confirmarSalida;
+                    if (tolower(confirmarSalida) == 's'){
+                        MenuAdministrador();
+                    }
+                break;
+            default : rlutil::locate(41,21);
+                    cout << "OPCION INVALIDA!!!" << endl << endl;
+                    system("pause > nul");
+                    system("cls");
+                break;
+        }
+    }while(opcion >= 0 || opcion < 6);
 }
 
 void guardarFichada(int legajo){
@@ -358,6 +365,20 @@ activo=validarLoginEmpleado(leg,pin);
     Leg_pin_incorrecto();
     }
 }
+
+bool ValidadLegajoExistente(int legajo){
+
+    Empleados obj;
+    int pos = 0;
+    while (obj.LeerDeDisco(pos++)){
+        if ( obj.getleg() == legajo){
+            cout << "LEGAJO ENCONTRADO." << endl << endl;
+            return true;
+        }
+    }
+    return false;
+}
+
 
 
 

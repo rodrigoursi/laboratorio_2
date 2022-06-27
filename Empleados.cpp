@@ -130,8 +130,8 @@ int buscarEmpleado(int legajo){
 bool editar_empleados(){
 
     Empleados reg;
-    int legajo, pos;
-    int opcion;
+    FechaHora fnac;
+    int legajo, pos, opcion, dia, mes, anio;
     char confirmarSalida;
 
 
@@ -170,31 +170,77 @@ bool editar_empleados(){
     cout << "\t\t\t\t*******************************************" << endl << endl;
     cout << "\t\t\t\t\tSELECCIONE OPCION: ";
     cin  >> opcion;
+    string cambio;
+    int entero;
     reg.LeerDeDisco(pos);
     rlutil::locate(60,31);
-    if(opcion >= 1 && opcion < 12){
+    if(opcion >= 0 && opcion < 12){
         system("cls");
+    } else{
+        cout<<"OPCION ERRONEA...!"; system("pause");MenuAdministrador();
     }
     switch(opcion){
-        case 1: //CargarEmpleado();
+        case 1:
+            cout<<"INTRODUCE NOMBRE NUEVO: ";
+            cin.ignore();
+            getline(cin,cambio);
+            reg.setnombre(cambio);
             break;
-        case 2: //EditarEmpleado();
+        case 2:
+            cout<<"INTRODUCE APELLIDO NUEVO: ";
+            cin.ignore();
+            getline(cin,cambio);
+            reg.setapellido(cambio);
             break;
-        case 3: //EliminarEmpleado();
+        case 3:
+            cout<<"INTRODUCE DNI NUEVO: ";
+            cin>>entero;
+            reg.setdni(entero);
             break;
-        case 4: //RESET PIN();
+        case 4:
+            cout<<"INTRODUCE DOMICILIO NUEVO: ";
+            cin.ignore();
+            getline(cin,cambio);
+            reg.setdomicilio(cambio);
             break;
-        case 5: //Reportes();
+        case 5:
+            cout<<"INTRODUCE LOCALIDAD NUEVA: ";
+            cin.ignore();
+            getline(cin,cambio);
+            reg.setlocalidad(cambio);
             break;
-        case 6: //Listados();
+        case 6:
+            cout<<"INTRODUCE PROVINCIA NUEVA: ";
+            cin.ignore();
+            getline(cin,cambio);
+            reg.setprovincia(cambio);
             break;
-        case 7: //Listados();
+        case 7:
+            cout<<"INTRODUCE DOMICILIO PAIS: ";
+            cin.ignore();
+            getline(cin,cambio);
+            reg.setpais(cambio);
             break;
-        case 8: //Listados();
+        case 8:
+            cout<<"INTRODUCE DIA DE NACIMIENTO NUEVO: ";
+            cin>>dia;
+            cout<<endl<<"INTRODUCE MES DE NACIMIENTO NUEVO: ";
+            cin>>mes;
+            cout<<endl<<"INTRODUCE YEAR DE NACIMIENTO NUEVO: ";
+            cin>>anio;
+            fnac.setAnio(anio);fnac.setMes(mes);fnac.setDia(dia);
+            reg.setFnacimiento(fnac);
             break;
-        case 9: //Listados();
+        case 9:
+            cout<<"INTRODUCE GENERO NUEVO: ";
+            cin.ignore();
+            getline(cin,cambio);
+            reg.setgenero(cambio);
             break;
-        case 10: //Listados();
+        case 10:
+            cout<<"INTRODUCE CARGA HORARIA NUEVA: ";
+            cin>>entero;
+            reg.setcargaHoraria(entero);
             break;
         case 11:
             if(reg.getRol()){reg.setRol(false);
@@ -207,8 +253,10 @@ bool editar_empleados(){
                     MenuAdministrador();
                 }
             break;
+        default:
+            MenuAdministrador();
     }
-
+    reg.GuardarEnDisco(pos);cout<<"CAMBIO REALIZADO CON EXITO...!"<<endl; system("pause");
 }
 
 bool EliminarEmpleado(){

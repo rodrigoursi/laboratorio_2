@@ -11,7 +11,7 @@ void Reportes(){
 
     int opcion;
     char confirmarSalida;
-    do{
+
         rlutil::setColor(rlutil::WHITE);
         rlutil::setBackgroundColor(rlutil::DARKGREY);
         rlutil::cls();
@@ -24,7 +24,7 @@ void Reportes(){
         rlutil::locate(60,11);
         cin  >> opcion;
 
-        if(opcion >= 1 && opcion < 2){
+        if(opcion >= 0 && opcion < 2){
             system("cls");
         }
         switch(opcion){
@@ -40,9 +40,9 @@ void Reportes(){
                     cout << "OPCION INVALIDA!!!" << endl << endl;
                     system("pause > nul");
                     system("cls");
+                    Reportes();
                 break;
         }
-    }while(opcion >= 0 || opcion < 2);
 }
 
 void ReportePorEmpleadoPorMes(){

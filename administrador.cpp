@@ -64,8 +64,8 @@ bool Administrador::leerDeDisco(int pos){
 void CargarEmpleado(){
 
     string apellido, nombre, domicilio, localidad, provincia, pais, genero;
-    int DNI, legajo, pin, dia, mes, anio, carga;
-    bool ok, admin;
+    int DNI, legajo, pin, dia, mes, anio, carga, genNum;
+    bool ok, admin, stop=false;
 
     cout << "\t\t\t\t\t  *** INGRESE LOS DATOS ***" << endl << endl;
     cout << "\t\t\t\t*******************************************" << endl << endl;
@@ -98,8 +98,24 @@ void CargarEmpleado(){
     cout << "/";
     rlutil::locate(79,13);
     cin  >> anio;
+    cout << "\t\t\t\t\t** 1 para Masculino 2 para Femenino"<<endl;
     cout << "\t\t\t\t\t** GENERO       : ";
-    cin  >> genero;
+    cin  >> genNum;
+    while(stop==false){
+        if(genNum==1||genNum==2){
+            if(genNum==1){
+            genero="M";
+            }
+            if(genNum==2){
+            genero="F";
+            }
+        }
+        else{
+            cout << "\t\t\t\t\t** El genero es representado con un 1 para Masculino y 2 para Femenino."<<endl;
+            cout << "\t\t\t\t\t** GENERO       : ";
+            cin  >> genNum;
+        }
+    }
     cout << "\t\t\t\t\t** CARGA HORARIA: ";
     cin  >> carga;
     cout << "\t\t\t\t\t** ROL ADMIN    : ";

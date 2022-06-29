@@ -371,11 +371,11 @@ bool ValidadLegajoExistente(int legajo){
     int pos = 0;
     while (obj.LeerDeDisco(pos++)){
         if ( obj.getleg() == legajo){
-            cout << "LEGAJO ENCONTRADO." << endl << endl;
-            return true;
+            cout << "\t\t\t\t\tEL LEGAJO YA ESTA UTILIZADO." << endl << endl;
+            return false;
         }
     }
-    return false;
+    return true;
 }
 
 

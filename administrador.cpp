@@ -71,6 +71,10 @@ void CargarEmpleado(){
     cout << "\t\t\t\t*******************************************" << endl << endl;
     cout << "\t\t\t\t\t** LEGAJO       : ";
     cin  >> legajo;
+    if(ValidadLegajoExistente() == false){
+        MenuAdministrador();
+        cout << endl << "\t\t\t\t" << system ("pause");
+    }
     cout << "\t\t\t\t\t** NOMBRE       : ";
     cin.ignore();
     getline(cin,nombre);

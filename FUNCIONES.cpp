@@ -271,19 +271,35 @@ void Listados(){
     }
 }
 
+horas_A_minutos(int hora){
+
+return hora*60;
+
+}
+
 void guardarFichada(int legajo){
 
     FechaHora hora;
     Empleados empleado;
     Jornada aux;
+    float fin=0;
     bool salir=0;
     for(int pos=0;pos<aux.contarRegistros();pos++){
         aux.leerDeDisco(pos);
+        //cout<<pos<<endl;
+        //system("pause");
         if(hora.getAnio()==aux.getFecha().getAnio()&&
            hora.getMes()==aux.getFecha().getMes()&&
            hora.getDia()==aux.getFecha().getDia()&&
            legajo==aux.getLegajo().getleg()){
             aux.setHoraSalida(hora);
+            int mnSalida=aux.getHoraSalida().getMinuto()+horas_A_minutos(aux.getHoraSalida().getHora());
+            int mnEntrada=aux.getHoraEntrada().getMinuto()+horas_A_minutos(aux.getHoraEntrada().getHora());
+            fin=(mnSalida-mnEntrada)/60;
+            if((mnSalida-mnEntrada)%60>29){
+                fin+=0.5;
+            }
+            aux.setHoraTotal(fin);
             aux.guardarEnDisco(pos);
             cout<<"SALIDA GUARDADA"<<endl;
             system("pause");
@@ -291,7 +307,7 @@ void guardarFichada(int legajo){
             <<"legajo: "<<aux.getLegajo().getleg()<<endl
             <<"Entrada: "<<aux.getHoraEntrada().getHora()<<":"<<aux.getHoraEntrada().getMinuto()<<endl
             <<"Salida: "<<aux.getHoraSalida().getHora()<<":"<<aux.getHoraSalida().getMinuto()<<endl
-            <<"Total: "<<aux.getHoraTotal().getHora()<<":"<<aux.getHoraTotal().getMinuto()<<endl
+            <<"Total: "<<aux.getHoraTotal()<<endl
             <<aux.getEstado()<<endl
             <<aux.getAusente()<<endl;
             system("pause");
@@ -300,7 +316,7 @@ void guardarFichada(int legajo){
     }
     if(salir==0){
         empleado.LeerDeDisco(buscarEmpleado(legajo));
-        Jornada jornada(hora,empleado,hora,hora,hora);
+        Jornada jornada(hora,empleado,hora,hora,fin);
         jornada.guardarEnDisco();
         cout<<"ENTRADA GUARDADA"<<endl;
         system("pause");
@@ -308,7 +324,7 @@ void guardarFichada(int legajo){
         <<"legajo: "<<jornada.getLegajo().getleg()<<endl
         <<jornada.getHoraEntrada().getHora()<<":"<<jornada.getHoraEntrada().getMinuto()<<endl
         <<jornada.getHoraSalida().getHora()<<":"<<jornada.getHoraSalida().getMinuto()<<endl
-        <<jornada.getHoraTotal().getHora()<<":"<<jornada.getHoraTotal().getMinuto()<<endl
+        <<jornada.getHoraTotal()<<endl
         <<jornada.getEstado()<<endl
         <<jornada.getAusente()<<endl;
         system ("pause");
@@ -365,7 +381,7 @@ activo=validarLoginEmpleado(leg,pin);
     }
 }
 
-bool ValidadLegajoExistente(int legajo){
+bool ValidarLegajoExistente(int legajo){
 
     Empleados obj;
     int pos = 0;

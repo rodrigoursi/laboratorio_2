@@ -71,7 +71,7 @@ void CargarEmpleado(){
     cout << "\t\t\t\t*******************************************" << endl << endl;
     cout << "\t\t\t\t\t** LEGAJO       : ";
     cin  >> legajo;
-    if(ValidadLegajoExistente() == false){
+    if(ValidarLegajoExistente(legajo) == false){
         MenuAdministrador();
         cout << endl << "\t\t\t\t" << system ("pause");
     }
@@ -108,11 +108,9 @@ void CargarEmpleado(){
     while(stop==false){
         if(genNum==1||genNum==2){
             if(genNum==1){
-            genero="M";
-            }
-            if(genNum==2){
-            genero="F";
-            }
+                genero="m";
+            }else genero="F";
+            stop=true;
         }
         else{
             cout << "\t\t\t\t\t** El genero es representado con un 1 para Masculino y 2 para Femenino."<<endl;

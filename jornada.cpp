@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-Jornada::Jornada(FechaHora fecha, Empleados legajo, FechaHora horaEnt, FechaHora horaSalida, FechaHora horaTotal, string estado, bool ausente)
+Jornada::Jornada(FechaHora fecha, Empleados legajo, FechaHora horaEnt, FechaHora horaSalida, float horaTotal, string estado, bool ausente)
 {
     _fecha=fecha;
     _legajo=legajo;
@@ -23,7 +23,7 @@ Jornada::Jornada(FechaHora fecha, Empleados legajo, FechaHora horaEnt, FechaHora
     Empleados Jornada::getLegajo(){return _legajo;}
     FechaHora Jornada::getHoraEntrada(){return _horaEntrada;}
     FechaHora Jornada::getHoraSalida(){return _horaSalida;}
-    FechaHora Jornada::getHoraTotal(){return _horaTotal;}
+    float Jornada::getHoraTotal(){return _horaTotal;}
     string Jornada::getEstado(){string estado(_estado);return estado;}
     bool Jornada::getAusente(){ return _ausente;}
 
@@ -33,7 +33,7 @@ void Jornada::setFecha(FechaHora fecha){_fecha=fecha;}
 void Jornada::setLegajo(Empleados legajo){_legajo=legajo;}
 void Jornada::setHoraEntrada(FechaHora entrada){_horaEntrada=entrada;}
 void Jornada::setHoraSalida(FechaHora salida){_horaSalida=salida;}
-void Jornada::setHoraTotal(FechaHora total){_horaTotal=total;}
+void Jornada::setHoraTotal(float total){_horaTotal=total;}
 void Jornada::setEstado(string estado){strcpy(_estado, estado.c_str());}
 void Jornada::setAusente(bool aus){_ausente=aus;}
 
@@ -85,6 +85,8 @@ int Jornada::contarRegistros(){
     cant_reg = bytes / sizeof(Jornada);
     return cant_reg;
 }
+
+/// ///FUNCIONES///
 
 void fichar(){
 

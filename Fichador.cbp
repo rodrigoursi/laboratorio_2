@@ -40,6 +40,8 @@
 		<Unit filename="FUNCIONES.h" />
 		<Unit filename="administrador.cpp" />
 		<Unit filename="administrador.h" />
+		<Unit filename="calendario.cpp" />
+		<Unit filename="calendario.h" />
 		<Unit filename="fecha.cpp" />
 		<Unit filename="fecha.h" />
 		<Unit filename="include/Reportes.h" />
@@ -49,6 +51,9 @@
 		<Unit filename="src/Reportes.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
+			<code_completion />
+			<envvars />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

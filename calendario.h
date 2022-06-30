@@ -19,7 +19,7 @@ private:
 public:
     ///constructor
     Calendario(FechaHora, Empleados, FechaHora, FechaHora);
-    Calendario();
+    Calendario(){};
     ///
     ///get
     FechaHora getFecha();
@@ -39,5 +39,8 @@ public:
     int contarRegistros();
 
 };
+
+void cargarCalendario();
+void actualizarCalendario();
 
 #endif // CALENDARIO_H_INCLUDED

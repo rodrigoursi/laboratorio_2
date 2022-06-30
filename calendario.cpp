@@ -4,6 +4,7 @@
 #include <string>
 #include "FUNCIONES.h"
 #include "rlutil.h"
+#include "fecha.h"
 
 #include <iostream>
 
@@ -75,4 +76,36 @@ int Calendario::contarRegistros(){
     fclose(p);
     cant_reg = bytes / sizeof(Calendario);
     return cant_reg;
+}
+
+void cargarCalendario(){
+
+    FechaHora fechaMes;
+    Empleados empleado;
+    int legajo, hora=0, minuto=0, dia,mes,anio;
+    cout<<"COLOQUE EL LEGAJO DEL EMPLEADO Q DESEA CARGAR EL CALENDARIO DE TRABAJO...!"<<endl;
+    cout<<"Legajo: ";cin>>legajo;
+    if(ValidarLegajoExistente(legajo)==false){
+        MenuAdministrador();
+    }
+    cout<<endl<<"COLOQUE LA FECHA DE INICIO DEL EMPLEADO...!"<<endl;
+    cout<<"DIA: ";cin>>dia;cout<<endl<<"MES: ";cin>>mes;
+    cout<<endl<<"YEAR: ";cin>>anio;
+    if(anio<fechaMes.getAnio()){
+        cout<<"FECHA INVALIDA!";system ("pause");MenuAdministrador();
+    }
+    if(anio==fechaMes.getAnio()&&mes<fechaMes.getMes()){
+        cout<<"FECHA INVALIDA!";system ("pause");MenuAdministrador();
+    }
+    if(anio==fechaMes.getAnio()&&mes==fechaMes.getMes()&&dia<=fechaMes.getDia()){
+       cout<<"FECHA INVALIDA!";system ("pause");MenuAdministrador();
+    }
+    cout<<"COLOQUE EL HORARIO DEL EMPLEADO"<<endl;
+    cout<<"HORA: ";cin>>hora; cout<<endl<<"MINUTO: ";cin>>minuto;
+    empleado.LeerDeDisco(legajo);
+    FechaHora fSalida(dia,mes,anio,hora+empleado.getcargaHoraria(),minuto);
+    FechaHora fec(dia,mes,anio,hora,minuto); Calendario calendario(fec,empleado,fec,fSalida);
+    calendario.guardarEnDisco();
+
+
 }

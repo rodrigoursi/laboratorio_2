@@ -13,6 +13,16 @@ using namespace rlutil;
 int main(){
     int  opcion;
     char confirmarSalida;
+    rlutil::locate(20,11);
+    cout<<endl;
+    cout << "\t\t\t\t\t      *** INICIO ***" << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\t\tBIENVENIDO" <<endl;
+    cout << "\t\t\t\t\t\t    AL" <<endl;
+    cout << "\t\t\t\t\t   PROGRAMA DE FICHAJE" <<endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << endl << "\t\t\t\t" << system("pause");
+    system("cls");
     while(true){
         rlutil::setColor(rlutil::WHITE);
         rlutil::setBackgroundColor(rlutil::DARKGREY);

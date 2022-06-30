@@ -245,7 +245,7 @@ bool editar_empleados(){
         case 11:
             if(reg.getRol()){reg.setRol(false);
             }else reg.setRol(true);
-            reg.GuardarEnDisco(pos);cout<<"CAMBIO DE ROL REALIZADO CON EXITO...!"<<endl; system("pause");
+            reg.GuardarEnDisco(pos);
             break;
         case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                 cin >> confirmarSalida;

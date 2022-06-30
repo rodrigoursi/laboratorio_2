@@ -308,8 +308,7 @@ void guardarFichada(int legajo){
             <<"Entrada: "<<aux.getHoraEntrada().getHora()<<":"<<aux.getHoraEntrada().getMinuto()<<endl
             <<"Salida: "<<aux.getHoraSalida().getHora()<<":"<<aux.getHoraSalida().getMinuto()<<endl
             <<"Total: "<<aux.getHoraTotal()<<endl
-            <<aux.getEstado()<<endl
-            <<aux.getAusente()<<endl;
+            <<"Estado: "<<aux.getEstado()<<endl;
             system("pause");
             salir=1;
            }
@@ -322,11 +321,11 @@ void guardarFichada(int legajo){
         system("pause");
         cout<<endl<<endl<<jornada.getFecha().getDia()<<"/"<<jornada.getFecha().getMes()<<"/"<<jornada.getFecha().getAnio()<<endl
         <<"legajo: "<<jornada.getLegajo().getleg()<<endl
-        <<jornada.getHoraEntrada().getHora()<<":"<<jornada.getHoraEntrada().getMinuto()<<endl
-        <<jornada.getHoraSalida().getHora()<<":"<<jornada.getHoraSalida().getMinuto()<<endl
-        <<jornada.getHoraTotal()<<endl
-        <<jornada.getEstado()<<endl
-        <<jornada.getAusente()<<endl;
+        <<"Entrada: "<<jornada.getHoraEntrada().getHora()<<":"<<jornada.getHoraEntrada().getMinuto()<<endl
+        <<"Salida: "<<jornada.getHoraSalida().getHora()<<":"<<jornada.getHoraSalida().getMinuto()<<endl
+        <<"Total: "<<jornada.getHoraTotal()<<endl
+        <<"Ausente: "<<jornada.getAusente()<<endl
+        <<"Estado: "<<jornada.getEstado()<<endl;
         system ("pause");
     }
 

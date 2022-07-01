@@ -10,7 +10,31 @@ using namespace std;
 #include "jornada.h"
 #include "fecha.h"
 
-bool password=false;
+int mesCantDias(int mes){
+
+    switch(mes){
+
+        case 1: return 31;
+        break;
+        case 2: return 28;
+        break;
+        case 3: return 31;
+        break;
+        case 5: return 31;
+        break;
+        case 7: return 31;
+        break;
+        case 8: return 31;
+        break;
+        case 10: return 31;
+        break;
+        case 12: return 31;
+        break;
+        default: return 30;
+
+    }
+
+}
 
 bool validarLoginEmpleado(int legajo, int PIN) {
 
@@ -25,6 +49,7 @@ bool validarLoginEmpleado(int legajo, int PIN) {
 }
 
 void MenuAdministrador(){
+    bool password=false;
     int opcion;
     Empleados obj;
     char confirmarSalida;

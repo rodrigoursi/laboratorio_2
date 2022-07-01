@@ -1,6 +1,7 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
 
+int mesCantDias(int);
 bool validarLoginEmpleado(int, int);//
 void MenuAdministrador();//
 void mostrar();//
@@ -15,6 +16,6 @@ void Cerrar_Programa();//
 bool ValidarLegajoExistente(int legajo);
 bool ValidarDiaMes(int dia, int mes);
 bool ValidarHoraMinutos(int hora, int minutos);
-bool ValidarHoraMinutos(int hora, int minutos);
+bool ValidarActivo(int);
 
 #endif // FUNCIONES_H_INCLUDED

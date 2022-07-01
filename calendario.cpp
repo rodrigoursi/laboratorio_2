@@ -88,7 +88,7 @@ void cargarCalendario(){
     if(ValidarLegajoExistente(legajo)==false){
         MenuAdministrador();
     }
-    cout<<endl<<"COLOQUE LA FECHA DE INICIO DEL EMPLEADO...!"<<endl;
+    cout<<endl<<"COLOQUE LA FECHA DE INICIO DE LA CARGA DE HORARIO DEL EMPLEADO...!"<<endl;
     cout<<"DIA: ";cin>>dia;cout<<endl<<"MES: ";cin>>mes;
     cout<<endl<<"YEAR: ";cin>>anio;
     if(anio<fechaMes.getAnio()){
@@ -102,10 +102,79 @@ void cargarCalendario(){
     }
     cout<<"COLOQUE EL HORARIO DEL EMPLEADO"<<endl;
     cout<<"HORA: ";cin>>hora; cout<<endl<<"MINUTO: ";cin>>minuto;
-    empleado.LeerDeDisco(legajo);
-    FechaHora fSalida(dia,mes,anio,hora+empleado.getcargaHoraria(),minuto);
-    FechaHora fec(dia,mes,anio,hora,minuto); Calendario calendario(fec,empleado,fec,fSalida);
-    calendario.guardarEnDisco();
+    cout<<endl<<"COLOQUE EL DIA (1-domingo, 2-lunes, 3-martes, 4-miercoles, 5-jueves, 6-viernes o 7-sabado) FRANCO/DESCANSO DEL EMPLEADO: ";
+    int franco=0;
+    cin>>franco;
+    Calendario check;
+    int pos=0;
+    while(check.leerDeDisco(pos++)){
+        if(!mes==1){
+            if(check.getFecha().getAnio()==anio
+               &&check.getFecha().getMes()==mes-1
+               &&check.getLegajo().getleg()==legajo){
+                cout<<"ESTE EMPLEADO YA FUE CARGADO PREVIAMENTE...!";
+                system("pause");
+                return;
+            }
+            if(check.getFecha().getAnio()==anio-1
+                &&check.getFecha().getMes()==1
+                &&check.getLegajo().getleg()==legajo){
+                cout<<"ESTE EMPLEADO YA FUE CARGADO PREVIAMENTE...!";
+                system("pause");
+                return;
+            }
+        }
+    }
+    int tam=mesCantDias(mes);
+    for(dia;dia<=tam;dia++){
+        empleado.LeerDeDisco(legajo);
+        FechaHora fSalida(dia,mes,anio,hora+empleado.getcargaHoraria(),minuto);
+        FechaHora fec(dia,mes,anio,hora,minuto); Calendario calendario(fec,empleado,fec,fSalida);
+        calendario.guardarEnDisco();
+        cout<<"HORARIO DE EMPLEADO CARGADO CON EXITO...!"<<endl;
+        cout<<"SE GUARDO EL HORARIO DEL RESTO DEL MES.!"<<endl<<system("pause");
+    }
+}
 
+void actualizarCalendario(){
 
+    FechaHora fecha;
+    int anio=fecha.getAnio();
+    int mes;
+    if(fecha.getMes()==12){
+        mes=1;
+        anio++;
+    } else mes=fecha.getMes()+1;
+    int diasS=mesCantDias(mes);
+    Empleados empleado;
+    int pos=0;
+    while(empleado.LeerDeDisco(pos++)){
+        if(ValidarActivo(empleado.getleg())){
+            Calendario calendario;
+            int dias=mesCantDias(fecha.getMes());
+            int hora=0,minuto=0;
+            for(dias;dias>=1;dias--){
+                int posicion=0;
+                while(calendario.leerDeDisco(posicion++)){
+                    if(calendario.getFecha().getAnio()==fecha.getAnio()
+                       &&calendario.getFecha().getMes()==fecha.getMes()
+                       &&calendario.getFecha().getDia()==dias
+                       &&calendario.getLegajo().getleg()==empleado.getleg()){
+                        hora=calendario.getHoraEntrada().getHora();
+                        minuto=calendario.getHoraEntrada().getMinuto();
+                        dias=-1;
+                    }
+                }
+            }
+            if(dias==-1){
+              for(int dia=1;dia<=diasS;dia++){
+                FechaHora fSalida(dia,mes,anio,hora+empleado.getcargaHoraria(),minuto);
+                FechaHora fec(dia,mes,anio,hora,minuto); Calendario calen(fec,empleado,fec,fSalida);
+                calen.guardarEnDisco();
+                }
+            }
+
+        }
+    }
+    cout<<"PROCESO TERMINADO CORRECTAMENTE...!"<<endl<<system("pause");
 }

@@ -102,9 +102,11 @@ void cargarCalendario(){
     }
     cout<<"COLOQUE EL HORARIO DEL EMPLEADO"<<endl;
     cout<<"HORA: ";cin>>hora; cout<<endl<<"MINUTO: ";cin>>minuto;
-    cout<<endl<<"COLOQUE EL DIA (1-domingo, 2-lunes, 3-martes, 4-miercoles, 5-jueves, 6-viernes o 7-sabado) FRANCO/DESCANSO DEL EMPLEADO: ";
+    cout<<endl<<"COLOQUE EL DIA DE LA SEMANA DEL DIA FRANCO/LIBRE DEL EMPLEADO ELIGIENDO UN NUMERO"<<endl;
+    cout<<"0-(Domingo), 1-(Lunes), 2-(Martes), 3-(Miercoles), 4-(Jueves), 5-(Viernes), 6-(Sabado)"<<endl;
     int franco=0;
-    cin>>franco;
+    int fechaFranco;
+    cout<<"ESCRIBA EL NUMERO SELECCIONADO: ";cin>>franco;
     Calendario check;
     int pos=0;
     while(check.leerDeDisco(pos++)){
@@ -128,12 +130,19 @@ void cargarCalendario(){
     int tam=mesCantDias(mes);
     for(dia;dia<=tam;dia++){
         empleado.LeerDeDisco(legajo);
-        FechaHora fSalida(dia,mes,anio,hora+empleado.getcargaHoraria(),minuto);
-        FechaHora fec(dia,mes,anio,hora,minuto); Calendario calendario(fec,empleado,fec,fSalida);
-        calendario.guardarEnDisco();
-        cout<<"HORARIO DE EMPLEADO CARGADO CON EXITO...!"<<endl;
-        cout<<"SE GUARDO EL HORARIO DEL RESTO DEL MES.!"<<endl<<system("pause");
+        if(diaSemana(dia,mes,anio)=!franco){
+            FechaHora fSalida(dia,mes,anio,hora+empleado.getcargaHoraria(),minuto);
+            FechaHora fec(dia,mes,anio,hora,minuto);
+        }
+        else{
+            FechaHora fSalida(dia,mes,anio,-1,minuto);
+            FechaHora fec(dia,mes,anio,-1,minuto);
+        }
+         Calendario calendario(fec,empleado,fec,fSalida);
+         calendario.guardarEnDisco();
     }
+    cout<<"HORARIO DE EMPLEADO CARGADO CON EXITO...!"<<endl;
+    cout<<"SE GUARDO EL HORARIO DEL RESTO DEL MES.!"<<endl<<system("pause");
 }
 
 void actualizarCalendario(){
@@ -168,12 +177,18 @@ void actualizarCalendario(){
             }
             if(dias==-1){
               for(int dia=1;dia<=diasS;dia++){
-                FechaHora fSalida(dia,mes,anio,hora+empleado.getcargaHoraria(),minuto);
-                FechaHora fec(dia,mes,anio,hora,minuto); Calendario calen(fec,empleado,fec,fSalida);
+                if(diaSemana(dia,mes,anio)=!franco){
+                    FechaHora fSalida(dia,mes,anio,hora+empleado.getcargaHoraria(),minuto);
+                    FechaHora fec(dia,mes,anio,hora,minuto);
+                }
+                else{
+                    FechaHora fSalida(dia,mes,anio,-1,minuto);
+                    FechaHora fec(dia,mes,anio,-1,minuto);
+                }
+                Calendario calen(fec,empleado,fec,fSalida);
                 calen.guardarEnDisco();
                 }
             }
-
         }
     }
     cout<<"PROCESO TERMINADO CORRECTAMENTE...!"<<endl<<system("pause");

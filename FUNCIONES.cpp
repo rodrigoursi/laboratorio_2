@@ -290,7 +290,7 @@ void Listados(){
                 cin >> confirmarSalida;
                 if (tolower(confirmarSalida) == 's'){
                     system("cls");
-                    MenuAdministrador();
+                    //MenuAdministrador();
                 }
             break;
         default : rlutil::locate(41,21);

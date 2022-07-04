@@ -8,13 +8,13 @@
 
 #include <iostream>
 
-Calendario::Calendario(FechaHora fecha, Empleados legajo, FechaHora horaEnt, FechaHora horaSalida)
-{
+Calendario::Calendario(FechaHora fecha, Empleados legajo, FechaHora horaEnt, FechaHora horaSalida){
     _fecha=fecha;
     _legajo=legajo;
     _horaEntrada=horaEnt;
     _horaSalida=horaSalida;
 }
+
 /// ///GET///
 
     FechaHora Calendario::getFecha(){return _fecha;}
@@ -63,7 +63,7 @@ bool Calendario::leerDeDisco(int pos){
     return ok;
 }
 
-int Calendario::contarRegistros(){
+int  Calendario::contarRegistros(){
     FILE *p = fopen("datos/calendario.dat", "rb");
     if (p == NULL){
         return 0;
@@ -177,4 +177,44 @@ void actualizarCalendario(){
         }
     }
     cout<<"PROCESO TERMINADO CORRECTAMENTE...!"<<endl<<system("pause");
+}
+
+void CalendarioDeHorarios(){
+    char opcion;
+    Empleados obj;
+    char confirmarSalida;
+    while(true){
+        rlutil::setColor(rlutil::WHITE);
+        rlutil::setBackgroundColor(rlutil::DARKGREY);
+        rlutil::cls();
+        cout << "\t\t\t\t\t  *** MENU ADMINISTRADOR ***" << endl << endl;
+        cout << "\t\t\t\t*******************************************" << endl << endl;
+        cout << "\t\t\t\t\t1 - CARGAR NUEVO HORARIO. " << endl << endl;
+        cout << "\t\t\t\t\t2 - EDITAR HORARIO. " << endl << endl;
+        cout << "\t\t\t\t\t3 - ACTUALIZAR HORARIO. " << endl << endl;
+        cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
+        cout << "\t\t\t\t*******************************************" << endl << endl;
+        cout << "\t\t\t\t\tSELECCIONE OPCION: ";
+        cin  >> opcion;
+        rlutil::locate(60,15);
+        if(opcion >= 0 && opcion < 4){
+            system("cls");
+        }
+        switch(opcion){
+            case '1': // CARGAR NUEVO HORARIO
+                break;
+            case '2': // EDITAR HORA    RIO
+                break;
+            case '3': // ACTUALIZAR HORARIO
+                break;
+            case '0' : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
+                    cin >> confirmarSalida;
+                    if (tolower(confirmarSalida) == 's'){
+                        system("pause > nul");
+                        system("cls");
+                        MenuAdministrador();
+                    }
+                break;
+        }
+    }
 }

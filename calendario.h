@@ -42,5 +42,6 @@ public:
 
 void cargarCalendario();
 void actualizarCalendario();
+void CalendarioDeHorarios();
 
 #endif // CALENDARIO_H_INCLUDED

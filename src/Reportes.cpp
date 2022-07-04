@@ -24,7 +24,7 @@ void Reportes(){
         rlutil::locate(60,11);
         cin  >> opcion;
 
-        if(opcion >= 0 && opcion < 2){
+        if(opcion >= 1 && opcion < 2){
             system("cls");
         }
         switch(opcion){
@@ -33,6 +33,8 @@ void Reportes(){
             case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                 cin >> confirmarSalida;
                 if (tolower(confirmarSalida) == 's'){
+                    system("pause > nul");
+                    system("cls");
                     MenuAdministrador();
                 }
                 break;

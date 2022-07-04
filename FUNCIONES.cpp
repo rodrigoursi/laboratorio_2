@@ -9,6 +9,7 @@ using namespace std;
 #include "Empleados.h"
 #include "jornada.h"
 #include "fecha.h"
+#include "calendario.h"
 
 int mesCantDias(int mes){
 
@@ -64,14 +65,15 @@ void MenuAdministrador(){
         cout << "\t\t\t\t\t2 - EDITAR EMPLEADO. " << endl << endl;
         cout << "\t\t\t\t\t3 - ELIMINAR EMPLEADO. " << endl << endl;
         cout << "\t\t\t\t\t4 - RESET PIN. " << endl << endl;
-        cout << "\t\t\t\t\t5 - REPORTES. " << endl << endl;
-        cout << "\t\t\t\t\t6 - LISTADOS. " << endl << endl;
+        cout << "\t\t\t\t\t5 - CALENDARIO EMPLEADO. " << endl << endl;
+        cout << "\t\t\t\t\t6 - REPORTES. " << endl << endl;
+        cout << "\t\t\t\t\t7 - LISTADOS. " << endl << endl;
         cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
         cout << "\t\t\t\t*******************************************" << endl << endl;
         cout << "\t\t\t\t\tSELECCIONE OPCION: ";
         cin  >> opcion;
-        rlutil::locate(60,21);
-        if(opcion >= 1 && opcion < 6){
+        rlutil::locate(60,23);
+        if(opcion >= 1 && opcion < 7){
             system("cls");
         }
         switch(opcion){
@@ -83,9 +85,11 @@ void MenuAdministrador(){
                 break;
             case 4: //RESET PIN();
                 break;
-            case 5: Reportes();
+            case 5: CalendarioDeHorarios();
                 break;
-            case 6: Listados();
+            case 6: Reportes();
+                break;
+            case 7: Listados();
                 break;
             case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                     cin >> confirmarSalida;
@@ -268,7 +272,7 @@ void Listados(){
     cout << "\t\t\t\t\tSELECCIONE OPCION: ";
     cin  >> opcion;
     rlutil::locate(60,17);
-    if(opcion >= 0 && opcion < 6){
+    if(opcion >= 1 && opcion < 6){
         system("cls");
     }
     switch(opcion){
@@ -285,6 +289,7 @@ void Listados(){
         case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                 cin >> confirmarSalida;
                 if (tolower(confirmarSalida) == 's'){
+                    system("cls");
                     MenuAdministrador();
                 }
             break;
@@ -464,14 +469,18 @@ bool ValidarHoraMinutos(int hora, int minutos){
     return true;
 }
 
-bool ValidarActivo(int activo){
+bool ValidarActivo(int legajo){
 
-    if ( activo < 0 || activo > 1){
-        cout << endl << "\t\t\t\t\tMINUTOS INVALIDOS." << endl << endl;
-        cout << endl << "\t\t\t\t" << system ("pause");
-        return false;
+    Empleados obj;
+    int pos = 0;
+    while (obj.LeerDeDisco(pos++)){
+        if ( obj.getleg() == legajo){
+            if(obj.getEliminado()){
+                return true;
+            }
+        }
     }
-    return true;
+    return false;
 }
 
 

@@ -16,6 +16,6 @@ void Cerrar_Programa();//
 bool ValidarLegajoExistente(int legajo);
 bool ValidarDiaMes(int dia, int mes);
 bool ValidarHoraMinutos(int hora, int minutos);
-bool ValidarActivo(int);
+bool ValidarActivo(int legajo);
 
 #endif // FUNCIONES_H_INCLUDED

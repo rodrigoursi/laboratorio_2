@@ -288,9 +288,45 @@ bool EliminarEmpleado(){
 }
 
 void mostrarEmpleado(){
-
-/// HAY Q TRABAJAR ESTA FUNCION AUN
-
+int pos, legajo;
+Empleados obj;
+cout << "\t\t\t   ---------------------------------------------------" << endl;
+cout<<"\t\t\t    Cual es el legajo del empleado que buscas? -> ";
+cin>>legajo;
+cout << "\t\t\t   ---------------------------------------------------" << endl;
+pos=buscarEmpleado(legajo);
+obj.LeerDeDisco(pos);
+        cout << endl;
+        cout << "\t\t\t\t-------------- Empleado " << legajo << " --------------" << endl;
+        cout << "\t\t\t\t------------------------------------------" << endl;
+        cout << "\t\t\t\t" << "LEGAJO          : " << obj.getleg() << endl ;
+        cout << "\t\t\t\t" << "NOMBRE          : " << obj.getnombre() << endl;
+        cout << "\t\t\t\t" << "APELLIDO        : " << obj.getapellido() << endl;
+        cout << "\t\t\t\t" << "DNI             : " << obj.getdni() << endl;
+        cout << "\t\t\t\t" << "DOMICILIO       : " << obj.getdomicilio() << endl;
+        cout << "\t\t\t\t" << "LOCALIDAD       : " << obj.getlocalidad() << endl;
+        cout << "\t\t\t\t" << "PROVINCIA       : " << obj.getprovincia() << endl;
+        cout << "\t\t\t\t" << "PAIS            : " << obj.getpais() << endl;
+        cout << "\t\t\t\t" << "FECHA NACIMIENTO: " << obj.getFnacimiento().getDia() << "/" << obj.getFnacimiento().getMes() << "/" << obj.getFnacimiento().getAnio() <<endl;
+        cout << "\t\t\t\t" << "GENERO          : " << obj.getgenero() << endl;
+        cout << "\t\t\t\t" << "CARGA HORARIA   : " << obj.getcargaHoraria() << endl;
+        cout << "\t\t\t\t" << "ROL             : ";
+        if(obj.getRol() == true){
+            cout << "Administrador." << endl;
+        }
+        else{
+            cout << "Empleado." << endl;
+        }
+        cout << "\t\t\t\t" << "EMPLEADO ACTIVO : ";
+        if(obj.getEliminado() == true){
+            cout << "Si." << endl;
+        }
+        else{
+            cout << "No." << endl;
+        }
+        cout << "\t\t\t\t------------------------------------------" << endl;
+system("pause");
+system("cls");
 }
 
 void mostrarJorEmpXMes(){

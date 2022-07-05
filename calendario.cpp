@@ -77,7 +77,7 @@ int  Calendario::contarRegistros(){
     cant_reg = bytes / sizeof(Calendario);
     return cant_reg;
 }
-
+/*
 void cargarCalendario(){
 
     FechaHora fechaMes;
@@ -144,7 +144,8 @@ void cargarCalendario(){
     cout<<"HORARIO DE EMPLEADO CARGADO CON EXITO...!"<<endl;
     cout<<"SE GUARDO EL HORARIO DEL RESTO DEL MES.!"<<endl<<system("pause");
 }
-
+*/
+/*
 void actualizarCalendario(){
 
     FechaHora fecha;
@@ -193,7 +194,7 @@ void actualizarCalendario(){
     }
     cout<<"PROCESO TERMINADO CORRECTAMENTE...!"<<endl<<system("pause");
 }
-
+*/
 void CalendarioDeHorarios(){
     char opcion;
     Empleados obj;

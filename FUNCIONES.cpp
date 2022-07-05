@@ -453,7 +453,7 @@ bool ValidarDiaMes(int dia, int mes){
     }
     return true;
 }
-
+/*
 bool ValidarHoraMinutos(int hora, int minutos){
 
     if ( minutos <= 0 || minutos > 59){
@@ -468,7 +468,7 @@ bool ValidarHoraMinutos(int hora, int minutos){
     }
     return true;
 }
-
+*/
 bool ValidarActivo(int legajo){
 
     Empleados obj;

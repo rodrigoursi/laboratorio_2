@@ -44,6 +44,8 @@
 		<Unit filename="calendario.h" />
 		<Unit filename="fecha.cpp" />
 		<Unit filename="fecha.h" />
+		<Unit filename="franco.cpp" />
+		<Unit filename="franco.h" />
 		<Unit filename="include/Reportes.h" />
 		<Unit filename="jornada.cpp" />
 		<Unit filename="jornada.h" />

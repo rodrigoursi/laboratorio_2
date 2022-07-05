@@ -77,7 +77,7 @@ int  Calendario::contarRegistros(){
     cant_reg = bytes / sizeof(Calendario);
     return cant_reg;
 }
-/*
+
 void cargarCalendario(){
 
     FechaHora fechaMes;
@@ -129,14 +129,15 @@ void cargarCalendario(){
     }
     int tam=mesCantDias(mes);
     for(dia;dia<=tam;dia++){
+        FechaHora fSalida, fec;
         empleado.LeerDeDisco(legajo);
-        if(diaSemana(dia,mes,anio)=!franco){
-            FechaHora fSalida(dia,mes,anio,hora+empleado.getcargaHoraria(),minuto);
-            FechaHora fec(dia,mes,anio,hora,minuto);
+        if(diaSemana(dia,mes,anio)!=franco){
+            fSalida.setHora(hora+empleado.getcargaHoraria()); fSalida.setMinuto(minuto);
+            fec.setDia(dia); fec.setMes(mes); fec.setAnio(anio); fec.setHora(hora);fec.setMinuto(minuto);
         }
         else{
-            FechaHora fSalida(dia,mes,anio,-1,minuto);
-            FechaHora fec(dia,mes,anio,-1,minuto);
+            fSalida.setHora(-1);
+            fec.setDia(dia); fec.setMes(mes); fec.setAnio(anio); fec.setHora(-1);
         }
          Calendario calendario(fec,empleado,fec,fSalida);
          calendario.guardarEnDisco();
@@ -144,9 +145,8 @@ void cargarCalendario(){
     cout<<"HORARIO DE EMPLEADO CARGADO CON EXITO...!"<<endl;
     cout<<"SE GUARDO EL HORARIO DEL RESTO DEL MES.!"<<endl<<system("pause");
 }
-*/
-/*
-void actualizarCalendario(){
+
+/*void actualizarCalendario(){
 
     FechaHora fecha;
     int anio=fecha.getAnio();
@@ -193,8 +193,8 @@ void actualizarCalendario(){
         }
     }
     cout<<"PROCESO TERMINADO CORRECTAMENTE...!"<<endl<<system("pause");
-}
-*/
+}*/
+
 void CalendarioDeHorarios(){
     char opcion;
     Empleados obj;

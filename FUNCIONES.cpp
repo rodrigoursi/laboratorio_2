@@ -453,7 +453,7 @@ bool ValidarDiaMes(int dia, int mes){
     }
     return true;
 }
-/*
+
 bool ValidarHoraMinutos(int hora, int minutos){
 
     if ( minutos <= 0 || minutos > 59){
@@ -468,7 +468,7 @@ bool ValidarHoraMinutos(int hora, int minutos){
     }
     return true;
 }
-*/
+
 bool ValidarActivo(int legajo){
 
     Empleados obj;
@@ -483,6 +483,14 @@ bool ValidarActivo(int legajo){
     return false;
 }
 
+int diaSemana(int dia,int mes,int anio){
+    int d    = dia   ; //Day     1-31
+    int m    = mes    ; //Month   1-12`
+    int y    = anio ; //Year    2013`
+
+    int weekday  = (d += m < 3 ? y-- : y - 2, 23*m/9 + d + 4 + y/4- y/100 + y/400)%7;
+    return weekday;
+}
 
 
 

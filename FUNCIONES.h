@@ -17,5 +17,6 @@ bool ValidarLegajoExistente(int legajo);
 bool ValidarDiaMes(int dia, int mes);
 bool ValidarHoraMinutos(int hora, int minutos);
 bool ValidarActivo(int legajo);
+int diaSemana(int,int,int);
 
 #endif // FUNCIONES_H_INCLUDED

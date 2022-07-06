@@ -32,4 +32,6 @@ public:
     bool leerDeDisco(int pos);
 };
 
+int buscarRegistro(int legajo);
+
 #endif // FRANCO_H_INCLUDED

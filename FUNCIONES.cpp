@@ -240,12 +240,7 @@ bool pedirContrasenia(){
             system("pause > nul");
             system("cls");
             return true;
-        } /*else {
-            cout << endl << "\t\t\t\t\tUSUARIO INVALIDO!!!" << endl << endl<<"\t\t\t\t\tPresione una tecla";
-            system("pause > nul");
-            system("cls");
-            return false;
-        }*/
+        }
     }
         cout << endl << "\t\t\t\t\tUSUARIO INVALIDO!!!" << endl << endl<<"\t\t\t\t\tPresione una tecla";
         system("pause > nul");
@@ -290,7 +285,7 @@ void Listados(){
                 cin >> confirmarSalida;
                 if (tolower(confirmarSalida) == 's'){
                     system("cls");
-                    //MenuAdministrador();
+
                 }
             break;
         default : rlutil::locate(41,21);
@@ -316,8 +311,6 @@ void guardarFichada(int legajo){
     bool salir=0;
     for(int pos=0;pos<aux.contarRegistros();pos++){
         aux.leerDeDisco(pos);
-        //cout<<pos<<endl;
-        //system("pause");
         if(hora.getAnio()==aux.getFecha().getAnio()&&
            hora.getMes()==aux.getFecha().getMes()&&
            hora.getDia()==aux.getFecha().getDia()&&

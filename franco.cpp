@@ -55,3 +55,14 @@ bool Franco::leerDeDisco(int pos){
     return ok;
 }
 
+int buscarRegistro(int legajo){
+    Franco aux;
+    int pos=0;
+    while(aux.leerDeDisco(pos++)){
+        if(aux.getLegajo().getleg()==legajo){
+            return pos-1;
+        }
+    }
+    return -1;
+}
+

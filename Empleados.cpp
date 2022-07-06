@@ -6,6 +6,7 @@ using namespace std;
 #include "jornada.h"
 #include "FUNCIONES.h"
 #include "rlutil.h"
+#include "calendario.h"
 
 
 ///CONSTRUCTOR
@@ -331,10 +332,49 @@ system("cls");
 
 void mostrarJorEmpXMes(){
 /// HAY Q TRABAJAR ESTA FUNCION AUN
-Jornada jornada;
-cout<<endl<<jornada.contarRegistros();
-system("pause");
-
+    int mes, anio,legajo;
+    cout<<"COLOQUE EL LEGAJO DEL EMPLEADO QUE DESEA VER EL LISTADO...!"<<endl;
+    cout<<"Legajo: ";cin>>legajo;
+    if(buscarEmpleado(legajo)==-1){
+        cout<<"Legajo inexistente...!"<<endl;
+        system("pause");
+        return;
+    }
+    cout<<"INDIQUE EL PERIODO QUE DESEA VER (MES Y AÑO)"<<endl;
+    cout<<"MES: ";cin>>mes;cout<<endl<<"AÑO: ";cin>>anio;
+    if(mes>12||mes<1||anio<1900){
+        cout<<"Fecha invalida...!"<<endl;
+        system("pause");
+        return;
+    }
+    Jornada jornada;
+    Calendario calendario;
+    int pos=0;
+    system("cls");
+    cout<<"LEGAJO "<<legajo<<"\t\t\t\t\t\tPERIODO "<<mes<<"-"<<anio<<endl;
+    while(jornada.leerDeDisco(pos++)){
+        if(anio==jornada.getFecha().getAnio()
+           &&mes==jornada.getFecha().getMes()){
+            int teoHora=0, teoMin=0, p=0;
+            while(calendario.leerDeDisco(p++)){
+                if(jornada.getFecha().getAnio()==calendario.getFecha().getAnio()
+                   &&jornada.getFecha().getMes()==calendario.getFecha().getMes()
+                   &&jornada.getFecha().getDia()==calendario.getFecha().getDia()
+                   &&jornada.getLegajo().getleg()==calendario.getLegajo().getleg()){
+                    teoHora=calendario.getHoraEntrada().getHora();
+                    teoMin=calendario.getHoraEntrada().getMinuto();
+                   }
+            }
+            cout<<endl<<"----------------------------------------------"<<endl;
+            cout<<"FECHA"<<"||"<<"HORA TEORICA"<<"||"<<"HORA ENTRADA"<<"||"<<"HORA SALIDA"<<"||"<<"ESTADO"<<endl;
+            cout<<jornada.getFecha().getDia()<<"   ||"<<"    "<<teoHora<<":"<<teoMin<<"   ||"<<"    "<<jornada.getHoraEntrada().getHora()<<
+            ":"<<jornada.getHoraEntrada().getMinuto()<<"    ||"<<"    "<<jornada.getHoraSalida().getHora()<<
+            ":"<<jornada.getHoraSalida().getMinuto()<<"   ||"<<jornada.getEstado()<<endl<<
+            "----------------------------------------------"<<endl;
+           }
+    }
+    cout<<endl;
+    system("pause");
 }
 
 void mostrarJorXFec(){

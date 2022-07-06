@@ -5,6 +5,7 @@
 #include "FUNCIONES.h"
 #include "rlutil.h"
 #include "fecha.h"
+#include "franco.h"
 
 #include <iostream>
 
@@ -85,8 +86,10 @@ void cargarCalendario(){
     int legajo, hora=0, minuto=0, dia,mes,anio;
     cout<<"COLOQUE EL LEGAJO DEL EMPLEADO Q DESEA CARGAR EL CALENDARIO DE TRABAJO...!"<<endl;
     cout<<"Legajo: ";cin>>legajo;
-    if(ValidarLegajoExistente(legajo)==false){
-        MenuAdministrador();
+    if(buscarEmpleado(legajo)==-1){
+        cout<<endl<<"LEGAJO NO ENCONTRADO.!"<<endl;
+        system("pause");
+        return;
     }
     cout<<endl<<"COLOQUE LA FECHA DE INICIO DE LA CARGA DE HORARIO DEL EMPLEADO...!"<<endl;
     cout<<"DIA: ";cin>>dia;cout<<endl<<"MES: ";cin>>mes;
@@ -104,12 +107,18 @@ void cargarCalendario(){
     }
     cout<<"COLOQUE EL HORARIO DEL EMPLEADO"<<endl;
     cout<<"HORA: ";cin>>hora; cout<<endl<<"MINUTO: ";cin>>minuto;
-    //validar hora minutos?
+    if(!ValidarHoraMinutos(hora,minuto)){
+        MenuAdministrador();
+    }
     cout<<endl<<"COLOQUE EL DIA DE LA SEMANA DEL DIA FRANCO/LIBRE DEL EMPLEADO ELIGIENDO UN NUMERO"<<endl;
     cout<<"0-(Domingo), 1-(Lunes), 2-(Martes), 3-(Miercoles), 4-(Jueves), 5-(Viernes), 6-(Sabado)"<<endl;
     int franco=0;
-    int fechaFranco;
     cout<<"ESCRIBA EL NUMERO SELECCIONADO: ";cin>>franco;
+    if(franco<0||franco>6){
+        franco=0;
+        cout<<"COLOCO UN NUMERO ERRONEO, POR LO TANTO SE LE OTORGO FRANCO DOMINGO POR DEFAULT AL EMPLEADO";
+        system("nul");
+    }
     Calendario check;
     int pos=0;
     while(check.leerDeDisco(pos++)){
@@ -144,12 +153,20 @@ void cargarCalendario(){
         }
          Calendario calendario(fec,empleado,fec,fSalida);
          calendario.guardarEnDisco();
+         Franco fechaFranco(empleado,franco);
+         int resulPos= buscarRegistro(legajo);
+         if(resulPos==-1){
+            fechaFranco.guardarEnDisco();
+         } else{
+            fechaFranco.guardarEnDisco(resulPos);
+         }
+
     }
     cout<<"HORARIO DE EMPLEADO CARGADO CON EXITO...!"<<endl;
     cout<<"SE GUARDO EL HORARIO DEL RESTO DEL MES.!"<<endl<<system("pause");
 }
 
-/*void actualizarCalendario(){
+void actualizarCalendario(){
 
     FechaHora fecha;
     int anio=fecha.getAnio();
@@ -180,14 +197,17 @@ void cargarCalendario(){
                 }
             }
             if(dias==-1){
+              Franco franco;
+              franco.leerDeDisco(buscarRegistro(empleado.getleg()));
               for(int dia=1;dia<=diasS;dia++){
-                if(diaSemana(dia,mes,anio)=!franco){
-                    FechaHora fSalida(dia,mes,anio,hora+empleado.getcargaHoraria(),minuto);
-                    FechaHora fec(dia,mes,anio,hora,minuto);
+                FechaHora fSalida,fec;
+                if(diaSemana(dia,mes,anio)!=franco.getLegajo().getleg()){
+                    fSalida.setHora(hora+empleado.getcargaHoraria()); fSalida.setMinuto(minuto);
+                    fec.setDia(dia); fec.setMes(mes); fec.setAnio(anio); fec.setHora(hora);fec.setMinuto(minuto);
                 }
                 else{
-                    FechaHora fSalida(dia,mes,anio,-1,minuto);
-                    FechaHora fec(dia,mes,anio,-1,minuto);
+                    fSalida.setHora(-1);
+                    fec.setDia(dia); fec.setMes(mes); fec.setAnio(anio); fec.setHora(-1);
                 }
                 Calendario calen(fec,empleado,fec,fSalida);
                 calen.guardarEnDisco();
@@ -196,7 +216,7 @@ void cargarCalendario(){
         }
     }
     cout<<"PROCESO TERMINADO CORRECTAMENTE...!"<<endl<<system("pause");
-}*/
+}
 
 void CalendarioDeHorarios(){
     char opcion;
@@ -220,11 +240,11 @@ void CalendarioDeHorarios(){
             system("cls");
         }
         switch(opcion){
-            case '1': // CARGAR NUEVO HORARIO
+            case '1': cargarCalendario();
                 break;
             case '2': // EDITAR HORA    RIO
                 break;
-            case '3': // ACTUALIZAR HORARIO
+            case '3': actualizarCalendario();
                 break;
             case '0' : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                     cin >> confirmarSalida;

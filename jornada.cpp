@@ -103,11 +103,9 @@ void fichar(){
     system ("cls");
     if(validarLoginEmpleado(legajo,PIN)){
         guardarFichada(legajo);
-        /*cout<<"EN CONSTRUCCION"<<endl;
-        system ("pause");*/
-    } else{
-     Leg_pin_incorrecto();
-    }
 
+    } else{
+        Leg_pin_incorrecto();
+    }
 }
 

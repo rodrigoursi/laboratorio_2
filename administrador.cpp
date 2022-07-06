@@ -102,6 +102,11 @@ void CargarEmpleado(){
     cout << "/";
     rlutil::locate(79,13);
     cin  >> anio;
+    if(!ValidarDiaMes(dia,mes)){
+        dia=1;mes=1;
+        cout<<"FECHA INGRESADA INVALIDA. SE COLOCARA UNA POR DEFECTO";
+        system("nul");
+    }
     cout << "\t\t\t\t\t** 1 para Masculino 2 para Femenino"<<endl;
     cout << "\t\t\t\t\t** GENERO       : ";
     cin  >> genNum;
@@ -131,31 +136,6 @@ void CargarEmpleado(){
     MenuAdministrador();
 }
 
-/* 2 - CORREGIR EDITAR EMPLEADO
-bool EditarEmpleado(){
-    int  pin, nroRegistro;
-    bool ok = false;
-    string Nuevo_cargo;
-    string Nuevo_horario;
-    cout << "Legajo: ";
-    cin >> pin;
 
-    nroRegistro = buscar_empleados(pin);
-    if (nroRegistro >= 0){
-        Empleados reg;
-        FechaHora obj;
-        reg.LeerDeDisco(nroRegistro);
-        int Nuevo_horario;
-        char Nuevo_cargo[20];
-        cout << endl;
-        cout << endl << endl;
-        cout << "Nuevo horario: ";
-        cin >> Nuevo_horario;
-        //obj.sethorarioTrabajo(Nuevo_horario);
-        ok = reg.GuardarEnDisco(nroRegistro);
-}
-    return ok;
-}
-*/
 
 

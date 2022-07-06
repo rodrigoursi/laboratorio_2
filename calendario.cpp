@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-Calendario::Calendario(FechaHora fecha, Empleados legajo, FechaHora horaEnt, FechaHora horaSalida){
+    Calendario::Calendario(FechaHora fecha, Empleados legajo, FechaHora horaEnt, FechaHora horaSalida){
     _fecha=fecha;
     _legajo=legajo;
     _horaEntrada=horaEnt;
@@ -90,18 +90,21 @@ void cargarCalendario(){
     }
     cout<<endl<<"COLOQUE LA FECHA DE INICIO DE LA CARGA DE HORARIO DEL EMPLEADO...!"<<endl;
     cout<<"DIA: ";cin>>dia;cout<<endl<<"MES: ";cin>>mes;
-    cout<<endl<<"YEAR: ";cin>>anio;
-    if(anio<fechaMes.getAnio()){
+    if(ValidarDiaMes(dia, mes)){
+        cout<<endl<<"YEAR: ";cin>>anio;
+        if(anio<fechaMes.getAnio()){
+            cout<<"FECHA INVALIDA!";system ("pause");MenuAdministrador();
+        }
+        if(anio==fechaMes.getAnio()&&mes<fechaMes.getMes()){
+            cout<<"FECHA INVALIDA!";system ("pause");MenuAdministrador();
+        }
+        if(anio==fechaMes.getAnio()&&mes==fechaMes.getMes()&&dia<=fechaMes.getDia()){
         cout<<"FECHA INVALIDA!";system ("pause");MenuAdministrador();
-    }
-    if(anio==fechaMes.getAnio()&&mes<fechaMes.getMes()){
-        cout<<"FECHA INVALIDA!";system ("pause");MenuAdministrador();
-    }
-    if(anio==fechaMes.getAnio()&&mes==fechaMes.getMes()&&dia<=fechaMes.getDia()){
-       cout<<"FECHA INVALIDA!";system ("pause");MenuAdministrador();
+        }
     }
     cout<<"COLOQUE EL HORARIO DEL EMPLEADO"<<endl;
     cout<<"HORA: ";cin>>hora; cout<<endl<<"MINUTO: ";cin>>minuto;
+    //validar hora minutos?
     cout<<endl<<"COLOQUE EL DIA DE LA SEMANA DEL DIA FRANCO/LIBRE DEL EMPLEADO ELIGIENDO UN NUMERO"<<endl;
     cout<<"0-(Domingo), 1-(Lunes), 2-(Martes), 3-(Miercoles), 4-(Jueves), 5-(Viernes), 6-(Sabado)"<<endl;
     int franco=0;

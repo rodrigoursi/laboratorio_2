@@ -324,15 +324,15 @@ void guardarFichada(int legajo){
             }
             aux.setHoraTotal(fin);
             aux.guardarEnDisco(pos);
-            cout<<"SALIDA GUARDADA"<<endl;
-            system("pause");
-            cout<<endl<<endl<<aux.getFecha().getDia()<<"/"<<aux.getFecha().getMes()<<"/"<<aux.getFecha().getAnio()<<endl
-            <<"legajo: "<<aux.getLegajo().getleg()<<endl
-            <<"Entrada: "<<aux.getHoraEntrada().getHora()<<":"<<aux.getHoraEntrada().getMinuto()<<endl
-            <<"Salida: "<<aux.getHoraSalida().getHora()<<":"<<aux.getHoraSalida().getMinuto()<<endl
-            <<"Total: "<<aux.getHoraTotal()<<endl
-            <<"Estado: "<<aux.getEstado()<<endl;
-            system("pause");
+            cout<<endl<<"\t\t\t\t\tSALIDA GUARDADA"<<endl<<endl;
+            cout<< "\t\t\t\t\t" << system("pause");
+            cout<<endl<<endl<<"\t\t\t\t\t"<<aux.getFecha().getDia()<<"/"<<aux.getFecha().getMes()<<"/"<<aux.getFecha().getAnio()<<endl
+            <<"\t\t\t\t\tLegajo : "<<aux.getLegajo().getleg()<<endl
+            <<"\t\t\t\t\tEntrada: "<<aux.getHoraEntrada().getHora()<<":"<<aux.getHoraEntrada().getMinuto()<<endl
+            <<"\t\t\t\t\tSalida : "<<aux.getHoraSalida().getHora()<<":"<<aux.getHoraSalida().getMinuto()<<endl
+            <<"\t\t\t\t\tTotal  : "<<aux.getHoraTotal()<<endl
+            <<"\t\t\t\t\tEstado : "<<aux.getEstado()<<endl<<endl;
+            cout << "\t\t\t\t\t" << system("pause");
             salir=1;
            }
     }
@@ -340,16 +340,16 @@ void guardarFichada(int legajo){
         empleado.LeerDeDisco(buscarEmpleado(legajo));
         Jornada jornada(hora,empleado,hora,hora,fin);
         jornada.guardarEnDisco();
-        cout<<"ENTRADA GUARDADA"<<endl;
-        system("pause");
-        cout<<endl<<endl<<jornada.getFecha().getDia()<<"/"<<jornada.getFecha().getMes()<<"/"<<jornada.getFecha().getAnio()<<endl
-        <<"legajo: "<<jornada.getLegajo().getleg()<<endl
-        <<"Entrada: "<<jornada.getHoraEntrada().getHora()<<":"<<jornada.getHoraEntrada().getMinuto()<<endl
-        <<"Salida: "<<jornada.getHoraSalida().getHora()<<":"<<jornada.getHoraSalida().getMinuto()<<endl
-        <<"Total: "<<jornada.getHoraTotal()<<endl
-        <<"Ausente: "<<jornada.getAusente()<<endl
-        <<"Estado: "<<jornada.getEstado()<<endl;
-        system ("pause");
+        cout<<endl<<"\t\t\t\t\tENTRADA GUARDADA"<<endl<<endl;
+        cout<<"\t\t\t\t\t" << system("pause");
+        cout<<endl<<endl<<"\t\t\t\t\t"<<jornada.getFecha().getDia()<<"/"<<jornada.getFecha().getMes()<<"/"<<jornada.getFecha().getAnio()<<endl
+        <<"\t\t\t\t\tLegajo : "<<jornada.getLegajo().getleg()<<endl
+        <<"\t\t\t\t\tEntrada: "<<jornada.getHoraEntrada().getHora()<<":"<<jornada.getHoraEntrada().getMinuto()<<endl
+        <<"\t\t\t\t\tSalida : "<<jornada.getHoraSalida().getHora()<<":"<<jornada.getHoraSalida().getMinuto()<<endl
+        <<"\t\t\t\t\tTotal  : "<<jornada.getHoraTotal()<<endl
+        <<"\t\t\t\t\tAusente: "<<jornada.getAusente()<<endl
+        <<"\t\t\t\t\tEstado : "<<jornada.getEstado()<<endl<<endl;
+        cout << "\t\t\t\t" << system("pause");
     }
 
 }

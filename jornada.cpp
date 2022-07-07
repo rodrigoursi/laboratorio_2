@@ -100,7 +100,6 @@ void fichar(){
     rlutil::setColor(rlutil::DARKGREY);
     cin>>PIN;
     rlutil::setColor(rlutil::WHITE);
-    system ("cls");
     if(validarLoginEmpleado(legajo,PIN)){
         guardarFichada(legajo);
 

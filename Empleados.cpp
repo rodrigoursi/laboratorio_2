@@ -142,7 +142,7 @@ bool editar_empleados(){
     cin  >> legajo;
 
     pos = buscarEmpleado(legajo);
-    system("pause");
+    cout << endl << endl << "\t\t\t\t\t" << system("pause");
     if(pos == -1){
         cout << endl << endl,
         cout << "\t\t\t\t\tNO EXISTE EL LEGAJO INGRESADO." << endl << endl,
@@ -182,64 +182,64 @@ bool editar_empleados(){
     }
     switch(opcion){
         case 1:
-            cout<<"INTRODUCE NOMBRE NUEVO: ";
+            cout<<"\t\t\t\t\tINTRODUCE NOMBRE NUEVO: ";
             cin.ignore();
             getline(cin,cambio);
             reg.setnombre(cambio);
             break;
         case 2:
-            cout<<"INTRODUCE APELLIDO NUEVO: ";
+            cout<<"\t\t\t\t\tINTRODUCE APELLIDO NUEVO: ";
             cin.ignore();
             getline(cin,cambio);
             reg.setapellido(cambio);
             break;
         case 3:
-            cout<<"INTRODUCE DNI NUEVO: ";
+            cout<<"\t\t\t\t\tINTRODUCE DNI NUEVO: ";
             cin>>entero;
             reg.setdni(entero);
             break;
         case 4:
-            cout<<"INTRODUCE DOMICILIO NUEVO: ";
+            cout<<"\t\t\t\t\tINTRODUCE DOMICILIO NUEVO: ";
             cin.ignore();
             getline(cin,cambio);
             reg.setdomicilio(cambio);
             break;
         case 5:
-            cout<<"INTRODUCE LOCALIDAD NUEVA: ";
+            cout<<"\t\t\t\t\tINTRODUCE LOCALIDAD NUEVA: ";
             cin.ignore();
             getline(cin,cambio);
             reg.setlocalidad(cambio);
             break;
         case 6:
-            cout<<"INTRODUCE PROVINCIA NUEVA: ";
+            cout<<"\t\t\t\t\tINTRODUCE PROVINCIA NUEVA: ";
             cin.ignore();
             getline(cin,cambio);
             reg.setprovincia(cambio);
             break;
         case 7:
-            cout<<"INTRODUCE DOMICILIO PAIS: ";
+            cout<<"\t\t\t\t\tINTRODUCE DOMICILIO PAIS: ";
             cin.ignore();
             getline(cin,cambio);
             reg.setpais(cambio);
             break;
         case 8:
-            cout<<"INTRODUCE DIA DE NACIMIENTO NUEVO: ";
+            cout<<"\t\t\t\t\tINTRODUCE DIA DE NACIMIENTO NUEVO: ";
             cin>>dia;
-            cout<<endl<<"INTRODUCE MES DE NACIMIENTO NUEVO: ";
+            cout<<endl<<"\t\t\t\t\tINTRODUCE MES DE NACIMIENTO NUEVO: ";
             cin>>mes;
-            cout<<endl<<"INTRODUCE YEAR DE NACIMIENTO NUEVO: ";
+            cout<<endl<<"\t\t\t\t\tINTRODUCE YEAR DE NACIMIENTO NUEVO: ";
             cin>>anio;
             fnac.setAnio(anio);fnac.setMes(mes);fnac.setDia(dia);
             reg.setFnacimiento(fnac);
             break;
         case 9:
-            cout<<"INTRODUCE GENERO NUEVO: ";
+            cout<<"\t\t\t\t\tINTRODUCE GENERO NUEVO: ";
             cin.ignore();
             getline(cin,cambio);
             reg.setgenero(cambio);
             break;
         case 10:
-            cout<<"INTRODUCE CARGA HORARIA NUEVA: ";
+            cout<<"\t\t\t\t\tINTRODUCE CARGA HORARIA NUEVA: ";
             cin>>entero;
             reg.setcargaHoraria(entero);
             break;
@@ -257,7 +257,8 @@ bool editar_empleados(){
         default:
             MenuAdministrador();
     }
-    reg.GuardarEnDisco(pos);cout<<"CAMBIO REALIZADO CON EXITO...!"<<endl; system("pause");
+    reg.GuardarEnDisco(pos);cout<<endl<<"\t\t\t\t\tCAMBIO REALIZADO CON EXITO...!"<<endl;
+    cout<<endl<<endl<<"\t\t\t\t\t"<<system("pause");
 }
 
 bool EliminarEmpleado(){
@@ -265,13 +266,13 @@ bool EliminarEmpleado(){
     Empleados reg;
     int legajo, pos;
 
-    cout << "\t\t\t\t\t\t***ELIMINAR EMPLEADO***" << endl << endl;
+    cout << "\t\t\t\t\t***ELIMINAR EMPLEADO***" << endl << endl;
     cout << "\t\t\t\t*******************************************" << endl << endl;
     cout << "\t\t\t\t\tINGRESE LEGAJO: ";
     cin  >> legajo;
 
     pos = buscarEmpleado(legajo);
-    system("pause");
+    cout << endl << "\t\t\t\t\t" << system("pause");
     if(pos == -1){
         cout << endl << endl,
         cout << "\t\t\t\t\tNO EXISTE EL LEGAJO INGRESADO." << endl << endl,
@@ -282,7 +283,7 @@ bool EliminarEmpleado(){
     reg.LeerDeDisco(pos);
     reg.setEliminado(false);
     reg.GuardarEnDisco(pos);
-    cout << "\t\t\t\t\tEMPLEADO DADO DE BAJA." << endl << endl,
+    cout << endl << "\t\t\t\t\tEMPLEADO DADO DE BAJA." << endl << endl,
     cout << "\t\t\t\t\t" << system("pause");
     system("cls");
     return true;

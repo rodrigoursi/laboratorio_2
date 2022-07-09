@@ -262,6 +262,7 @@ void Listados(){
     cout << "\t\t\t\t\t3 - LISTAR FICHA EMPLEADO. " << endl << endl;
     cout << "\t\t\t\t\t4 - LISTAR JORNADA EMPLEADO POR MES. " << endl << endl;
     cout << "\t\t\t\t\t5 - LISTAR JORNADA POR FECHA TODOS LOS EMPLEADOS. " << endl << endl;
+    cout << "\t\t\t\t\t6 - LISTAR HORARIO EMPLEADO POR MES. " << endl << endl;
     cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
     cout << "\t\t\t\t*******************************************" << endl << endl;
     cout << "\t\t\t\t\tSELECCIONE OPCION: ";
@@ -280,6 +281,8 @@ void Listados(){
         case 4: mostrarJorEmpXMes();
             break;
         case 5: mostrarJorXFec();
+            break;
+        case 6: mostrarHorarioXMes();
             break;
         case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                 cin >> confirmarSalida;
@@ -449,7 +452,7 @@ bool ValidarDiaMes(int dia, int mes){
 
 bool ValidarHoraMinutos(int hora, int minutos){
 
-    if ( minutos <= 0 || minutos > 59){
+    if ( minutos < 0 || minutos > 59){
         cout << endl << "\t\t\t\t\tMINUTOS INVALIDOS." << endl << endl;
         cout << endl << "\t\t\t\t" << system ("pause");
         return false;

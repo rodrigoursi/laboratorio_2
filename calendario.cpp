@@ -96,19 +96,19 @@ void cargarCalendario(){
     if(ValidarDiaMes(dia, mes)){
         cout<<endl<<"YEAR: ";cin>>anio;
         if(anio<fechaMes.getAnio()){
-            cout<<"FECHA INVALIDA!";system ("pause");MenuAdministrador();
+            cout<<"FECHA INVALIDA!"<<endl;system ("pause");return;
         }
         if(anio==fechaMes.getAnio()&&mes<fechaMes.getMes()){
-            cout<<"FECHA INVALIDA!";system ("pause");MenuAdministrador();
+            cout<<"FECHA INVALIDA!"<<endl;system ("pause");return;
         }
         if(anio==fechaMes.getAnio()&&mes==fechaMes.getMes()&&dia<=fechaMes.getDia()){
-        cout<<"FECHA INVALIDA!";system ("pause");MenuAdministrador();
+        cout<<"FECHA INVALIDA!"<<endl;system ("pause");return;
         }
     }
     cout<<"COLOQUE EL HORARIO DEL EMPLEADO"<<endl;
     cout<<"HORA: ";cin>>hora; cout<<endl<<"MINUTO: ";cin>>minuto;
     if(!ValidarHoraMinutos(hora,minuto)){
-        MenuAdministrador();
+        return;
     }
     cout<<endl<<"COLOQUE EL DIA DE LA SEMANA DEL DIA FRANCO/LIBRE DEL EMPLEADO ELIGIENDO UN NUMERO"<<endl;
     cout<<"0-(Domingo), 1-(Lunes), 2-(Martes), 3-(Miercoles), 4-(Jueves), 5-(Viernes), 6-(Sabado)"<<endl;
@@ -218,6 +218,80 @@ void actualizarCalendario(){
     cout<<"PROCESO TERMINADO CORRECTAMENTE...!"<<endl<<system("pause");
 }
 
+void editarCalendario(){
+
+    int legajo=0,dia=0,mes=0,anio=0, pos=0;
+    system("cls");
+    cout << "\t\t\t\t\t\t***EDITAR CALENDARIO EMPLEADO***" << endl << endl;
+    cout << "\t\t\t\t*******************************************" << endl << endl;
+    cout << "\t\t\t\t\tINGRESE LEGAJO: ";
+    cin  >> legajo;
+    cout<<endl<<endl<< "\t\t\t\t\tINGRESE FECHA QUE DESEA EDITAR EL HORARIO"<<endl;
+    cout<<"\t\t\t\t\tPRIMERO INGRESE ANIO: ";cin>>anio;
+    cout<<"\t\t\t\t\tAHORA INGRESE MES: ";cin>>mes;
+    cout<<"\t\t\t\t\tY POR ULTIMO INGRESE DIA: ";cin>>dia;
+    cout << endl << endl << "\t\t\t\t\t";
+    if(buscarEmpleado(legajo) == -1){
+        cout << endl << endl,
+        cout << "\t\t\t\t\tNO EXISTE EL LEGAJO INGRESADO." << endl << endl,
+        cout << "\t\t\t\t\t" << system("pause");
+        system("cls");
+        return;
+    }
+    Calendario calendario;
+    FechaHora Hora;
+    int posicion=-1;
+    int hora=0, minutos=0;
+    while(calendario.leerDeDisco(pos++)){
+        if(anio==calendario.getFecha().getAnio()
+           &&mes==calendario.getFecha().getMes()
+           &&dia==calendario.getFecha().getDia()
+           &&legajo==calendario.getLegajo().getleg()){
+            rlutil::setColor(rlutil::WHITE);
+            rlutil::setBackgroundColor(rlutil::DARKGREY);
+            rlutil::cls();
+            cout << "\t\t\t\t\t  *** MENU EDITAR CALENDARIO EMPLEADO "<<legajo<<" ***" << endl << endl;
+            cout << "\t\t\t\t*******************************************" << endl << endl;
+            cout << "\t\t\t\t\t1  - HORA ENTRADA. " << endl << endl;
+            cout << "\t\t\t\t\t2  - HORA SALIDA. " << endl << endl;
+            cout << "\t\t\t\t\t0  - VOLVER. " << endl << endl;
+            cout << "\t\t\t\t*******************************************" << endl << endl;
+            cout << "\t\t\t\t\tSELECCIONE OPCION: ";
+            char opcion, confirmarSalida;
+            cin  >> opcion;
+
+            switch(opcion){
+                case '1':
+                    cout<<"\t\t\t\t\tINTRODUCE NUEVO HORARIO: ";
+                    cout<<endl<<"HORA-> ";cin>>hora;
+                    cout<<endl<<"MINUTOS-> ";cin>>minutos;
+                    Hora.setHora(hora);Hora.setMinuto(minutos);
+                    calendario.setHoraEntrada(Hora);
+                break;
+                case '2':
+                    cout<<"\t\t\t\t\tINTRODUCE NUEVO HORARIO: ";
+                    cout<<endl<<"HORA-> ";cin>>hora;
+                    cout<<endl<<"MINUTOS-> ";cin>>minutos;
+                    Hora.setHora(hora);Hora.setMinuto(minutos);
+                    calendario.setHoraSalida(Hora);
+                break;
+                default : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
+                cin >> confirmarSalida;
+                if (tolower(confirmarSalida) == 's'){
+                    return;
+                }
+           }
+           pos--;
+           calendario.guardarEnDisco(pos);
+           cout<<endl<<"PROCESO GUARDADO CORRECTAMENTE...!"<<endl;
+           system("pause");
+           return;
+        }
+    }
+    cout<<endl<<"NO SE ENCONTRO HORARIO ESTABLECIDO EN ESA FECHA PARA ESE EMPLEADO...!";
+    system("pause");
+}
+
 void CalendarioDeHorarios(){
     char opcion;
     Empleados obj;
@@ -242,7 +316,7 @@ void CalendarioDeHorarios(){
         switch(opcion){
             case '1': cargarCalendario();
                 break;
-            case '2': // EDITAR HORA    RIO
+            case '2': editarCalendario();
                 break;
             case '3': actualizarCalendario();
                 break;
@@ -256,4 +330,31 @@ void CalendarioDeHorarios(){
                 break;
         }
     }
+}
+
+void mostrarHorarioXMes(){
+
+    int legajo, mes, anio;
+    cout<<"COLOQUE EL LEGAJO DEL EMPLEADO QUE DESEA VER EL LISTADO...!"<<endl;
+    cout<<"Legajo: ";cin>>legajo;
+    if(buscarEmpleado(legajo)==-1){
+        cout<<"Legajo inexistente...!"<<endl;
+        system("pause");
+        return;
+    }
+    cout<<"INDIQUE EL PERIODO QUE DESEA VER (MES Y AÑO)"<<endl;
+    cout<<"MES: ";cin>>mes;cout<<endl<<"AÑO: ";cin>>anio;
+    if(mes>12||mes<1||anio<1900){
+        cout<<"Fecha invalida...!"<<endl;
+        system("pause");
+        return;
+    }
+    Calendario calendario;
+    int pos=0;
+    system("cls");
+    cout<<"LEGAJO "<<legajo<<"\t\t\t\t\t\tPERIODO "<<mes<<"-"<<anio<<endl;
+    while(calendario.leerDeDisco(pos++)){
+        if(anio==jornada.getFecha().getAnio()
+           &&mes==jornada.getFecha().getMes()){
+           }
 }

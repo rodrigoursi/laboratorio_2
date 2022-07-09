@@ -332,7 +332,7 @@ system("cls");
 }
 
 void mostrarJorEmpXMes(){
-/// HAY Q TRABAJAR ESTA FUNCION AUN
+
     int mes, anio,legajo;
     cout<<"COLOQUE EL LEGAJO DEL EMPLEADO QUE DESEA VER EL LISTADO...!"<<endl;
     cout<<"Legajo: ";cin>>legajo;

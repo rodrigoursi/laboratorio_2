@@ -42,6 +42,8 @@ public:
 
 void cargarCalendario();
 void actualizarCalendario();
+void editarCalendario();
 void CalendarioDeHorarios();
+void mostrarHorarioXMes();
 
 #endif // CALENDARIO_H_INCLUDED

@@ -6,6 +6,7 @@
 #include "rlutil.h"
 #include "fecha.h"
 #include "franco.h"
+#include "jornada.h"
 
 #include <iostream>
 
@@ -334,6 +335,8 @@ void CalendarioDeHorarios(){
 
 void mostrarHorarioXMes(){
 
+    Jornada jornada;
+
     int legajo, mes, anio;
     cout<<"COLOQUE EL LEGAJO DEL EMPLEADO QUE DESEA VER EL LISTADO...!"<<endl;
     cout<<"Legajo: ";cin>>legajo;
@@ -357,4 +360,5 @@ void mostrarHorarioXMes(){
         if(anio==jornada.getFecha().getAnio()
            &&mes==jornada.getFecha().getMes()){
            }
+    }
 }

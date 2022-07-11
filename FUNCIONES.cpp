@@ -263,6 +263,7 @@ void Listados(){
     cout << "\t\t\t\t\t4 - LISTAR JORNADA EMPLEADO POR MES. " << endl << endl;
     cout << "\t\t\t\t\t5 - LISTAR JORNADA POR FECHA TODOS LOS EMPLEADOS. " << endl << endl;
     cout << "\t\t\t\t\t6 - LISTAR HORARIO EMPLEADO POR MES. " << endl << endl;
+    cout << "\t\t\t\t\t7 - LISTAR TODOS LOS HORARIO POR FECHA. " << endl << endl;
     cout << "\t\t\t\t\t0 - VOLVER. " << endl << endl;
     cout << "\t\t\t\t*******************************************" << endl << endl;
     cout << "\t\t\t\t\tSELECCIONE OPCION: ";
@@ -283,6 +284,8 @@ void Listados(){
         case 5: mostrarJorXFec();
             break;
         case 6: mostrarHorarioXMes();
+            break;
+        case 7: mostrarHorarioXFec();
             break;
         case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                 cin >> confirmarSalida;

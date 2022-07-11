@@ -82,12 +82,14 @@ int  Calendario::contarRegistros(){
 
 void cargarCalendario(){
 
+    system("cls");
     FechaHora fechaMes;
     Empleados empleado;
     int legajo, hora=0, minuto=0, dia,mes,anio;
     cout<<"COLOQUE EL LEGAJO DEL EMPLEADO Q DESEA CARGAR EL CALENDARIO DE TRABAJO...!"<<endl;
     cout<<"Legajo: ";cin>>legajo;
-    if(buscarEmpleado(legajo)==-1){
+    int legajoPos=buscarEmpleado(legajo);
+    if(legajoPos==-1){
         cout<<endl<<"LEGAJO NO ENCONTRADO.!"<<endl;
         system("pause");
         return;
@@ -123,7 +125,7 @@ void cargarCalendario(){
     Calendario check;
     int pos=0;
     while(check.leerDeDisco(pos++)){
-        if(!mes==1){
+        if(mes!=1){
             if(check.getFecha().getAnio()==anio
                &&check.getFecha().getMes()==mes-1
                &&check.getLegajo().getleg()==legajo){
@@ -131,8 +133,10 @@ void cargarCalendario(){
                 system("pause");
                 return;
             }
-            if(check.getFecha().getAnio()==anio-1
-                &&check.getFecha().getMes()==1
+        }
+        else {
+          if(check.getFecha().getAnio()==anio-1
+                &&check.getFecha().getMes()==12
                 &&check.getLegajo().getleg()==legajo){
                 cout<<"ESTE EMPLEADO YA FUE CARGADO PREVIAMENTE...!";
                 system("pause");
@@ -143,7 +147,7 @@ void cargarCalendario(){
     int tam=mesCantDias(mes);
     for(dia;dia<=tam;dia++){
         FechaHora fSalida, fec;
-        empleado.LeerDeDisco(legajo);
+        empleado.LeerDeDisco(legajoPos);
         if(diaSemana(dia,mes,anio)!=franco){
             fSalida.setHora(hora+empleado.getcargaHoraria()); fSalida.setMinuto(minuto);
             fec.setDia(dia); fec.setMes(mes); fec.setAnio(anio); fec.setHora(hora);fec.setMinuto(minuto);
@@ -169,6 +173,7 @@ void cargarCalendario(){
 
 void actualizarCalendario(){
 
+    system("cls");
     FechaHora fecha;
     int anio=fecha.getAnio();
     int mes;
@@ -178,12 +183,14 @@ void actualizarCalendario(){
     } else mes=fecha.getMes()+1;
     int diasS=mesCantDias(mes);
     Empleados empleado;
+
     int pos=0;
     while(empleado.LeerDeDisco(pos++)){
         if(ValidarActivo(empleado.getleg())){
             Calendario calendario;
             int dias=mesCantDias(fecha.getMes());
             int hora=0,minuto=0;
+            cout<<endl<<dias;system("pause");
             for(dias;dias>=1;dias--){
                 int posicion=0;
                 while(calendario.leerDeDisco(posicion++)){
@@ -193,10 +200,11 @@ void actualizarCalendario(){
                        &&calendario.getLegajo().getleg()==empleado.getleg()){
                         hora=calendario.getHoraEntrada().getHora();
                         minuto=calendario.getHoraEntrada().getMinuto();
-                        dias=-1;
+                        dias=0;  ///SE TRANSFORMA EN -1 POREL -- DEL CICLO FOR
                     }
                 }
             }
+            cout<<endl<<dias;system("pause");
             if(dias==-1){
               Franco franco;
               franco.leerDeDisco(buscarRegistro(empleado.getleg()));
@@ -335,8 +343,7 @@ void CalendarioDeHorarios(){
 
 void mostrarHorarioXMes(){
 
-    Jornada jornada;
-
+    system("cls");
     int legajo, mes, anio;
     cout<<"COLOQUE EL LEGAJO DEL EMPLEADO QUE DESEA VER EL LISTADO...!"<<endl;
     cout<<"Legajo: ";cin>>legajo;
@@ -357,8 +364,46 @@ void mostrarHorarioXMes(){
     system("cls");
     cout<<"LEGAJO "<<legajo<<"\t\t\t\t\t\tPERIODO "<<mes<<"-"<<anio<<endl;
     while(calendario.leerDeDisco(pos++)){
-        if(anio==jornada.getFecha().getAnio()
-           &&mes==jornada.getFecha().getMes()){
+        if(anio==calendario.getFecha().getAnio()
+            &&mes==calendario.getFecha().getMes()
+            &&legajo==calendario.getLegajo().getleg()){
+            cout<<endl<<"----------------------------------------------"<<endl;
+            cout<<"FECHA"<<"||"<<"HORARIO ENTRADA"<<"||"<<"HORARIO SALIDA"<<endl;
+            cout<<calendario.getFecha().getDia()<< "   ||"
+            <<"    "<<calendario.getHoraEntrada().getHora()<<":"<<calendario.getHoraEntrada().getMinuto()
+            <<"   ||"<<"    "<<calendario.getHoraSalida().getHora()<<":"<<calendario.getHoraSalida().getMinuto()<<
+            endl<<"----------------------------------------------"<<endl;
+       }
+    }
+    cout<<endl;
+    system("pause");
+}
+
+void mostrarHorarioXFec(){
+
+    int dia=0,mes=0,anio=0;
+    system ("cls");
+    cout<<"COLOQUE LA FECHA DEL LISTADO JDE HORARIO Q NECESITA VER...!"<<endl;
+    cout<<"DIA: ";cin>>dia;
+    cout<<endl<<"MES: ";cin>>mes;
+    cout<<endl<<"YEAR: ";cin>>anio;
+
+    Calendario calendario;
+    int pos=0;
+    system("cls");
+    cout<<endl<<"---------EMPLEADOS DEL DIA "<<dia<<"/"<<mes<<"/"<<anio<<"----------"<<endl;
+    while(calendario.leerDeDisco(pos++)){
+        if(calendario.getFecha().getAnio()==anio&&
+           calendario.getFecha().getMes()==mes&&
+           calendario.getFecha().getDia()==dia){
+            cout<<endl<<"----------------------------------------------"<<endl;
+            cout<<"LEGAJO"<<"||"<<"HORA ENTRADA"<<"||"<<"HORA SALIDA"<<endl;
+            cout<<calendario.getLegajo().getleg()<<"   ||"<<"    "<<calendario.getHoraEntrada().getHora()<<
+            ":"<<calendario.getHoraEntrada().getMinuto()<<"    ||"<<"    "<<calendario.getHoraSalida().getHora()<<
+            ":"<<calendario.getHoraSalida().getMinuto()<<endl<<"----------------------------------------------"<<endl;
            }
     }
+    cout<<endl;
+    system("pause");
+
 }

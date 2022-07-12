@@ -229,6 +229,9 @@ bool editar_empleados(){
             cin>>mes;
             cout<<endl<<"\t\t\t\t\tINTRODUCE YEAR DE NACIMIENTO NUEVO: ";
             cin>>anio;
+            if(!ValidarDiaMes(dia,mes)){
+                return 0;
+            }
             fnac.setAnio(anio);fnac.setMes(mes);fnac.setDia(dia);
             reg.setFnacimiento(fnac);
             break;

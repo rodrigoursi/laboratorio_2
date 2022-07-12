@@ -428,27 +428,27 @@ bool ValidarDiaMes(int dia, int mes){
 
     if ( mes <= 0 || mes > 12){
         cout << endl << "\t\t\t\t\tNUMERO DE MES INVALIDO." << endl << endl;
-        cout << endl << "\t\t\t\t" << system ("pause");
+        cout << endl << "\t\t\t\t"; system ("pause");
         return false;
     }
     if(mes == 4 || mes == 6 || mes == 9 || mes == 11){
         if ( dia <= 0 || dia > 30){
-            cout << endl << "\t\t\t\t\tNUMERO DE MES INVALIDO." << endl << endl;
-            cout << endl << "\t\t\t\t" << system ("pause");
+            cout << endl << "\t\t\t\t\tNUMERO DE DIA INVALIDO." << endl << endl;
+            cout << endl << "\t\t\t\t"; system ("pause");
             return false;
         }
     }
     if(mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12){
         if ( dia <= 0 || dia > 31){
-            cout << endl << "NUMERO DE MES INVALIDO." << endl << endl;
-            cout << endl << "\t\t\t\t" << system ("pause");
+            cout << endl << "NUMERO DE DIA INVALIDO." << endl << endl;
+            cout << endl << "\t\t\t\t"; system ("pause");
             return false;
         }
     }
     if(mes == 2){
         if ( dia <= 0 || dia > 28){
-            cout << endl << "NUMERO DE MES INVALIDO." << endl << endl;
-            cout << endl << "\t\t\t\t" << system ("pause");
+            cout << endl << "NUMERO DE DIA INVALIDO." << endl << endl;
+            cout << endl << "\t\t\t\t"; system ("pause");
             return false;
         }
     }

@@ -174,6 +174,8 @@ void cargarCalendario(){
 void actualizarCalendario(){
 
     system("cls");
+    cout<<"ESTE PROCESO PUEDE DEMORAR VARIOS MINUTOS, NO CERRAR EL PROGRAMA"<<endl<<endl;
+    system("pause");cout<<endl;
     FechaHora fecha;
     int anio=fecha.getAnio();
     int mes;
@@ -190,7 +192,6 @@ void actualizarCalendario(){
             Calendario calendario;
             int dias=mesCantDias(fecha.getMes());
             int hora=0,minuto=0;
-            cout<<endl<<dias;system("pause");
             for(dias;dias>=1;dias--){
                 int posicion=0;
                 while(calendario.leerDeDisco(posicion++)){
@@ -200,17 +201,19 @@ void actualizarCalendario(){
                        &&calendario.getLegajo().getleg()==empleado.getleg()){
                         hora=calendario.getHoraEntrada().getHora();
                         minuto=calendario.getHoraEntrada().getMinuto();
-                        dias=0;  ///SE TRANSFORMA EN -1 POREL -- DEL CICLO FOR
+                        if(hora!=-1){
+                            dias=0;  ///SE TRANSFORMA EN -1 POREL -- DEL CICLO FOR
+                        }
                     }
                 }
             }
-            cout<<endl<<dias;system("pause");
+            /////
             if(dias==-1){
               Franco franco;
               franco.leerDeDisco(buscarRegistro(empleado.getleg()));
               for(int dia=1;dia<=diasS;dia++){
                 FechaHora fSalida,fec;
-                if(diaSemana(dia,mes,anio)!=franco.getLegajo().getleg()){
+                if(diaSemana(dia,mes,anio)!=franco.getDiaFranco()){
                     fSalida.setHora(hora+empleado.getcargaHoraria()); fSalida.setMinuto(minuto);
                     fec.setDia(dia); fec.setMes(mes); fec.setAnio(anio); fec.setHora(hora);fec.setMinuto(minuto);
                 }
@@ -224,7 +227,8 @@ void actualizarCalendario(){
             }
         }
     }
-    cout<<"PROCESO TERMINADO CORRECTAMENTE...!"<<endl<<system("pause");
+    cout<<endl<<"PROCESO TERMINADO CORRECTAMENTE...!"<<endl<<endl;
+    system("pause");
 }
 
 void editarCalendario(){
@@ -309,7 +313,7 @@ void CalendarioDeHorarios(){
         rlutil::setColor(rlutil::WHITE);
         rlutil::setBackgroundColor(rlutil::DARKGREY);
         rlutil::cls();
-        cout << "\t\t\t\t\t  *** MENU ADMINISTRADOR ***" << endl << endl;
+        cout << "\t\t\t\t\t  *** MENU CALENDARIO ***" << endl << endl;
         cout << "\t\t\t\t*******************************************" << endl << endl;
         cout << "\t\t\t\t\t1 - CARGAR NUEVO HORARIO. " << endl << endl;
         cout << "\t\t\t\t\t2 - EDITAR HORARIO. " << endl << endl;
@@ -334,7 +338,7 @@ void CalendarioDeHorarios(){
                     if (tolower(confirmarSalida) == 's'){
                         system("pause > nul");
                         system("cls");
-                        MenuAdministrador();
+                        return;
                     }
                 break;
         }

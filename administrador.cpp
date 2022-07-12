@@ -104,8 +104,8 @@ void CargarEmpleado(){
     cin  >> anio;
     if(!ValidarDiaMes(dia,mes)){
         dia=1;mes=1;
-        cout<<"FECHA INGRESADA INVALIDA. SE COLOCARA UNA POR DEFECTO";
-        system("nul");
+        cout<<"FECHA INGRESADA INVALIDA. SE COLOCARA UNA FECHA POR DEFECTO";
+        system("pause");
     }
     cout << "\t\t\t\t\t** 1 para Masculino 2 para Femenino"<<endl;
     cout << "\t\t\t\t\t** GENERO       : ";

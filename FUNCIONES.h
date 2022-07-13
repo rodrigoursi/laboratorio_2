@@ -18,5 +18,6 @@ bool ValidarDiaMes(int dia, int mes);
 bool ValidarHoraMinutos(int hora, int minutos);
 bool ValidarActivo(int legajo);
 int  diaSemana(int,int,int);
+void reporte1();
 
 #endif // FUNCIONES_H_INCLUDED

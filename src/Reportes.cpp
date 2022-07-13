@@ -28,7 +28,7 @@ void Reportes(){
             system("cls");
         }
         switch(opcion){
-            case 1: ReportePorEmpleadoPorMes();
+            case 1: reporte1();
                 break;
             case 0 : cout << endl << endl << "\t\t\t\t\t¿Confirma salir? (S/N) ";
                 cin >> confirmarSalida;

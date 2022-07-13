@@ -15,10 +15,11 @@ private:
     Empleados _legajo;
     FechaHora _horaEntrada;
     FechaHora _horaSalida;
+    float _horaTotal;
 
 public:
     ///constructor
-    Calendario(FechaHora, Empleados, FechaHora, FechaHora);
+    Calendario(FechaHora, Empleados, FechaHora, FechaHora,float horaTotal=0);
     Calendario(){};
     ///
     ///get
@@ -26,12 +27,14 @@ public:
     Empleados getLegajo();
     FechaHora getHoraEntrada();
     FechaHora getHoraSalida();
+    float getHoraTotal();
     ///
     ///set
     void setFecha(FechaHora);
     void setLegajo(Empleados);
     void setHoraEntrada(FechaHora);
     void setHoraSalida(FechaHora);
+    void setHoraTotal(float);
     ///
     bool guardarEnDisco();
     bool guardarEnDisco(int);

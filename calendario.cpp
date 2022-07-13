@@ -10,11 +10,12 @@
 
 #include <iostream>
 
-    Calendario::Calendario(FechaHora fecha, Empleados legajo, FechaHora horaEnt, FechaHora horaSalida){
+    Calendario::Calendario(FechaHora fecha, Empleados legajo, FechaHora horaEnt, FechaHora horaSalida,float horaTotal){
     _fecha=fecha;
     _legajo=legajo;
     _horaEntrada=horaEnt;
     _horaSalida=horaSalida;
+    _horaTotal=horaTotal;
 }
 
 /// ///GET///
@@ -23,6 +24,7 @@
     Empleados Calendario::getLegajo(){return _legajo;}
     FechaHora Calendario::getHoraEntrada(){return _horaEntrada;}
     FechaHora Calendario::getHoraSalida(){return _horaSalida;}
+    float Calendario::getHoraTotal(){return _horaTotal;}
 
 /// ///SET///
 
@@ -30,6 +32,7 @@ void Calendario::setFecha(FechaHora fecha){_fecha=fecha;}
 void Calendario::setLegajo(Empleados legajo){_legajo=legajo;}
 void Calendario::setHoraEntrada(FechaHora entrada){_horaEntrada=entrada;}
 void Calendario::setHoraSalida(FechaHora salida){_horaSalida=salida;}
+void Calendario::setHoraTotal(float total){_horaTotal=total;}
 
 /// ///DISCO///
 
@@ -148,6 +151,7 @@ void cargarCalendario(){
     for(dia;dia<=tam;dia++){
         FechaHora fSalida, fec;
         empleado.LeerDeDisco(legajoPos);
+        float fin=0;
         if(diaSemana(dia,mes,anio)!=franco){
             fSalida.setHora(hora+empleado.getcargaHoraria()); fSalida.setMinuto(minuto);
             fec.setDia(dia); fec.setMes(mes); fec.setAnio(anio); fec.setHora(hora);fec.setMinuto(minuto);
@@ -156,7 +160,13 @@ void cargarCalendario(){
             fSalida.setHora(-1);
             fec.setDia(dia); fec.setMes(mes); fec.setAnio(anio); fec.setHora(-1);
         }
-         Calendario calendario(fec,empleado,fec,fSalida);
+         int mnSalida=minuto+horas_A_minutos(hora+empleado.getcargaHoraria());
+         int mnEntrada=minuto+horas_A_minutos(hora);
+         fin=(mnSalida-mnEntrada)/60;
+         if((mnSalida-mnEntrada)%60>29){
+            fin+=0.5;
+         }
+         Calendario calendario(fec,empleado,fec,fSalida,fin);
          calendario.guardarEnDisco();
          Franco fechaFranco(empleado,franco);
          int resulPos= buscarRegistro(legajo);
@@ -212,6 +222,7 @@ void actualizarCalendario(){
               Franco franco;
               franco.leerDeDisco(buscarRegistro(empleado.getleg()));
               for(int dia=1;dia<=diasS;dia++){
+                float fin=0;
                 FechaHora fSalida,fec;
                 if(diaSemana(dia,mes,anio)!=franco.getDiaFranco()){
                     fSalida.setHora(hora+empleado.getcargaHoraria()); fSalida.setMinuto(minuto);
@@ -221,7 +232,13 @@ void actualizarCalendario(){
                     fSalida.setHora(-1);
                     fec.setDia(dia); fec.setMes(mes); fec.setAnio(anio); fec.setHora(-1);
                 }
-                Calendario calen(fec,empleado,fec,fSalida);
+                int mnSalida=minuto+horas_A_minutos(hora+empleado.getcargaHoraria());
+                int mnEntrada=minuto+horas_A_minutos(hora);
+                fin=(mnSalida-mnEntrada)/60;
+                if((mnSalida-mnEntrada)%60>29){
+                    fin+=0.5;
+                }
+                Calendario calen(fec,empleado,fec,fSalida,fin);
                 calen.guardarEnDisco();
                 }
             }

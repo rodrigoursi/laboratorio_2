@@ -7,7 +7,7 @@ using namespace std;
 #include "FUNCIONES.h"
 #include "rlutil.h"
 #include "calendario.h"
-
+#include <iomanip>
 
 ///CONSTRUCTOR
 
@@ -344,8 +344,8 @@ void mostrarJorEmpXMes(){
         system("pause");
         return;
     }
-    cout<<"INDIQUE EL PERIODO QUE DESEA VER (MES Y AÑO)"<<endl;
-    cout<<"MES: ";cin>>mes;cout<<endl<<"AÑO: ";cin>>anio;
+    cout<<"INDIQUE EL PERIODO QUE DESEA VER (MES Y ANIO)"<<endl;
+    cout<<"MES: ";cin>>mes;cout<<endl<<"ANIO: ";cin>>anio;
     if(mes>12||mes<1||anio<1900){
         cout<<"Fecha invalida...!"<<endl;
         system("pause");
@@ -358,7 +358,8 @@ void mostrarJorEmpXMes(){
     cout<<"LEGAJO "<<legajo<<"\t\t\t\t\t\tPERIODO "<<mes<<"-"<<anio<<endl;
     while(jornada.leerDeDisco(pos++)){
         if(anio==jornada.getFecha().getAnio()
-           &&mes==jornada.getFecha().getMes()){
+           &&mes==jornada.getFecha().getMes()
+           &&legajo==jornada.getLegajo().getleg()){
             int teoHora=0, teoMin=0, p=0;
             while(calendario.leerDeDisco(p++)){
                 if(jornada.getFecha().getAnio()==calendario.getFecha().getAnio()
@@ -369,12 +370,12 @@ void mostrarJorEmpXMes(){
                     teoMin=calendario.getHoraEntrada().getMinuto();
                    }
             }
-            cout<<endl<<"----------------------------------------------"<<endl;
-            cout<<"FECHA"<<"||"<<"HORA TEORICA"<<"||"<<"HORA ENTRADA"<<"||"<<"HORA SALIDA"<<"||"<<"ESTADO"<<endl;
-            cout<<jornada.getFecha().getDia()<<"   ||"<<"    "<<teoHora<<":"<<teoMin<<"   ||"<<"    "<<jornada.getHoraEntrada().getHora()<<
-            ":"<<jornada.getHoraEntrada().getMinuto()<<"    ||"<<"    "<<jornada.getHoraSalida().getHora()<<
-            ":"<<jornada.getHoraSalida().getMinuto()<<"   ||"<<jornada.getEstado()<<endl<<
-            "----------------------------------------------"<<endl;
+            cout<<endl<<"-------------------------------------------------------------"<<endl;
+            cout<<"DIA"<<" ||"<<" HORA TEORICA"<<" ||"<<" HORA ENTRADA"<<" ||"<<" HORA SALIDA"<<" ||"<<" ESTADO"<<endl;
+            cout<<setw(3)<<jornada.getFecha().getDia()<<" ||"<<setw(2)<<teoHora<<":"<<setw(2)<<teoMin<<"         || "<<setw(2)<<jornada.getHoraEntrada().getHora()<<
+            ":"<<setw(2)<<jornada.getHoraEntrada().getMinuto()<<"        || "<<setw(2)<<jornada.getHoraSalida().getHora()<<
+            ":"<<setw(2)<<jornada.getHoraSalida().getMinuto()<<"       || "<<jornada.getEstado()<<endl<<
+            "-------------------------------------------------------------"<<endl;
            }
     }
     cout<<endl;
@@ -388,7 +389,7 @@ void mostrarJorXFec(){
     cout<<"DIA: ";cin>>dia;
     cout<<endl<<"MES: ";cin>>mes;
     cout<<endl<<"YEAR: ";cin>>anio;
-
+    Calendario calendario;
     Jornada jornada;
     int pos=0;
     system("cls");
@@ -397,12 +398,23 @@ void mostrarJorXFec(){
         if(jornada.getFecha().getAnio()==anio&&
            jornada.getFecha().getMes()==mes&&
            jornada.getFecha().getDia()==dia){
-            cout<<endl<<"----------------------------------------------"<<endl;
-            cout<<"LEGAJO"<<"||"<<"HORA ENTRADA"<<"||"<<"HORA SALIDA"<<"||"<<"ESTADO"<<endl;
-            cout<<jornada.getLegajo().getleg()<<"   ||"<<"    "<<jornada.getHoraEntrada().getHora()<<
-            ":"<<jornada.getHoraEntrada().getMinuto()<<"    ||"<<"    "<<jornada.getHoraSalida().getHora()<<
-            ":"<<jornada.getHoraSalida().getMinuto()<<"   ||"<<jornada.getEstado()<<endl<<
-            "----------------------------------------------"<<endl;
+               int teoHora=0, teoMin=0, p=0;
+                while(calendario.leerDeDisco(p++)){
+                    if(jornada.getFecha().getAnio()==calendario.getFecha().getAnio()
+                       &&jornada.getFecha().getMes()==calendario.getFecha().getMes()
+                       &&jornada.getFecha().getDia()==calendario.getFecha().getDia()
+                       &&jornada.getLegajo().getleg()==calendario.getLegajo().getleg()){
+                        teoHora=calendario.getHoraEntrada().getHora();
+                        teoMin=calendario.getHoraEntrada().getMinuto();
+                       }
+               }
+            cout<<endl<<"-------------------------------------------------------------"<<endl;
+            //cout<<"LEGAJO"<<"||"<<"HORA ENTRADA"<<"||"<<"HORA SALIDA"<<"||"<<"ESTADO"<<endl;
+            cout<<"LEGAJO || HS ENT TEORICA || HS ENTRADA || HS SALIDA || ESTADO"<<endl;
+            cout<<setw(6)<<jornada.getLegajo().getleg()<<" || "<<setw(2)<<teoHora<<":"<<setw(2)<<teoMin<<"          || "
+            <<setw(2)<<jornada.getHoraEntrada().getHora()<<":"<<setw(2)<<jornada.getHoraEntrada().getMinuto()<<"      || "
+            <<setw(2)<<jornada.getHoraSalida().getHora()<<":"<<setw(2)<<jornada.getHoraSalida().getMinuto()<<"     || "
+            <<jornada.getEstado()<<endl<<"-------------------------------------------------------------"<<endl;
            }
     }
     cout<<endl;

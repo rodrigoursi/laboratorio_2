@@ -2,28 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="Empleados.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Reportes.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="14917" topLine="343" />
-		</Cursor>
-	</File>
-	<File name="Empleados.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2098" topLine="66" />
-		</Cursor>
-	</File>
-	<File name="FUNCIONES.cpp" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="19362" topLine="486" />
-		</Cursor>
-		<Folding>
-			<Collapse line="14" />
-			<Collapse line="40" />
-		</Folding>
-	</File>
-	<File name="FUNCIONES.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="598" topLine="0" />
+			<Cursor1 position="974" topLine="26" />
 		</Cursor>
 	</File>
 	<File name="administrador.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -31,19 +12,29 @@
 			<Cursor1 position="3078" topLine="59" />
 		</Cursor>
 	</File>
+	<File name="jornada.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="365" topLine="12" />
+		</Cursor>
+	</File>
 	<File name="administrador.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="430" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="calendario.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FUNCIONES.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="15130" topLine="392" />
+			<Cursor1 position="598" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="calendario.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="jornada.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1099" topLine="33" />
+			<Cursor1 position="2038" topLine="51" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1700" topLine="30" />
 		</Cursor>
 	</File>
 	<File name="fecha.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -58,14 +49,19 @@
 			<Collapse line="20" />
 		</Folding>
 	</File>
+	<File name="calendario.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="15130" topLine="392" />
+		</Cursor>
+	</File>
 	<File name="fecha.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="472" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="franco.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="calendario.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1369" topLine="48" />
+			<Cursor1 position="1099" topLine="33" />
 		</Cursor>
 	</File>
 	<File name="franco.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -73,25 +69,29 @@
 			<Cursor1 position="597" topLine="17" />
 		</Cursor>
 	</File>
-	<File name="jornada.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="franco.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2038" topLine="51" />
+			<Cursor1 position="1369" topLine="48" />
 		</Cursor>
 	</File>
-	<File name="jornada.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Empleados.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="365" topLine="12" />
+			<Cursor1 position="2098" topLine="66" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="Empleados.cpp" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1700" topLine="30" />
+			<Cursor1 position="16397" topLine="397" />
 		</Cursor>
 	</File>
-	<File name="src\Reportes.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<File name="FUNCIONES.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="974" topLine="26" />
+			<Cursor1 position="11622" topLine="234" />
 		</Cursor>
+		<Folding>
+			<Collapse line="14" />
+			<Collapse line="40" />
+		</Folding>
 	</File>
 	<Target name="Debug" top="main.cpp">
 		<File name="administrador.h" />

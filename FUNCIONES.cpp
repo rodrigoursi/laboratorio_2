@@ -496,49 +496,62 @@ int diaSemana(int dia,int mes,int anio){
 
 void reporte1(){
 
-    ///FALTA VALIDAR LAS FECHAS
     int mes,anio;
     cout<<"INGRESE EL NUMERO DE MES QUE DESEA VER: ";cin>>mes;
     cout<<endl<<"INGRESE EL YEAR QUE DESEA VER: ";cin>>anio;
+    if(mes<1||mes>12){
+        cout<<endl<<"MES INCORRECTO...!"; system("pause");return;
+    }
+    system ("cls");
+    cout<<"\t\t\t\t\t\tPERIODO: "<<mes<<"-"<<anio<<endl<<endl<<endl;
     int posicion=0;
-
-
-        int can=mesCantDias(mes);
+    int can=mesCantDias(mes);
+    Empleados empleado;
+    while(empleado.LeerDeDisco(posicion++)){
+        bool mostrar=false;
         int teorico=0;
         int fichada=0;
         float hsFichada=0;
         int hsTeorico=0;
+        int legajo=empleado.getleg();
         for(int i=1;i<=can;i++){
             int pos=0;
             Calendario calendario;
             while(calendario.leerDeDisco(pos++)){
-                if(//legajo==calendario.getLegajo().getleg()
-                   /*&&*/anio==calendario.getFecha().getAnio()
+                if(legajo==calendario.getLegajo().getleg()
+                   &&anio==calendario.getFecha().getAnio()
                    &&mes==calendario.getFecha().getMes()
                    &&i==calendario.getFecha().getDia()
                    &&calendario.getHoraEntrada().getHora()!=-1){
                     teorico++;
                     //hsTeorico+=calendario.getHoraSalida().getHora()-calendario.getHoraEntrada().getHora();
-                    hsTeorico=calendario.getHoraTotal();
+                    hsTeorico+=calendario.getHoraTotal();
+                    mostrar=true;
                     ///break;
                 }
             }
             Jornada jornada;
             pos=0;
             while(jornada.leerDeDisco(pos++)){
-                if(//legajo==jornada.getLegajo().getleg()
-                   /*&&*/anio==jornada.getFecha().getAnio()
+                if(legajo==jornada.getLegajo().getleg()
+                   &&anio==jornada.getFecha().getAnio()
                    &&mes==jornada.getFecha().getMes()
                    &&i==jornada.getFecha().getDia()){
                     fichada++;
-                    hsFichada=jornada.getHoraTotal();
+                    hsFichada+=jornada.getHoraTotal();
                     //hsFichada+=jornada.getHoraSalida().getHora()-jornada.getHoraEntrada().getHora();
                     ///break;
                 }
             }
         }
-        int balance=hsFichada-hsTeorico;
-        /*cout<<"LEGAJO"<<setw(3)<<"||"<<" AUSENCIAS"<<setw(3)<<"||"<<" HS TEORICAS"<<setw(3)<<"||"<<" HS REGISTRADAS"<<endl;*/
-        cout<<endl<<teorico-fichada<<endl<<hsTeorico<<endl<<hsFichada<<endl<<balance<<endl;system("pause");
+        if(mostrar){
+            int balance=hsFichada-hsTeorico;
+            cout<<"-----------------------------------------------------------------"<<endl;
+            cout<<setw(7)<<"LEGAJO"<<" ||"<<setw(10)<<"AUSENCIAS"<<" ||"<<setw(12)<<"HS TEORICAS"<<" ||"<<setw(15)<<" HS REGISTRADAS"<<" ||"<<" BALANCE"<<endl;
+            cout<<endl<<setw(7)<<legajo<<" ||"<<setw(10)<<teorico-fichada<<" ||"<<setw(12)<<hsTeorico<<" ||"<<setw(15)<<hsFichada<<" ||"<<balance<<endl;
+            cout<<"-----------------------------------------------------------------"<<endl;
+        }
+    }
+    system("pause");
 }
 
